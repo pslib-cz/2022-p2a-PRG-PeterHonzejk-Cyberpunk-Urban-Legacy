@@ -1,6 +1,6 @@
 ﻿using System;
 using System.IO;
-using System.Collections.Generic;
+using System.Xml.Schema;
 
 class Program
 {
@@ -26,15 +26,14 @@ class Program
         Console.WriteLine($"{playerName}, you're a young streetkid aspiring to become a legend. You have a chance to plan the greatest heist Night City has ever witnessed: stealing the Digital Heart from Arasaka corporation. But it's dangerous. Do you wish to proceed? (yes/no)");
 
         string playerChoice = Console.ReadLine();
-        List<string> inventory = new List<string>();
 
         // If the player chooses to proceed...
         if (playerChoice.ToLower() == "yes")
         {
             Console.WriteLine("You courageously move forward with the plan, risking it all for a chance at greatness...");
 
-            // Introduce Mia, Dex, and Rico
-            Console.WriteLine("Your closest friends, Mia, a bold and resourceful hacker, Dex, a brave and physically strong fighter, and Rico, a well-connected fixer, are ready to help you. Who do you want to approach first for help? (Mia/Dex/Rico)");
+            // Introduce Mia and Dex
+            Console.WriteLine("Your closest friend, Mia, a bold and resourceful hacker, and Dex, a brave and physically strong fighter, are ready to help you. Who do you want to approach first for help? (Mia/Dex)");
 
             string firstHelper = Console.ReadLine();
 
@@ -43,112 +42,80 @@ class Program
 
             if (firstHelper.ToLower() == "mia")
             {
-                Console.WriteLine("Mia helps you to enhance your cybernetic implants and gather information about valuable targets. She's able to successfully hack into Arasaka's security systems.");
-                inventory.Add("Hacking Skills");
+                Console.WriteLine("Mia helps you to enhance your cybernetic implants and gather information about valuable targets. She's able to successfully hack into the bank's security systems. You are ready for the infiltration...");
 
-                Console.WriteLine("You can now choose to attempt the heist or get more help. What do you want to do? (heist/more help)");
-                string miaChoice = Console.ReadLine();
+                // Further game logic, choices, and consequences would be implemented here.
+                // For now, let's head to the final choice.
 
-                if (miaChoice.ToLower() == "heist")
+                Console.WriteLine("Do you choose to fight the corporate mercenaries protecting the Digital Heart using Mia's hacking skills or take advantage of her data to find a hidden escape route? (fight/escape)");
+                string finalChoice = Console.ReadLine();
+
+                // Save game state
+                File.AppendAllText(@"gamestate.txt", "\n" + finalChoice);
+
+                if (finalChoice.ToLower() == "fight")
                 {
-                    // Proceed to heist
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine($"With Mia's hacking abilities, you manage to take control of the security systems and turn them against the mercenaries. However, during the fight, you sustain severe injuries. {playerName}, you became a symbol of resistance against the corporations, and your bravery inspired many...");
+                    Console.ResetColor();
                 }
-                else if (miaChoice.ToLower() == "more help")
+                else if (finalChoice.ToLower() == "escape")
                 {
-                    // Go to Dex or Rico
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.WriteLine($"Using the detailed data Mia had gathered, you find a hidden escape route and manage to break free with the Digital Heart. {playerName}, you lived to fight another day, becoming a beacon of hope for those oppressed by the corporations...");
+                    Console.ResetColor();
                 }
                 else
                 {
-                    Console.WriteLine("Invalid choice. Please restart the game and try again.");
+                    Console.WriteLine("You had a stroke and died.");
                 }
             }
             else if (firstHelper.ToLower() == "dex")
             {
-                Console.WriteLine("Dex takes care of securing weaponry and the escape route. With his help, you feel ready for the infiltration...");
-                inventory.Add("Heavy Gun");
-                inventory.Add("Body Armor");
+                Console.WriteLine("Dex takes care of securing weaponry and the escape route. With his help, you are ready for the infiltration...");
 
-                Console.WriteLine("You can now choose to attempt the heist or get more help. What do you want to do? (heist/more help)");
-                string dexChoice = Console.ReadLine();
+                // Further game logic, choices, and consequences would be implemented here.
+                
+                // Final Choices
 
-                if (dexChoice.ToLower() == "heist")
-                {
-                    // Proceed to heist
-                }
-                else if (dexChoice.ToLower() == "more help")
-                {
-                    // Go to Mia or Rico
-                }
-                else
-                {
-                    Console.WriteLine("Invalid choice. Please restart the game and try again.");
-                }
-            }
-            else if (firstHelper.ToLower() == "rico")
-            {
-                Console.WriteLine("Rico uses his connections to get you inside Afterlife, a popular bar for mercenaries. Inside, you meet several potential allies. Who do you want to recruit for your heist? (hacker/fighter)");
+                Console.WriteLine("Do you choose to fight the corporate mercenaries protecting the Digital Heart with Dex's weaponry or utilize his pre-planned escape route? (fight/escape)");
+                string finalChoice = Console.ReadLine();
 
-                string recruit = Console.ReadLine();
-
-                // Save game```csharp
                 // Save game state
-                File.AppendAllText(@"gamestate.txt", "\n" + recruit);
+                File.AppendAllText(@"gamestate.txt", "\n" + finalChoice);
 
-                if (recruit.ToLower() == "hacker")
+                if (finalChoice.ToLower() == "fight")
                 {
-                    Console.WriteLine("You recruit a talented hacker who helps you in bypassing security systems of Arasaka. You now have an advantage in the upcoming heist.");
-                    inventory.Add("Hacker Ally");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine($"With Dex's strength and the weapons he secured, you put up a formidable fight. The mercenaries didn't stand a chance against your combined might. You managed to secure the Digital Heart, but Dex lost his life in the fight. His sacrifice allowed you, {playerName}, to become a legend of Night City. You fulfilled your dream and Dex's memory lived on...");
+                    Console.ResetColor();
                 }
-                else if (recruit.ToLower() == "fighter")
+                else if (finalChoice.ToLower() == "escape")
                 {
-                    Console.WriteLine("You recruit a tough fighter who will provide extra muscle for your heist. You now have an advantage in the upcoming combat situations.");
-                    inventory.Add("Fighter Ally");
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    Console.WriteLine($"With Dex's brilliant escape route, you managed to avoid the fight and steal the Digital Heart undetected. You and Dex slipped away into the night, and the corporations were none the wiser. Your cunning strategy made you a phantom of Night City. {playerName}, you became a shadowy legend that inspired fear in the corporations and hope in the people...");
+                    Console.ResetColor();
                 }
                 else
                 {
-                    Console.WriteLine("Invalid choice. Please restart the game and try again.");
+                    Console.WriteLine("You had a stroke and died.");
                 }
             }
             else
-            {
-                Console.WriteLine("Invalid choice. Please restart the game and try again.");
+            {        
+                Console.WriteLine("You had a stroke and died.");
             }
-
-            Console.WriteLine("With your team and preparations complete, you're ready to attempt the daring heist. Do you wish to proceed? (yes/no)");
-            string heistChoice = Console.ReadLine();
-
-            if (heistChoice.ToLower() == "yes")
-            {
-                Console.WriteLine("Your heart pounds in your chest as you and your team infiltrate the Arasaka corporation...");
-
-                if (inventory.Contains("Hacking Skills") && inventory.Contains("Hacker Ally"))
-                {
-                    Console.WriteLine("Using your enhanced hacking skills and your hacker ally, you manage to infiltrate Arasaka's security systems with ease. You successfully steal the Digital Heart, becoming a legend in Night City. Congratulations, you've completed the game!");
-                }
-                else if (inventory.Contains("Heavy Gun") || inventory.Contains("Body Armor"))
-                {
-                    Console.WriteLine("You storm the Arasaka corporation with brute force, taking down anyone who stands in your way. You successfully steal the Digital Heart, but not without leaving a trail of chaos behind. You become a feared figure in Night City. Congratulations, you've completed the game!");
-                }
-                else
-                {
-                    Console.WriteLine("Despite your best efforts, you fail to steal the Digital Heart. But this is just one setback in the grand scheme of things. You learn from your mistakes and vow to keep trying. Night City hasn't seen the last of you yet.");
-                }
-            }
-            // If the player chooses not to proceed...
-            else if (playerChoice.ToLower() == "no")
-            {
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("You decide it's too risky. You continue your life in the streets of Night City, always wondering what might have been...");
-                Console.ResetColor();
-            }
-            else
-            {
-                Console.WriteLine("Invalid choice. Please restart the game and try again.");
-            }
+        }
+        // If the player chooses not to proceed...
+        else if (playerChoice.ToLower() == "no")
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("You decide it's too risky. You continue your life in the streets of Night City, always wondering what might have been...");
+            Console.ResetColor();
         }
         else
         {
-            Console.WriteLine("Invalid choice. Please restart the game and try again.");
+            Console.WriteLine("You had a stroke and died.");
         }
     }
 }
