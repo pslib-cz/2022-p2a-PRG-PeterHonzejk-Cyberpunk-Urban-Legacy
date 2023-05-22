@@ -35,22 +35,22 @@ class Program
                 // Further game logic, choices, and consequences would be implemented here.
                 // For now, let's head to the final choice.
 
-                Console.WriteLine("Do you choose to fight the corporate mercenaries protecting the Digital Heart or find a hidden escape route? (fight/escape)");
+                Console.WriteLine("Do you choose to confront the corporate mercenaries protecting the Digital Heart using Mia's hacking skills or take advantage of her data to find a hidden escape route? (confront/escape)");
                 string finalChoice = Console.ReadLine();
 
                 // Save game state
                 File.AppendAllText(@"gamestate.txt", "\n" + finalChoice);
 
-                if (finalChoice.ToLower() == "fight")
+                if (finalChoice.ToLower() == "confront")
                 {
                     Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.WriteLine($"Despite your best efforts, the odds were overwhelming. You fought valiantly, {playerName}, but you were severely wounded. You became a legend, a symbol of resistance against the corporations. Your legacy lived on...");
+                    Console.WriteLine($"With Mia's hacking abilities, you manage to take control of the security systems and turn them against the mercenaries. However, during the fight, you sustain severe injuries. {playerName}, you became a symbol of resistance against the corporations, and your bravery inspired many...");
                     Console.ResetColor();
                 }
                 else if (finalChoice.ToLower() == "escape")
                 {
                     Console.ForegroundColor = ConsoleColor.Blue;
-                    Console.WriteLine($"Using your wit, you find a hidden escape route and manage to break free. {playerName}, you lived to fight another day and continued to rise against the corporations, inspiring the people of Night City...");
+                    Console.WriteLine($"Using the detailed data Mia had gathered, you find a hidden escape route and manage to break free with the Digital Heart. {playerName}, you lived to fight another day, becoming a beacon of hope for those oppressed by the corporations...");
                     Console.ResetColor();
                 }
                 else
@@ -65,22 +65,22 @@ class Program
                 // Further game logic, choices, and consequences would be implemented here.
                 // For now, let's head to the final choice.
 
-                Console.WriteLine("Do you choose to fight the corporate mercenaries protecting the Digital Heart or find a hidden escape route? (fight/escape)");
+                Console.WriteLine("Do you choose to confront the corporate mercenaries protecting the Digital Heart with Dex's weaponry or utilize his pre-planned escape route? (confront/escape)");
                 string finalChoice = Console.ReadLine();
 
                 // Save game state
                 File.AppendAllText(@"gamestate.txt", "\n" + finalChoice);
 
-                if (finalChoice.ToLower() == "fight")
+                if (finalChoice.ToLower() == "confront")
                 {
-                    Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.WriteLine($"Despite your best efforts, the odds were overwhelming. You fought valiantly, {playerName}, but you were severely wounded.You became a legend, a symbol of resistance against the corporations. Your legacy lived on...");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine($"With Dex's strength and the weapons he secured, you put up a formidable fight. The mercenaries didn't stand a chance against your combined might. You managed to secure the Digital Heart, but Dex lost his life in the fight. His sacrifice allowed you, {playerName}, to become a legend of Night City. You fulfilled your dream and Dex's memory lived on...");
                     Console.ResetColor();
                 }
                 else if (finalChoice.ToLower() == "escape")
                 {
-                    Console.ForegroundColor = ConsoleColor.Blue;
-                    Console.WriteLine($"Using your wit, you find a hidden escape route and manage to break free. {playerName}, you lived to fight another day and continued to rise against the corporations, inspiring the people of Night City...");
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    Console.WriteLine($"With Dex's brilliant escape route, you managed to avoid the fight and steal the Digital Heart undetected. You and Dex slipped away into the night, and the corporations were none the wiser. Your cunning strategy made you a phantom of Night City. {playerName}, you became a shadowy legend that inspired fear in the corporations and hope in the people...");
                     Console.ResetColor();
                 }
                 else
