@@ -6,6 +6,17 @@ class Program
     static void Main(string[] args)
     {
         Console.ResetColor();
+        // Name
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.WriteLine("Cyberpunk");
+        Console.ResetColor();
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine("Urban");
+        Console.ResetColor();
+        Console.ForegroundColor = ConsoleColor.Magenta;
+        Console.WriteLine("Legacy");
+        Console.ResetColor();
+
         // Introduction
         Console.WriteLine("Welcome to Night City. What's your name?");
         string playerName = Console.ReadLine();
@@ -35,13 +46,13 @@ class Program
                 // Further game logic, choices, and consequences would be implemented here.
                 // For now, let's head to the final choice.
 
-                Console.WriteLine("Do you choose to confront the corporate mercenaries protecting the Digital Heart using Mia's hacking skills or take advantage of her data to find a hidden escape route? (confront/escape)");
+                Console.WriteLine("Do you choose to fight the corporate mercenaries protecting the Digital Heart using Mia's hacking skills or take advantage of her data to find a hidden escape route? (fight/escape)");
                 string finalChoice = Console.ReadLine();
 
                 // Save game state
                 File.AppendAllText(@"gamestate.txt", "\n" + finalChoice);
 
-                if (finalChoice.ToLower() == "confront")
+                if (finalChoice.ToLower() == "fight")
                 {
                     Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.WriteLine($"With Mia's hacking abilities, you manage to take control of the security systems and turn them against the mercenaries. However, during the fight, you sustain severe injuries. {playerName}, you became a symbol of resistance against the corporations, and your bravery inspired many...");
@@ -66,13 +77,13 @@ class Program
                 
                 // Final Choices
 
-                Console.WriteLine("Do you choose to confront the corporate mercenaries protecting the Digital Heart with Dex's weaponry or utilize his pre-planned escape route? (confront/escape)");
+                Console.WriteLine("Do you choose to fight the corporate mercenaries protecting the Digital Heart with Dex's weaponry or utilize his pre-planned escape route? (fight/escape)");
                 string finalChoice = Console.ReadLine();
 
                 // Save game state
                 File.AppendAllText(@"gamestate.txt", "\n" + finalChoice);
 
-                if (finalChoice.ToLower() == "confront")
+                if (finalChoice.ToLower() == "fight")
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine($"With Dex's strength and the weapons he secured, you put up a formidable fight. The mercenaries didn't stand a chance against your combined might. You managed to secure the Digital Heart, but Dex lost his life in the fight. His sacrifice allowed you, {playerName}, to become a legend of Night City. You fulfilled your dream and Dex's memory lived on...");
