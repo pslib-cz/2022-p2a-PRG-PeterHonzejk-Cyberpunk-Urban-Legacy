@@ -67,7 +67,7 @@ class Program
                 }
                 else
                 {
-                    Console.WriteLine("Invalid choice. Please restart the game and try again.");
+                    Console.WriteLine("You had a stroke and died.");
                 }
             }
             else if (firstHelper.ToLower() == "dex")
@@ -98,12 +98,12 @@ class Program
                 }
                 else
                 {
-                    Console.WriteLine("Invalid choice. Please restart the game and try again.");
+                    Console.WriteLine("You had a stroke and died.");
                 }
             }
             else
             {        
-                Console.WriteLine("Invalid choice. Please restart the game and try again.");
+                Console.WriteLine("You had a stroke and died.");
             }
         }
         // If the player chooses not to proceed...
