@@ -1,0 +1,42 @@
+Zadání
+Vytvořte vlastní hru hratelnou na textové konzoli nebo jinou zábavnou aplikaci. Cvičení je zaměřené na práci s konzolí za pomocí barev a čtení klávesnice, mělo by jít o hru s uživatelským rozhraním a trochou akce.
+
+Podmínky splnění
+Oddělení výkonné (enterprise) a zobrazovací (render) části - hra svůj stav udržuje ve struktuře tříd ale jiná třída (třídy) slouží k zobrazení vnitřních dat
+Rozhraní hry využívá barvy
+Hra používá pro uložení svého stavu soubory
+Hodnocení
+Stav dokončení
+Hratelnost
+Provedení (UI)
+Implementace (rozdělení kódu do tříd)
+Pracnost
+
+Story
+Intro 
+Samuel "Alex" Rodriguez was a young streetkid who was born and raised in the grim streets of Night City. From a young age, he was surrounded by corruption, poverty, and violence, but he always dreamed of a better life. In a world where corporations ruled everything, he aspired to become a legend that could break their grip and restore freedom to the city.
+Alex moved through the streets like a shadow, observing every step, every piece of information, and listening to the stories of old timers. At the same time, he sought to refine his skills as a hacker, fighter, and thief. He took legendary Johnny Silverhand and David Martinez as his role models, those who stood against the corporations and fought for the rights of streetkids.
+His closest friend was Mia, a bold and resourceful hacker. Mia helped him enhance his cybernetic implants and gather information about valuable targets. Together, they dreamed of a grand heist that would change their destinies.
+One day, they learned about a plan by the Arasaka corporation to hide a unique cybernetic implant called the "Digital Heart" in a bank. It was rumored to possess limitless capabilities, allowing the wearer to control all technology in the vicinity. Alex knew it was an opportunity he couldn't pass up.
+Together with Mia and their comrade Dex, a brave and physically strong fighter, Alex decided to plan the greatest heist Night City had ever witnessed. They knew their lives would be on the line, but they wanted to set a shining example to the corporations and show that streetkids were more than just the grime of the streets.
+The team spent weeks planning, studying maps, and preparing. Mia hacked the bank's security systems, Dex took care of securing weaponry and the escape route, while Alex prepared for the dangerous infiltration and disconnection of the Digital Heart.
+The day of reckoning arrived. Alex, AMia, and Dex faced off against the bank's security systems, evaded patrols and laser traps until they reached the hidden room where the Digital Heart was stored. But as soon as Alex pressed the disconnection button, red lights flashed, and the bank was surrounded from all sides.
+A chase ensued, rapidly expanding into the streets of Night City. Alex, Mia, and Dex were forced to fight for every inch as they tried to escape the encirclement. They were shot, injured, and exhausted, but they refused to give up.
+During the pursuit, a dramatic confrontation unfolded. Alex found himself face to face with the corporate mercenaries protecting the Digital Heart. He fought with all his might, but the odds were overwhelming. As Alex realized he was heavily wounded, he knew time was running out.
+Ending #1 (True): Eternal Legend
+Mia and Dex tried to get him to safety, but it was in vain. Alex smiled and said, "You... you are my family... Fulfil the dream for me... Become... a legend." His eyes closed, and his breath ceased. Alex died as a hero who fought for freedom and justice.
+Mia and Dex managed to escape the chase with the Digital Heart. They handed it over to a group of rebels who used it to launch an attack on a corporate headquarters. The operation was successful, and the corporations suffered significant losses. Night City remembered the name of Alexander Rodriguez, the legendary streetkid who dared to defy the powerful corporations.
+Although Alex himself didn't experience the glory he desired, his legacy lived on. His story became an inspiration for other streetkids who stood up against the corporations and dreamed of a better future for Night City. His name was etched in the hearts of those who refused to bow down to oppression.
+And so, the legend of Alex spread throughout Night City. He became a symbol of courage and bravery, bringing hope to a place where many had lost it. Although his journey ended too soon, his legacy endured, and Night City never forgot the young streetkid who dreamt of freedom and change.
+Ending #2: Rebel's Resurgence
+Despite the failure in the chase, Alex managed to find a hidden escape route that allowed him to break free from the encirclement. With severe injuries, he crawled back to his hideout, where he healed and recovered.
+His dream of becoming a legend in Night City did not fade. Through his skills and courage, he gradually rose to become the city's greatest hacker and thief. He became renowned for a series of audacious heists, stealing valuable corporate technology and redistributing it among the streetkids who needed it.
+Alex became a symbol of hope and justice for Night City. His story spread among the people, inspiring them to find the courage to resist the corporations and fight for a better future. Eventually, he managed to connect with the resistance movement against the corporations and led a revolution that toppled those who had Night City in their grasp.
+Alex fulfilled his dream of becoming a legend, and his name will forever be associated with the fight for freedom. Night City transformed into a place where streetkids and ordinary people could live without fear and oppression. Alex's memory is honoured, and his story is passed down to future generations as an inspiration for courage and resistance.
+Ending #3: Shadowed Departure
+Although Alex managed to escape the chase, he was severely injured and exhausted. Barely able to stand, he hid in a remote hideout, where he spent days recovering. During that time, he realized that fighting against the corporations was futile. Night City was ruled by endless power, and it couldn't be overturned.
+Alex made the decision to leave the city, abandoning his dreams of becoming a legend and starting a new life elsewhere. He packed his essential belongings and set off. He became a mere shadow, a forgotten streetkid who disappeared from Night City, leaving only memories behind.
+Without Alex's fight, Night City drowned in a spiral of corruption and darkness. People gradually remembered him less and less. His name got lost in oblivion, and no one dared to dream of change anymore. Streetkids were left at the mercy of corporations, and the city became a symbol of hopelessness and oppression.
+Alex lived the rest of his life in anonymity and despair. He felt he had failed in his dream, and his existence seemed meaningless. His story ended with a heart-wrenching escape that eventually dissolved into oblivion, as if he had never been there.
+
+The game will be similar to the games by Telltale (for example Minecraft Story mode). It have multiple possible ending based on a decisions that the player makes.
