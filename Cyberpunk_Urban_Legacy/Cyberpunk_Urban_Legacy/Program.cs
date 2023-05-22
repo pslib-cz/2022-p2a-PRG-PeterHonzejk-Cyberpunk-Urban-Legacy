@@ -63,7 +63,8 @@ class Program
                 Console.WriteLine("Dex takes care of securing weaponry and the escape route. With his help, you are ready for the infiltration...");
 
                 // Further game logic, choices, and consequences would be implemented here.
-                // For now, let's head to the final choice.
+                
+                // Final Choices
 
                 Console.WriteLine("Do you choose to confront the corporate mercenaries protecting the Digital Heart with Dex's weaponry or utilize his pre-planned escape route? (confront/escape)");
                 string finalChoice = Console.ReadLine();
