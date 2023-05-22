@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Xml.Schema;
 
 class Program
 {
@@ -101,7 +102,7 @@ class Program
                 }
             }
             else
-            {
+            {        
                 Console.WriteLine("Invalid choice. Please restart the game and try again.");
             }
         }
@@ -114,7 +115,7 @@ class Program
         }
         else
         {
-            Console.WriteLine("Invalid choice. Please restart the game and try again.");
+            Console.WriteLine("You had a stroke and died.");
         }
     }
 }
