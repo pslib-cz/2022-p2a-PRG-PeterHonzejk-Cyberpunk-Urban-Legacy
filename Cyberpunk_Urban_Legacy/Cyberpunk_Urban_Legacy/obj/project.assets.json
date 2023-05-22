@@ -8,24 +8,19 @@
     "net6.0": []
   },
   "packageFolders": {
-    "C:\\Users\\petr.honzejk.021\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Praktikant\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "X:\\Projects\\PRG\\2022-p2a-prg-big-bad-project-PeterHonzejk\\Cyberpunk_Urban_Legacy\\Cyberpunk_Urban_Legacy\\Cyberpunk_Urban_Legacy.csproj",
+      "projectUniqueName": "C:\\Users\\Praktikant\\Code\\2022-p2a-prg-big-bad-project-PeterHonzejk\\Cyberpunk_Urban_Legacy\\Cyberpunk_Urban_Legacy\\Cyberpunk_Urban_Legacy.csproj",
       "projectName": "Cyberpunk_Urban_Legacy",
-      "projectPath": "X:\\Projects\\PRG\\2022-p2a-prg-big-bad-project-PeterHonzejk\\Cyberpunk_Urban_Legacy\\Cyberpunk_Urban_Legacy\\Cyberpunk_Urban_Legacy.csproj",
-      "packagesPath": "C:\\Users\\petr.honzejk.021\\.nuget\\packages\\",
-      "outputPath": "X:\\Projects\\PRG\\2022-p2a-prg-big-bad-project-PeterHonzejk\\Cyberpunk_Urban_Legacy\\Cyberpunk_Urban_Legacy\\obj\\",
+      "projectPath": "C:\\Users\\Praktikant\\Code\\2022-p2a-prg-big-bad-project-PeterHonzejk\\Cyberpunk_Urban_Legacy\\Cyberpunk_Urban_Legacy\\Cyberpunk_Urban_Legacy.csproj",
+      "packagesPath": "C:\\Users\\Praktikant\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Praktikant\\Code\\2022-p2a-prg-big-bad-project-PeterHonzejk\\Cyberpunk_Urban_Legacy\\Cyberpunk_Urban_Legacy\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\petr.honzejk.021\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\Praktikant\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -33,7 +28,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -67,7 +61,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
       }
     }
   }
