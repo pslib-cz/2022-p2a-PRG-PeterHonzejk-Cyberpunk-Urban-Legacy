@@ -28,7 +28,7 @@ namespace Cyberpunk_Urban_Legacy
 
         public void PlayGame()
         {
-            Console.WriteLine("You have ten attempts to guess the password and unlock the vault.\n");
+            Console.WriteLine("You have ten attempts to guess the password and breach the drones system.\n");
 
             GenerateRandomPassword();
 
@@ -66,7 +66,7 @@ namespace Cyberpunk_Urban_Legacy
                             if (new string(maskedPassword) == password)
                             {
                                 Console.ForegroundColor = ConsoleColor.Green;
-                                Console.WriteLine("You managed to hack into the vault!");
+                                Console.WriteLine("Successfully hacking into the drone grants you access to Arasaka's network. Infiltrating the bank, you encounter Arasaka's mercenaries, but your newfound control enables you to deactivate them effortlessly. With Dex by your side, you vanish into the shadows, speading a formidable resistance against the corporations of Night City, leading the charge.");
                                 Console.ResetColor();
                                 break;
                             }
@@ -79,7 +79,7 @@ namespace Cyberpunk_Urban_Legacy
                             if (attempts <= 0)
                             {
                                 Console.ForegroundColor = ConsoleColor.Red;
-                                Console.WriteLine("Regrettably, your unsuccessful attempt to unlock the vault triggers a fatal response, resulting in a fatal discharge of electricity that ends your life.");
+                                Console.WriteLine("Regrettably, your unsuccessful attempt to hack the drone triggers a fatal response, resulting in a fatal wipe of memory that ends your life.");
                                 Console.ResetColor();
                                 break;
                             }
