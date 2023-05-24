@@ -11,15 +11,18 @@ namespace Cyberpunk_Urban_Legacy
     {
         static void Main(string[] args)
         {
-            Console.ResetColor();
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("Cyberpunk");
-            Console.ResetColor();
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("Urban");
-            Console.ResetColor();
-            Console.ForegroundColor = ConsoleColor.Magenta;
-            Console.WriteLine("Legacy");
+            string asciiArt = @"   
+   _____      _                                 _      _    _      _                   _                                 
+  / ____|    | |                               | |    | |  | |    | |                 | |                                
+ | |    _   _| |__   ___ _ __ _ __  _   _ _ __ | | __ | |  | |_ __| |__   __ _ _ __   | |     ___  __ _  __ _  ___ _   _ 
+ | |   | | | | '_ \ / _ \ '__| '_ \| | | | '_ \| |/ / | |  | | '__| '_ \ / _` | '_ \  | |    / _ \/ _` |/ _` |/ __| | | |
+ | |___| |_| | |_) |  __/ |  | |_) | |_| | | | |   <  | |__| | |  | |_) | (_| | | | | | |___|  __/ (_| | (_| | (__| |_| |
+  \_____\__, |_.__/ \___|_|  | .__/ \__,_|_| |_|_|\_\  \____/|_|  |_.__/ \__,_|_| |_| |______\___|\__, |\__,_|\___|\__, |
+         __/ |               | |                                                                   __/ |            __/ |
+        |___/                |_|                                                                  |___/            |___/ ";
+
+            Console.WriteLine(asciiArt);
             Console.ResetColor();
 
             /* 
