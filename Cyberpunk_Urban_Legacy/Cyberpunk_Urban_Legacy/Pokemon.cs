@@ -37,7 +37,7 @@ namespace Cyberpunk_Urban_Legacy
             opponent.HP -= damage;
 
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine($"{Name} used Volt Tackle on {opponent.Name} and dealt {damage} damage!");
+            Console.WriteLine($"\n{Name} used Volt Tackle on {opponent.Name} and dealt {damage} damage!");
             Console.ResetColor();
         }
 
@@ -45,7 +45,7 @@ namespace Cyberpunk_Urban_Legacy
         {
             if (InfernoBlastUses <= 0)
             {
-                Console.WriteLine($"{Name} is out of Inferno Blast uses!");
+                Console.WriteLine($"\n{Name} is out of Inferno Blast uses!");
                 return;
             }
 
@@ -55,7 +55,7 @@ namespace Cyberpunk_Urban_Legacy
             InfernoBlastUses--;
 
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine($"{Name} used Inferno Blast on {opponent.Name} and dealt {damage} damage!");
+            Console.WriteLine($"\n{Name} used Inferno Blast on {opponent.Name} and dealt {damage} damage!");
             Console.ResetColor();
         }
 
@@ -97,7 +97,7 @@ namespace Cyberpunk_Urban_Legacy
             Attack += 5;
 
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine($"{Name} used Charge Up and increased attack by 5!");
+            Console.WriteLine($"\n{Name} used Charge Up and increased attack by 5!");
             Console.ResetColor();
         }
 
@@ -111,7 +111,21 @@ namespace Cyberpunk_Urban_Legacy
             HP += restoreAmount;
 
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine($"{Name} used System Restore and restored {restoreAmount} HP!");
+            Console.WriteLine($"\n{Name} used System Restore and restored {restoreAmount} HP!");
+            Console.ResetColor();
+        }
+
+        public void CircuitReboot()
+        {
+            int restoreAmount = MaxHP / 4;
+            if (HP + restoreAmount > MaxHP)
+            {
+                restoreAmount = MaxHP - HP;
+            }
+            HP += restoreAmount;
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"{Name} used CircuitReboot and restored {restoreAmount} HP!");
             Console.ResetColor();
         }
 
