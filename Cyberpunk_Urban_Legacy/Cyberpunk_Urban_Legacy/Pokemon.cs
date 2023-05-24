@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PRG_Cyberpunk_Pokemon_battle_minigame
+namespace Cyberpunk_Urban_Legacy
 {
     public class Pokemon
     {

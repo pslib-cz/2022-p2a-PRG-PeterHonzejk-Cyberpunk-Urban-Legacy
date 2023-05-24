@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cyberpunk_Hangman_minigame
+namespace Cyberpunk_Urban_Legacy
 {
     class Hangman
     {
