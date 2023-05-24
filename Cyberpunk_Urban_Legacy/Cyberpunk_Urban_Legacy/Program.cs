@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Cyberpunk_Urban_Legacy
@@ -40,7 +41,7 @@ namespace Cyberpunk_Urban_Legacy
                 {
                     Console.WriteLine("\nMia helps you to enhance your cybernetic implants and gather information about valuable targets.");
 
-                    Console.WriteLine("\nYou still have some time before the hesit. Where would you like to go next, Arasaka Tower or the Night Market? (tower/market)");
+                    Console.WriteLine("\nYou still have some time before the heist. Where would you like to go next, Arasaka Tower or the Night Market? (tower/market)");
                     string locationChoice = Console.ReadLine();
 
                     if (locationChoice.ToLower() == "tower")
@@ -115,7 +116,7 @@ namespace Cyberpunk_Urban_Legacy
                                     {
                                         Console.ForegroundColor = ConsoleColor.Red;
                                         Console.WriteLine("\nNanoclaw wins!");
-                                        // ending
+                                        Console.WriteLine("\nThe Nanoclaw mercilessly obliterates Cyberblaze. You are captured by Arasaka's security forces and sentenced to life in prison. The chilling echoes of your demise resonate, forever etching a tale of loss and devastation.. Your name is forgotten, your legacy erased.");
                                         Console.ResetColor();
                                         break;
                                     }
@@ -168,8 +169,71 @@ namespace Cyberpunk_Urban_Legacy
 
                         if (nightApproach.ToLower() == "yes")
                         {
-                            Console.WriteLine("\nThe enigmatic figure unveils their true identity as Vex, a ruthless serial killer who delights in playing a deadly game of Tic-Tac-Toe. The stakes are high, as losing or tieing means facing a gruesome fate—being mercilessly slashed in half.");
-                            // change to Tic-Tac-Toe minigame good ending (vex helps you) / death ending (vex stabs mia)
+                            Console.WriteLine("\nThe enigmatic figure unveils their true identity as Vex, a ruthless serial killer who delights in playing a deadly game of Tic-Tac-Toe. The stakes are high, as losing means facing a gruesome fate, being mercilessly slashed in half. However, a glimmer of hope remains, as victory holds the power to grant us a single, elusive wish.");
+                            Console.WriteLine("\nYou have entered the realm of Vex's deadly game of Tic-Tac-Toe.");
+                            Console.WriteLine("\nYou will be playing as X, may fortune favor you in this treacherous battle.");
+
+                            TicTacToeGame game = new TicTacToeGame();
+
+                            while (true)
+                            {
+                                game.DrawBoard();
+
+                                if (game.CheckWin('X'))
+                                {
+                                    Console.WriteLine("\nAs the final move falls into place, the silence hangs heavy in the air. The enigmatic figure, Vex, reveals a twisted smile. But wait! The impossible has happened. Victory is yours! A surge of relief washes over you as you escape the clutches of Vex's deadly game.");
+                                    Console.ForegroundColor = ConsoleColor.Green;
+                                    Console.WriteLine("\nEmpowered by Vex's assistance, you cunningly steal the Digital Heart and swiftly dispatch the formidable Arasaka mercenaries. As legends of Night City, you and Mia rise as beacons of resistance against the oppressive corporations. Vex, their enigmatic presence fading into the shadows, leaves behind a legacy intertwined with your triumph.");
+                                    Console.ResetColor();
+                                    break;
+                                }
+                                else if (game.CheckWin('O'))
+                                {
+                                    Console.WriteLine("\nDefeat engulfs you as the realization sinks in. Vex's twisted amusement grows, relishing in your demise. The slashes come swiftly, leaving no chance for redemption. Darkness takes hold, sealing your fate. Vex's laughter echoes through the Undercity, a chilling reminder of the price paid for failure. ");
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.WriteLine("\nMia arrives too late. Vex disappears, leaving a void in their wake. With your untimely demise, Mia carries the weight of loss, forever marked by the memory of your tragic end.");
+                                    Console.ResetColor();
+                                    break;
+                                }
+                                else if (game.IsBoardFull())
+                                {
+                                    Console.WriteLine("\nThe game reaches a stalemate, a draw that should bring relief. However, Vex's sadistic nature knows no bounds. Ignoring the rules, Vex strikes with a ruthless fury, mercilessly slaying the player. The silence is shattered by their chilling laughter, as the enigmatic figure revels in the twisted delight of a game unfinished. The chance for a wish slips away, forever lost in the realm of shattered hopes and cruel fate.");
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.WriteLine("\nMia arrives too late. Vex disappears, leaving a void in their wake. With your untimely demise, Mia carries the weight of loss, forever marked by the memory of your tragic end.");
+                                    Console.ResetColor();
+                                    break;
+                                }
+
+                                if (game.GetCurrentPlayer() == 'X')
+                                    PlayerMove(game);
+                                else
+                                    ComputerMove(game);
+                            }
+
+                            static void PlayerMove(TicTacToeGame game)
+                            {
+                                Console.WriteLine("\nEnter a number (1-9) to make your move: ");
+                                int position;
+                                bool isValidInput = int.TryParse(Console.ReadLine(), out position);
+                                position--;
+
+                                if (isValidInput && game.MakeMove(position))
+                                {
+                                    game.DrawBoard();
+                                }
+                                else
+                                {
+                                    Console.WriteLine("\nInvalid move! Try again.");
+                                    PlayerMove(game);
+                                }
+                            }
+
+                            static void ComputerMove(TicTacToeGame game)
+                            {
+                                int position = game.GetRandomMove();
+                                game.MakeMove(position);
+                                game.DrawBoard();
+                            }
                         }
                         else if (nightApproach.ToLower() == "no")
                         {
@@ -246,8 +310,71 @@ namespace Cyberpunk_Urban_Legacy
 
                         if (nightApproach.ToLower() == "yes")
                         {
-                            Console.WriteLine("\nThe enigmatic figure unveils their true identity as Vex, a ruthless serial killer who delights in playing a deadly game of Tic-Tac-Toe. The stakes are high, as losing or tieing means facing a gruesome fate—being mercilessly slashed in half.");
-                            // change to Tic-Tac-Toe minigame good ending (vex helps you) / death ending (vex stabs dex)
+                            Console.WriteLine("\nThe enigmatic figure unveils their true identity as Vex, a ruthless serial killer who delights in playing a deadly game of Tic-Tac-Toe. The stakes are high, as losing means facing a gruesome fate, being mercilessly slashed in half. However, a glimmer of hope remains, as victory holds the power to grant us a single, elusive wish.");
+                            Console.WriteLine("\nYou have entered the realm of Vex's deadly game of Tic-Tac-Toe.");
+                            Console.WriteLine("\nYou will be playing as X, may fortune favor you in this treacherous battle.");
+
+                            TicTacToeGame game = new TicTacToeGame();
+
+                            while (true)
+                            {
+                                game.DrawBoard();
+
+                                if (game.CheckWin('X'))
+                                {
+                                    Console.WriteLine("\nAs the final move falls into place, the silence hangs heavy in the air. The enigmatic figure, Vex, reveals a twisted smile. But wait! The impossible has happened. Victory is yours! A surge of relief washes over you as you escape the clutches of Vex's deadly game.");
+                                    Console.ForegroundColor = ConsoleColor.Green;
+                                    Console.WriteLine("\nEmpowered by Vex's assistance, you cunningly steal the Digital Heart and swiftly dispatch the formidable Arasaka mercenaries. As legends of Night City, you and Dex rise as beacons of resistance against the oppressive corporations. Vex, their enigmatic presence fading into the shadows, leaves behind a legacy intertwined with your triumph.");
+                                    Console.ResetColor();
+                                    break;
+                                }
+                                else if (game.CheckWin('O'))
+                                {
+                                    Console.WriteLine("\nDefeat engulfs you as the realization sinks in. Vex's twisted amusement grows, relishing in your demise. The slashes come swiftly, leaving no chance for redemption. Darkness takes hold, sealing your fate. Vex's laughter echoes through the Undercity, a chilling reminder of the price paid for failure. ");
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.WriteLine("\nDex selflessly intervenes, taking the fatal blow meant for you. His sacrifice fuels your determination to continue the fight against the corporations, carrying the weight of his memory.");
+                                    Console.ResetColor();
+                                    break;
+                                }
+                                else if (game.IsBoardFull())
+                                {
+                                    Console.WriteLine("\nThe game reaches a stalemate, a draw that should bring relief. However, Vex's sadistic nature knows no bounds. Ignoring the rules, Vex strikes with a ruthless fury, mercilessly slaying the player. The silence is shattered by their chilling laughter, as the enigmatic figure revels in the twisted delight of a game unfinished. The chance for a wish slips away, forever lost in the realm of shattered hopes and cruel fate.");
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.WriteLine("\nDex selflessly intervenes, taking the fatal blow meant for you. His sacrifice fuels your determination to continue the fight against the corporations, carrying the weight of his memory.");
+                                    Console.ResetColor();
+                                    break;
+                                }
+
+                                if (game.GetCurrentPlayer() == 'X')
+                                    PlayerMove(game);
+                                else
+                                    ComputerMove(game);
+                            }
+
+                            static void PlayerMove(TicTacToeGame game)
+                            {
+                                Console.WriteLine("\nEnter a number (1-9) to make your move: ");
+                                int position;
+                                bool isValidInput = int.TryParse(Console.ReadLine(), out position);
+                                position--;
+
+                                if (isValidInput && game.MakeMove(position))
+                                {
+                                    game.DrawBoard();
+                                }
+                                else
+                                {
+                                    Console.WriteLine("\nInvalid move! Try again.");
+                                    PlayerMove(game);
+                                }
+                            }
+
+                            static void ComputerMove(TicTacToeGame game)
+                            {
+                                int position = game.GetRandomMove();
+                                game.MakeMove(position);
+                                game.DrawBoard();
+                            }
                         }
                         else if (nightApproach.ToLower() == "no")
                         {
