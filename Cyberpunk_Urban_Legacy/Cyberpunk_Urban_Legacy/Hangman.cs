@@ -8,17 +8,18 @@ namespace Cyberpunk_Urban_Legacy
 {
     class Hangman
     {
+        // Array of possible passwords for the game
         private string[] passwords = {
-        "NeonShadow",
-        "CodeCyber",
-        "SynthWave",
-        "ByteBlade",
-        "DigitalNexus",
-        "CyberPulse",
-        "QuantumByte",
-        "Cybernetica",
-        "TechBlitz",
-        "NanoCipher"
+            "NeonShadow",
+            "CodeCyber",
+            "SynthWave",
+            "ByteBlade",
+            "DigitalNexus",
+            "CyberPulse",
+            "QuantumByte",
+            "Cybernetica",
+            "TechBlitz",
+            "NanoCipher"
         };
 
         private string password;
@@ -28,7 +29,7 @@ namespace Cyberpunk_Urban_Legacy
 
         public void PlayGame()
         {
-            Console.WriteLine("You have ten attempts to guess the password and breach the drones system.\n");
+            Console.WriteLine("You have ten attempts to guess the password and breach the drone's system.\n");
 
             GenerateRandomPassword();
 
@@ -65,8 +66,9 @@ namespace Cyberpunk_Urban_Legacy
                             Console.WriteLine("Correct guess!");
                             if (new string(maskedPassword) == password)
                             {
+                                // Success condition: the password has been fully guessed
                                 Console.ForegroundColor = ConsoleColor.Green;
-                                Console.WriteLine("Successfully hacking into the drone grants you access to Arasaka's network. Infiltrating the bank, you encounter Arasaka's mercenaries, but your newfound control enables you to deactivate them effortlessly. With Dex by your side, you vanish into the shadows, speading a formidable resistance against the corporations of Night City, leading the charge.");
+                                Console.WriteLine("Successfully hacking into the drone grants you access to Arasaka's network. Infiltrating the bank, you encounter Arasaka's mercenaries, but your newfound control enables you to deactivate them effortlessly. With Dex by your side, you vanish into the shadows, spreading a formidable resistance against the corporations of Night City, leading the charge.");
                                 Console.ResetColor();
                                 break;
                             }
@@ -78,8 +80,9 @@ namespace Cyberpunk_Urban_Legacy
 
                             if (attempts <= 0)
                             {
+                                // Failure condition: no attempts left
                                 Console.ForegroundColor = ConsoleColor.Red;
-                                Console.WriteLine("Regrettably, your unsuccessful attempt to hack the drone triggers a fatal response, resulting in a fatal wipe of memory that ends your life.");
+                                Console.WriteLine("Regrettably, your unsuccessful attempt to hack the drone triggers a fatal response, resulting in a wipe of memory that ends your life.");
                                 Console.ResetColor();
                                 break;
                             }
@@ -93,9 +96,6 @@ namespace Cyberpunk_Urban_Legacy
 
                 Console.WriteLine();
             }
-
-            Console.WriteLine("\nPress any key to exit...");
-            Console.ReadKey();
         }
 
         private void GenerateRandomPassword()
@@ -107,6 +107,7 @@ namespace Cyberpunk_Urban_Legacy
             maskedPassword = new char[password.Length];
             for (int i = 0; i < password.Length; i++)
             {
+                // Initialize masked password with asterisks (*) except for spaces
                 if (password[i] != ' ')
                 {
                     maskedPassword[i] = '*';

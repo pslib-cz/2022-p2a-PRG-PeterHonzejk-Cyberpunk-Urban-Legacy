@@ -1,5 +1,4 @@
-﻿using Cyberpunk_Urban_Legacy;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -125,7 +124,7 @@ namespace Cyberpunk_Urban_Legacy
             HP += restoreAmount;
 
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine($"{Name} used CircuitReboot and restored {restoreAmount} HP!");
+            Console.WriteLine($"{Name} used Circuit Reboot and restored {restoreAmount} HP!");
             Console.ResetColor();
         }
 
@@ -140,7 +139,5 @@ namespace Cyberpunk_Urban_Legacy
             }
             return false;
         }
-   
-
     }
 }
