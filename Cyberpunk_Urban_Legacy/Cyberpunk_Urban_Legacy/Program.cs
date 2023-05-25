@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Cyberpunk_Urban_Legacy
 {
@@ -62,7 +57,7 @@ namespace Cyberpunk_Urban_Legacy
 
                         if (arasakaTowerChoice.ToLower() == "sneak")
                         {
-                            Console.WriteLine("\nYou successfully sneak into the Arasaka tower and gathercrucial information about the bank. Unfortuneatly on your way out you encounter one of Arasaka's best security measures: Nanoclaw, a cybernetically enhanced tiger. You notice something resembling a gamepad on the desk next to you. Will you try to reach for it or make a run for it? (reach/run)");
+                            Console.WriteLine("\nYou successfully sneak into the Arasaka tower and gather crucial information about the bank. Unfortunately, on your way out, you encounter one of Arasaka's best security measures: Nanoclaw, a cybernetically enhanced tiger. You notice something resembling a gamepad on the desk next to you. Will you try to reach for it or make a run for it? (reach/run)");
                             string nanoclawChoice = Console.ReadLine();
 
                             if (nanoclawChoice.ToLower() == "reach")
@@ -130,7 +125,7 @@ namespace Cyberpunk_Urban_Legacy
                                     {
                                         Console.ForegroundColor = ConsoleColor.Red;
                                         Console.WriteLine("\nNanoclaw wins!");
-                                        Console.WriteLine("\nThe Nanoclaw mercilessly obliterates Cyberblaze. You are captured by Arasaka's security forces and sentenced to life in prison. The chilling echoes of your demise resonate, forever etching a tale of loss and devastation.. Your name is forgotten, your legacy erased.");
+                                        Console.WriteLine("\nThe Nanoclaw mercilessly obliterates Cyberblaze. You are captured by Arasaka's security forces and sentenced to life in prison. The chilling echoes of your demise resonate, forever etching a tale of loss and devastation. Your name is forgotten, your legacy erased.");
                                         Console.ResetColor();
                                         break;
                                     }
@@ -159,9 +154,8 @@ namespace Cyberpunk_Urban_Legacy
                             }
                             else
                             {
-                                Console.ForegroundColor = ConsoleColor.Cyan;
-                                Console.WriteLine("\nYou had a stroke and died.");
-                                Console.ResetColor();
+                                Console.WriteLine("\nInvalid choice. Please try again.");
+                                continue;
                             }
                         }
                         else if (arasakaTowerChoice.ToLower() == "force")
@@ -172,9 +166,8 @@ namespace Cyberpunk_Urban_Legacy
                         }
                         else
                         {
-                            Console.ForegroundColor = ConsoleColor.Cyan;
-                            Console.WriteLine("\nYou had a stroke and died.");
-                            Console.ResetColor();
+                            Console.WriteLine("\nInvalid choice. Please try again.");
+                            continue;
                         }
                     }
                     else if (locationChoice.ToLower() == "market")
@@ -266,23 +259,20 @@ namespace Cyberpunk_Urban_Legacy
                             }
                             else
                             {
-                                Console.ForegroundColor = ConsoleColor.Cyan;
-                                Console.WriteLine("\nYou had a stroke and died.");
-                                Console.ResetColor();
+                                Console.WriteLine("\nInvalid choice. Please try again.");
+                                continue;
                             }
                         }
                         else
                         {
-                            Console.ForegroundColor = ConsoleColor.Cyan;
-                            Console.WriteLine("\nYou had a stroke and died.");
-                            Console.ResetColor();
+                            Console.WriteLine("\nInvalid choice. Please try again.");
+                            continue;
                         }
                     }
                     else
                     {
-                        Console.ForegroundColor = ConsoleColor.Cyan;
-                        Console.WriteLine("\nYou had a stroke and died.");
-                        Console.ResetColor();
+                        Console.WriteLine("\nInvalid choice. Please try again.");
+                        continue;
                     }
                 }
                 else if (firstHelper.ToLower() == "dex")
@@ -311,9 +301,8 @@ namespace Cyberpunk_Urban_Legacy
                         }
                         else
                         {
-                            Console.ForegroundColor = ConsoleColor.Cyan;
-                            Console.WriteLine("\nYou had a stroke and died.");
-                            Console.ResetColor();
+                            Console.WriteLine("\nInvalid choice. Please try again.");
+                            continue;
                         }
                     }
                     else if (locationChoice.ToLower() == "market")
@@ -405,30 +394,26 @@ namespace Cyberpunk_Urban_Legacy
                             }
                             else
                             {
-                                Console.ForegroundColor = ConsoleColor.Cyan;
-                                Console.WriteLine("\nYou had a stroke and died.");
-                                Console.ResetColor();
+                                Console.WriteLine("\nInvalid choice. Please try again.");
+                                continue;
                             }
                         }
                         else
                         {
-                            Console.ForegroundColor = ConsoleColor.Cyan;
-                            Console.WriteLine("\nYou had a stroke and died.");
-                            Console.ResetColor();
+                            Console.WriteLine("\nInvalid choice. Please try again.");
+                            continue;
                         }
                     }
                     else
                     {
-                        Console.ForegroundColor = ConsoleColor.Cyan;
-                        Console.WriteLine("\nYou had a stroke and died.");
-                        Console.ResetColor();
+                        Console.WriteLine("\nInvalid choice. Please try again.");
+                        continue;
                     }
                 }
                 else
                 {
-                    Console.ForegroundColor = ConsoleColor.Cyan;
-                    Console.WriteLine("\nYou had a stroke and died.");
-                    Console.ResetColor();
+                    Console.WriteLine("\nInvalid choice. Please try again.");
+                    continue;
                 }
             }
             else if (playerChoice.ToLower() == "no")
@@ -439,9 +424,8 @@ namespace Cyberpunk_Urban_Legacy
             }
             else
             {
-                Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.WriteLine("\nYou had a stroke and died.");
-                Console.ResetColor();
+                Console.WriteLine("\nInvalid choice. Please try again.");
+                continue;
             }
         }
     }
