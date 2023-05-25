@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Praktikant\\Code\\2022-p2a-prg-big-bad-project-PeterHonzejk\\Cyberpunk_Urban_Legacy\\Cyberpunk_Urban_Legacy\\Cyberpunk_Urban_Legacy.csproj",
+      "projectUniqueName": "C:\\Users\\Praktikant\\Code\\2022-p2a-PRG-PeterHonzejk-Cyberpunk-Urban-Legacy\\Cyberpunk_Urban_Legacy\\Cyberpunk_Urban_Legacy\\Cyberpunk_Urban_Legacy.csproj",
       "projectName": "Cyberpunk_Urban_Legacy",
-      "projectPath": "C:\\Users\\Praktikant\\Code\\2022-p2a-prg-big-bad-project-PeterHonzejk\\Cyberpunk_Urban_Legacy\\Cyberpunk_Urban_Legacy\\Cyberpunk_Urban_Legacy.csproj",
+      "projectPath": "C:\\Users\\Praktikant\\Code\\2022-p2a-PRG-PeterHonzejk-Cyberpunk-Urban-Legacy\\Cyberpunk_Urban_Legacy\\Cyberpunk_Urban_Legacy\\Cyberpunk_Urban_Legacy.csproj",
       "packagesPath": "C:\\Users\\Praktikant\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Praktikant\\Code\\2022-p2a-prg-big-bad-project-PeterHonzejk\\Cyberpunk_Urban_Legacy\\Cyberpunk_Urban_Legacy\\obj\\",
+      "outputPath": "C:\\Users\\Praktikant\\Code\\2022-p2a-PRG-PeterHonzejk-Cyberpunk-Urban-Legacy\\Cyberpunk_Urban_Legacy\\Cyberpunk_Urban_Legacy\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Praktikant\\AppData\\Roaming\\NuGet\\NuGet.Config",

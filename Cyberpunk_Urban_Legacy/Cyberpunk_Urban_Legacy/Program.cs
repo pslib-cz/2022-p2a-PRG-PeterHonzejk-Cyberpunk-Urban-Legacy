@@ -212,13 +212,7 @@ namespace Cyberpunk_Urban_Legacy
                             nightApproach = Console.ReadLine();
                         }
 
-                        //new minigame and introduce new endings
                         if (nightApproach.ToLower() == "yes")
-                        {
-
-                        }
-
-                        /*
                         {
                             TicTacToeGame game = new TicTacToeGame();
 
@@ -282,7 +276,6 @@ namespace Cyberpunk_Urban_Legacy
                                 game.DrawBoard();
                             }
                         }
-                        */
 
                         else if (nightApproach.ToLower() == "no")
                         {
