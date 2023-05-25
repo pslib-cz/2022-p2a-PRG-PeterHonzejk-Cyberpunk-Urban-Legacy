@@ -7,7 +7,7 @@ namespace Cyberpunk_Urban_Legacy
         static void Main(string[] args)
         {
             Console.ForegroundColor = ConsoleColor.Magenta;
-            string asciiArt = @"   
+            string asciiArt = @"
    _____      _                                 _      _    _      _                   _                                 
   / ____|    | |                               | |    | |  | |    | |                 | |                                
  | |    _   _| |__   ___ _ __ _ __  _   _ _ __ | | __ | |  | |_ __| |__   __ _ _ __   | |     ___  __ _  __ _  ___ _   _ 
@@ -16,7 +16,6 @@ namespace Cyberpunk_Urban_Legacy
   \_____\__, |_.__/ \___|_|  | .__/ \__,_|_| |_|_|\_\  \____/|_|  |_.__/ \__,_|_| |_| |______\___|\__, |\__,_|\___|\__, |
          __/ |               | |                                                                   __/ |            __/ |
         |___/                |_|                                                                  |___/            |___/ ";
-
             Console.WriteLine(asciiArt);
             Console.ResetColor();
 
@@ -35,6 +34,14 @@ namespace Cyberpunk_Urban_Legacy
 
             string playerChoice = Console.ReadLine();
 
+            while (playerChoice.ToLower() != "yes" && playerChoice.ToLower() != "no")
+            {
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine("\nInvalid input. Please enter 'yes' or 'no'.");
+                Console.ResetColor();
+                playerChoice = Console.ReadLine();
+            }
+
             if (playerChoice.ToLower() == "yes")
             {
                 Console.WriteLine("\nYou courageously move forward with the plan, risking it all for a chance at greatness.");
@@ -43,6 +50,14 @@ namespace Cyberpunk_Urban_Legacy
 
                 string firstHelper = Console.ReadLine();
 
+                while (firstHelper.ToLower() != "mia" && firstHelper.ToLower() != "dex")
+                {
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.WriteLine("\nInvalid input. Please enter 'Mia' or 'Dex'.");
+                    Console.ResetColor();
+                    firstHelper = Console.ReadLine();
+                }
+
                 if (firstHelper.ToLower() == "mia")
                 {
                     Console.WriteLine("\nMia helps you enhance your cybernetic implants and gather information about valuable targets.");
@@ -50,20 +65,44 @@ namespace Cyberpunk_Urban_Legacy
                     Console.WriteLine("\nYou still have some time before the heist. Where would you like to go next, Arasaka Tower or the Night Market? (tower/market)");
                     string locationChoice = Console.ReadLine();
 
+                    while (locationChoice.ToLower() != "tower" && locationChoice.ToLower() != "market")
+                    {
+                        Console.ForegroundColor = ConsoleColor.Cyan;
+                        Console.WriteLine("\nInvalid input. Please enter 'tower' or 'market'.");
+                        Console.ResetColor();
+                        locationChoice = Console.ReadLine();
+                    }
+
                     if (locationChoice.ToLower() == "tower")
                     {
                         Console.WriteLine("\nYou arrive at Arasaka Tower. The security is tight. You need to find a way to get in. Do you sneak in or force your way in? (sneak/force)");
                         string arasakaTowerChoice = Console.ReadLine();
+
+                        while (arasakaTowerChoice.ToLower() != "sneak" && arasakaTowerChoice.ToLower() != "force")
+                        {
+                            Console.ForegroundColor = ConsoleColor.Cyan;
+                            Console.WriteLine("\nInvalid input. Please enter 'sneak' or 'force'.");
+                            Console.ResetColor();
+                            arasakaTowerChoice = Console.ReadLine();
+                        }
 
                         if (arasakaTowerChoice.ToLower() == "sneak")
                         {
                             Console.WriteLine("\nYou successfully sneak into the Arasaka tower and gather crucial information about the bank. Unfortunately, on your way out, you encounter one of Arasaka's best security measures: Nanoclaw, a cybernetically enhanced tiger. You notice something resembling a gamepad on the desk next to you. Will you try to reach for it or make a run for it? (reach/run)");
                             string nanoclawChoice = Console.ReadLine();
 
+                            while (nanoclawChoice.ToLower() != "reach" && nanoclawChoice.ToLower() != "run")
+                            {
+                                Console.ForegroundColor = ConsoleColor.Cyan;
+                                Console.WriteLine("\nInvalid input. Please enter 'reach' or 'run'.");
+                                Console.ResetColor();
+                                nanoclawChoice = Console.ReadLine();
+                            }
+
                             if (nanoclawChoice.ToLower() == "reach")
                             {
                                 // Pokemon battle scenario
-                                var cyberblaze = new Pokemon("Cyberblaze", 200, 40, 40);
+                                var cyberblaze = new Pokemon("Cyberblaze", 180, 40, 40);
                                 var nanoclaw = new Pokemon("Nanoclaw", 200, 50, 50);
                                 string choice;
                                 bool usedChargeUp = false;
@@ -95,7 +134,7 @@ namespace Cyberpunk_Urban_Legacy
                                             break;
                                         default:
                                             Console.ForegroundColor = ConsoleColor.Red;
-                                            Console.WriteLine("\nInvalid choice. Cyberblaze uses Volt Tackle by default.");
+                                            Console.WriteLine("\nInvalid imput. Cyberblaze uses Volt Tackle by default.");
                                             Console.ResetColor();
                                             cyberblaze.VoltTackle(nanoclaw);
                                             break;
@@ -125,7 +164,7 @@ namespace Cyberpunk_Urban_Legacy
                                     {
                                         Console.ForegroundColor = ConsoleColor.Red;
                                         Console.WriteLine("\nNanoclaw wins!");
-                                        Console.WriteLine("\nThe Nanoclaw mercilessly obliterates Cyberblaze. You are captured by Arasaka's security forces and sentenced to life in prison. The chilling echoes of your demise resonate, forever etching a tale of loss and devastation. Your name is forgotten, your legacy erased.");
+                                        Console.WriteLine("\nThe Nanoclaw mercilessly obliterates Cyberblaze. You are captured by Arasaka's security forces and sentenced to life in prison. The chilling echoes of your demise resonate, forever etching a tale of loss and devastation.. Your name is forgotten, your legacy erased.");
                                         Console.ResetColor();
                                         break;
                                     }
@@ -152,11 +191,6 @@ namespace Cyberpunk_Urban_Legacy
                                 Console.WriteLine("\nYou run for your life, but Nanoclaw is too fast. You and Mia are torn to pieces.");
                                 Console.ResetColor();
                             }
-                            else
-                            {
-                                Console.WriteLine("\nInvalid choice. Please try again.");
-                                continue;
-                            }
                         }
                         else if (arasakaTowerChoice.ToLower() == "force")
                         {
@@ -164,16 +198,19 @@ namespace Cyberpunk_Urban_Legacy
                             Console.WriteLine($"\nMia was unfortunately shot while trying to breach the highly advanced security systems of Arasaka. Despite your best efforts, both of you were overwhelmed by Arasaka's powerful mercenaries. Your sacrifice would be remembered as a courageous stand against impossible odds, inspiring others to fight against oppression.");
                             Console.ResetColor();
                         }
-                        else
-                        {
-                            Console.WriteLine("\nInvalid choice. Please try again.");
-                            continue;
-                        }
                     }
                     else if (locationChoice.ToLower() == "market")
                     {
                         Console.WriteLine("\nAs you wander through the night market, your attention is drawn to a mysterious figure lurking in the shadows. Would you like to approach this enigmatic presence? (yes/no)");
                         string nightApproach = Console.ReadLine();
+
+                        while (nightApproach.ToLower() != "yes" && nightApproach.ToLower() != "no")
+                        {
+                            Console.ForegroundColor = ConsoleColor.Cyan;
+                            Console.WriteLine("\nInvalid input. Please enter 'yes' or 'no'.");
+                            Console.ResetColor();
+                            nightApproach = Console.ReadLine();
+                        }
 
                         if (nightApproach.ToLower() == "yes")
                         {
@@ -245,6 +282,14 @@ namespace Cyberpunk_Urban_Legacy
                             Console.WriteLine("\nYou proceed with the heist and arrive at the Bank. Do you choose to fight the corporate mercenaries protecting the Digital Heart using Mia's hacking skills or take advantage of her data to find a hidden escape route? (fight/escape)");
                             string finalChoice = Console.ReadLine();
 
+                            while (finalChoice.ToLower() != "fight" && finalChoice.ToLower() != "escape")
+                            {
+                                Console.ForegroundColor = ConsoleColor.Cyan;
+                                Console.WriteLine("\nInvalid input. Please enter 'fight' or 'escape'.");
+                                Console.ResetColor();
+                                finalChoice = Console.ReadLine();
+                            }
+
                             if (finalChoice.ToLower() == "fight")
                             {
                                 Console.ForegroundColor = ConsoleColor.Yellow;
@@ -254,25 +299,22 @@ namespace Cyberpunk_Urban_Legacy
                             else if (finalChoice.ToLower() == "escape")
                             {
                                 Console.ForegroundColor = ConsoleColor.Yellow;
-                                Console.WriteLine($"\nUsing the detailed data Mia had gathered, you find a hidden escape route and manage to break free with the Digital Heart.  Mia sacrifices herself, allowing you, {playerName}, to escape and become a symbol of resistance in Night City, carrying on her legacy.");
+                                Console.WriteLine($"\nUsing the detailed data Mia had gathered, you find a hidden escape route and manage to break free with the Digital Heart. Mia sacrifices herself, allowing you, {playerName}, to escape and become a symbol of resistance in Night City, carrying on her legacy.");
                                 Console.ResetColor();
-                            }
-                            else
-                            {
-                                Console.WriteLine("\nInvalid choice. Please try again.");
-                                continue;
                             }
                         }
                         else
                         {
-                            Console.WriteLine("\nInvalid choice. Please try again.");
-                            continue;
+                            Console.ForegroundColor = ConsoleColor.Cyan;
+                            Console.WriteLine("\nInvalid input. Please enter 'yes' or 'no'.");
+                            Console.ResetColor();
                         }
                     }
                     else
                     {
-                        Console.WriteLine("\nInvalid choice. Please try again.");
-                        continue;
+                        Console.ForegroundColor = ConsoleColor.Cyan;
+                        Console.WriteLine("\nInvalid input. Please enter 'tower' or 'market'.");
+                        Console.ResetColor();
                     }
                 }
                 else if (firstHelper.ToLower() == "dex")
@@ -282,10 +324,26 @@ namespace Cyberpunk_Urban_Legacy
                     Console.WriteLine("\nYou still have some time before the heist. Where would you like to go next, The Undercity or the Night Market? (undercity/market)");
                     string locationChoice = Console.ReadLine();
 
+                    while (locationChoice.ToLower() != "undercity" && locationChoice.ToLower() != "market")
+                    {
+                        Console.ForegroundColor = ConsoleColor.Cyan;
+                        Console.WriteLine("\nInvalid input. Please enter 'undercity' or 'market'.");
+                        Console.ResetColor();
+                        locationChoice = Console.ReadLine();
+                    }
+
                     if (locationChoice.ToLower() == "undercity")
                     {
                         Console.WriteLine("\nWhile navigating the treacherous Undercity, an Arasaka drone ambushes you. Will you shoot it down or employ your hacking skills to gain control? (shoot/hack)");
                         string droneChoice = Console.ReadLine();
+
+                        while (droneChoice.ToLower() != "shoot" && droneChoice.ToLower() != "hack")
+                        {
+                            Console.ForegroundColor = ConsoleColor.Cyan;
+                            Console.WriteLine("\nInvalid input. Please enter 'shoot' or 'hack'.");
+                            Console.ResetColor();
+                            droneChoice = Console.ReadLine();
+                        }
 
                         if (droneChoice.ToLower() == "shoot")
                         {
@@ -301,14 +359,23 @@ namespace Cyberpunk_Urban_Legacy
                         }
                         else
                         {
-                            Console.WriteLine("\nInvalid choice. Please try again.");
-                            continue;
+                            Console.ForegroundColor = ConsoleColor.Cyan;
+                            Console.WriteLine("\nInvalid input. Please enter 'shoot' or 'hack'.");
+                            Console.ResetColor();
                         }
                     }
                     else if (locationChoice.ToLower() == "market")
                     {
                         Console.WriteLine("\nAs you wander through the night market, your attention is drawn to a mysterious figure lurking in the shadows. Would you like to approach this enigmatic presence? (yes/no)");
                         string nightApproach = Console.ReadLine();
+
+                        while (nightApproach.ToLower() != "yes" && nightApproach.ToLower() != "no")
+                        {
+                            Console.ForegroundColor = ConsoleColor.Cyan;
+                            Console.WriteLine("\nInvalid input. Please enter 'yes' or 'no'.");
+                            Console.ResetColor();
+                            nightApproach = Console.ReadLine();
+                        }
 
                         if (nightApproach.ToLower() == "yes")
                         {
@@ -380,6 +447,14 @@ namespace Cyberpunk_Urban_Legacy
                             Console.WriteLine("\nYou proceed with the heist but after securing the Digital Heart, you're ambushed by Arasaka's mercenaries. Do you choose to fight the corporate mercenaries with Dex's weaponry or utilize his pre-planned escape route? (fight/escape)");
                             string finalChoice = Console.ReadLine();
 
+                            while (finalChoice.ToLower() != "fight" && finalChoice.ToLower() != "escape")
+                            {
+                                Console.ForegroundColor = ConsoleColor.Cyan;
+                                Console.WriteLine("\nInvalid input. Please enter 'fight' or 'escape'.");
+                                Console.ResetColor();
+                                finalChoice = Console.ReadLine();
+                            }
+
                             if (finalChoice.ToLower() == "fight")
                             {
                                 Console.ForegroundColor = ConsoleColor.Yellow;
@@ -392,28 +467,26 @@ namespace Cyberpunk_Urban_Legacy
                                 Console.WriteLine($"\nUtilizing Dex's ingenious escape route, you successfully seize the Digital Heart. As Arasaka's mercenaries close in, you valiantly hold them off but tragically succumb to your injuries. Dex ensures your legacy lives on, spreading tales of your unmatched bravery throughout Night City. You, {playerName}, forever remain a revered legend, inspiring countless others in their fight for freedom.");
                                 Console.ResetColor();
                             }
-                            else
-                            {
-                                Console.WriteLine("\nInvalid choice. Please try again.");
-                                continue;
-                            }
                         }
                         else
                         {
-                            Console.WriteLine("\nInvalid choice. Please try again.");
-                            continue;
+                            Console.ForegroundColor = ConsoleColor.Cyan;
+                            Console.WriteLine("\nInvalid input. Please enter 'yes' or 'no'.");
+                            Console.ResetColor();
                         }
                     }
                     else
                     {
-                        Console.WriteLine("\nInvalid choice. Please try again.");
-                        continue;
+                        Console.ForegroundColor = ConsoleColor.Cyan;
+                        Console.WriteLine("\nInvalid input. Please enter 'undercity' or 'market'.");
+                        Console.ResetColor();
                     }
                 }
                 else
                 {
-                    Console.WriteLine("\nInvalid choice. Please try again.");
-                    continue;
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.WriteLine("\nInvalid input. Please enter 'mia' or 'dex'.");
+                    Console.ResetColor();
                 }
             }
             else if (playerChoice.ToLower() == "no")
@@ -424,8 +497,9 @@ namespace Cyberpunk_Urban_Legacy
             }
             else
             {
-                Console.WriteLine("\nInvalid choice. Please try again.");
-                continue;
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine("\nInvalid input. Please enter 'yes' or 'no'.");
+                Console.ResetColor();
             }
         }
     }
