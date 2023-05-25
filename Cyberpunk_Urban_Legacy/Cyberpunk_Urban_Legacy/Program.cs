@@ -212,9 +212,14 @@ namespace Cyberpunk_Urban_Legacy
                             nightApproach = Console.ReadLine();
                         }
 
+                        //new minigame and introduce new endings
                         if (nightApproach.ToLower() == "yes")
                         {
-                            // Tic Tac Toe game scenario
+
+                        }
+
+                        /*
+                        {
                             TicTacToeGame game = new TicTacToeGame();
 
                             while (true)
@@ -277,6 +282,8 @@ namespace Cyberpunk_Urban_Legacy
                                 game.DrawBoard();
                             }
                         }
+                        */
+
                         else if (nightApproach.ToLower() == "no")
                         {
                             Console.WriteLine("\nYou proceed with the heist and arrive at the Bank. Do you choose to fight the corporate mercenaries protecting the Digital Heart using Mia's hacking skills or take advantage of her data to find a hidden escape route? (fight/escape)");
