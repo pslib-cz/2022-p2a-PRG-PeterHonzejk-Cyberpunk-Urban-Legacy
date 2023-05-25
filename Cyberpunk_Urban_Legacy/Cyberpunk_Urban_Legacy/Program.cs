@@ -11,7 +11,7 @@ namespace Cyberpunk_Urban_Legacy
     {
         static void Main(string[] args)
         {
-            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.ForegroundColor = ConsoleColor.Magenta;
             string asciiArt = @"   
    _____      _                                 _      _    _      _                   _                                 
   / ____|    | |                               | |    | |  | |    | |                 | |                                
@@ -62,7 +62,7 @@ namespace Cyberpunk_Urban_Legacy
 
                         if (arasakaTowerChoice.ToLower() == "sneak")
                         {
-                            Console.WriteLine("\nAfter successfully sneaking into the Arasaka tower and gathering crucial information about the bank, you encounter one of Arasaka's best security measures: Nanoclaw, a cybernetically enhanced tiger. You notice something resembling a gamepad on the desk next to you. Will you try to reach for it or make a run for it? (reach/run)");
+                            Console.WriteLine("\nYou successfully sneak into the Arasaka tower and gathercrucial information about the bank. Unfortuneatly on your way out you encounter one of Arasaka's best security measures: Nanoclaw, a cybernetically enhanced tiger. You notice something resembling a gamepad on the desk next to you. Will you try to reach for it or make a run for it? (reach/run)");
                             string nanoclawChoice = Console.ReadLine();
 
                             if (nanoclawChoice.ToLower() == "reach")
@@ -75,11 +75,11 @@ namespace Cyberpunk_Urban_Legacy
                                 bool usedSystemRestore = false;
 
                                 Console.WriteLine("\nAs you reach out, your hand successfully grasps the control panel, revealing its true nature as the interface for Cyberblaze, a magnificent cybernetically enhanced horse!");
-                                Console.WriteLine("\nYou select Nanoclaw as the target and are presented with a selection of four moves: Volt Tackle, Inferno Blast, Charge Up, and System Restore.");
+                                Console.WriteLine("\nYou select Nanoclaw as the target and are presented with a selection of four moves: Volt Tackle, an electric-type attack move; Inferno Blast, a powerful fire-type attack move; Charge Up, a move that boosts your attack; and System Restore, a move that provides healing abilities.");
 
                                 while (true)
                                 {
-                                    Console.WriteLine("\nChoose Cyberblaze's move: (1) Volt Tackle, (2) Inferno Blast, (3) Charge Up, (4) System Restore");
+                                    Console.WriteLine("\nChoose Cyberblaze's move: (1) Volt Tackle, (2) Inferno Blast [" + cyberblaze.InfernoBlastUses + "/5], (3) Charge Up, (4) System Restore");
                                     choice = Console.ReadLine();
 
                                     switch (choice)
@@ -125,12 +125,12 @@ namespace Cyberpunk_Urban_Legacy
                                         nanoclaw.NanoBite(cyberblaze);
                                     }
 
-                                    // Check if any Pokémon is fainted
+                                    // Check if Cyberblaze is fainted
                                     if (cyberblaze.CheckIfFainted())
                                     {
                                         Console.ForegroundColor = ConsoleColor.Red;
                                         Console.WriteLine("\nNanoclaw wins!");
-                                        Console.WriteLine("\nThe Nanoclaw mercilessly obliterates Cyberblaze. You are captured by Arasaka's security forces and sentenced to life in prison. Your name is forgotten, your legacy erased.");
+                                        Console.WriteLine("\nThe Nanoclaw mercilessly obliterates Cyberblaze. You are captured by Arasaka's security forces and sentenced to life in prison. The chilling echoes of your demise resonate, forever etching a tale of loss and devastation.. Your name is forgotten, your legacy erased.");
                                         Console.ResetColor();
                                         break;
                                     }
@@ -146,7 +146,7 @@ namespace Cyberpunk_Urban_Legacy
                                         Console.WriteLine("\nCyberblaze wins!");
                                         Console.ResetColor();
                                         Console.ForegroundColor = ConsoleColor.Green;
-                                        Console.WriteLine("\nNanoclaw lies defeated at your feet. Empowered by Cyberblaze, you seize the Digital Heart, becoming a legend of Night City and inspiring a resolute resistance against the corporations.");
+                                        Console.WriteLine("\nNanoclaw lies defeated at your feet, a mere memory of its former threat. Empowered by Cyberblaze, you seize the Digital Heart, a symbol of your victory over Arasaka's tyranny. Your names echo through Night City as legends, inspiring a resolute resistance against the corporations. Together, you ignite a revolution, toppling the oppressive regime and ushering in a new era of freedom and hope.");
                                         Console.ResetColor();
                                     }
                                 }
@@ -255,13 +255,13 @@ namespace Cyberpunk_Urban_Legacy
                             if (finalChoice.ToLower() == "fight")
                             {
                                 Console.ForegroundColor = ConsoleColor.Yellow;
-                                Console.WriteLine($"\nWith Mia's hacking abilities, you manage to take control of the security systems and turn them against the mercenaries. However, during the fight, you sustain severe injuries. You became a symbol of resistance against the corporations, and your bravery inspired many.");
+                                Console.WriteLine($"\nWith Mia's hacking abilities, you manage to take control of the security systems and turn them against the mercenaries. However, during the fight, you sustain severe injuries. {playerName}, you became a symbol of resistance against the corporations, and your bravery inspired many.");
                                 Console.ResetColor();
                             }
                             else if (finalChoice.ToLower() == "escape")
                             {
                                 Console.ForegroundColor = ConsoleColor.Yellow;
-                                Console.WriteLine($"\nUsing the detailed data Mia had gathered, you find a hidden escape route and manage to break free with the Digital Heart. Mia sacrifices herself, allowing you to escape and become a symbol of resistance in Night City, carrying on her legacy.");
+                                Console.WriteLine($"\nUsing the detailed data Mia had gathered, you find a hidden escape route and manage to break free with the Digital Heart.  Mia sacrifices herself, allowing you, {playerName}, to escape and become a symbol of resistance in Night City, carrying on her legacy.");
                                 Console.ResetColor();
                             }
                             else
@@ -332,9 +332,9 @@ namespace Cyberpunk_Urban_Legacy
 
                                 if (game.CheckWin('X'))
                                 {
-                                    Console.WriteLine("\nAs the final move falls into place, the enigmatic figure, Vex, reveals a twisted smile. But wait! The impossible has happened. Victory is yours! You escape the clutches of Vex's deadly game.");
+                                    Console.WriteLine("\nAs the final move falls into place, the silence hangs heavy in the air. The enigmatic figure, Vex, reveals a twisted smile. But wait! The impossible has happened. Victory is yours! A surge of relief washes over you as you escape the clutches of Vex's deadly game.");
                                     Console.ForegroundColor = ConsoleColor.Green;
-                                    Console.WriteLine("\nEmpowered by Vex's assistance, you cunningly steal the Digital Heart and swiftly dispatch the formidable Arasaka mercenaries. You rise as a legend of Night City, inspiring a resolute resistance against the oppressive corporations. Vex's legacy becomes intertwined with your triumph.");
+                                    Console.WriteLine("\nEmpowered by Vex's assistance, you cunningly steal the Digital Heart and swiftly dispatch the formidable Arasaka mercenaries. As legends of Night City, you and Mia rise as beacons of resistance against the oppressive corporations. Vex, their enigmatic presence fading into the shadows, leaves behind a legacy intertwined with your triumph.");
                                     Console.ResetColor();
                                     break;
                                 }
@@ -394,13 +394,13 @@ namespace Cyberpunk_Urban_Legacy
                             if (finalChoice.ToLower() == "fight")
                             {
                                 Console.ForegroundColor = ConsoleColor.Yellow;
-                                Console.WriteLine($"\nWith Dex's strength and the weapons he secured, you put up a formidable fight. The mercenaries didn't stand a chance against your combined might. You managed to secure the Digital Heart, but Dex lost his life in the fight. His sacrifice allowed you to become a legend of Night City. You fulfilled your dream and Dex's memory lived on.");
+                                Console.WriteLine($"\nWith Dex's strength and the weapons he secured, you put up a formidable fight. The mercenaries didn't stand a chance against your combined might. You managed to secure the Digital Heart, but Dex lost his life in the fight. His sacrifice allowed you, {playerName}, to become a legend of Night City. You fulfilled your dream and Dex's memory lived on.");
                                 Console.ResetColor();
                             }
                             else if (finalChoice.ToLower() == "escape")
                             {
                                 Console.ForegroundColor = ConsoleColor.Yellow;
-                                Console.WriteLine($"\nUtilizing Dex's ingenious escape route, you successfully seize the Digital Heart. As Arasaka's mercenaries close in, you valiantly hold them off but tragically succumb to your injuries. Dex ensures your legacy lives on, spreading tales of your unmatched bravery throughout Night City. You forever remain a revered legend, inspiring countless others in their fight for freedom.");
+                                Console.WriteLine($"\nUtilizing Dex's ingenious escape route, you successfully seize the Digital Heart. As Arasaka's mercenaries close in, you valiantly hold them off but tragically succumb to your injuries. Dex ensures your legacy lives on, spreading tales of your unmatched bravery throughout Night City. You, {playerName}, forever remain a revered legend, inspiring countless others in their fight for freedom.");
                                 Console.ResetColor();
                             }
                             else
