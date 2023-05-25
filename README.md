@@ -1,4 +1,4 @@
-![Cyberpunk Urban Legacy logo](https://github.com/pslib-cz/2022-p2a-PeterHonzejk-PRG-Cyberpunk-Urban-Legacy/blob/main/img/Cyberpunk%20Urban%20Legacy%20logo.PNG)
+![Cyberpunk Urban Legacy logo](https://github.com/pslib-cz/2022-p2a-PeterHonzejk-PRG-Cyberpunk-Urban-Legacy/blob/main/img/logo/Cyberpunk%20Urban%20Legacy%20logo.PNG)
 Welcome to Night City. In "Cyberpunk: Urban Legacy," you take on the role of a streetkid born and raised in the gritty streets of this futuristic metropolis. Night City is a place where corporations reign supreme, and your goal is to become a legend who can shatter their control and restore freedom to the city. Descend into the underworld, navigate the treacherous streets, and face off against powerful foes as you strive to leave a lasting legacy. Prepare for pulse-pounding action, exhilarating adventures, and a relentless challenge as you shape the destiny of Night City in "Cyberpunk: Urban Legacy."
 
 Disclaimer: The images in this project were created using stable diffusion, resulting in artistic interpretations rather than exact representations. Enjoy the unique visual experience they provide.
