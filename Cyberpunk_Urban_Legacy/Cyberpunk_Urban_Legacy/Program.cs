@@ -106,7 +106,7 @@ namespace Cyberpunk_Urban_Legacy
                                             break;
                                     }
 
-                                    // Nanoclaw's moves and AI behavior
+                                    // Nanoclaw's moves and behavior
                                     nanoclaw.MoveCounter++;
                                     if (nanoclaw.MoveCounter % 10 == 0)
                                     {

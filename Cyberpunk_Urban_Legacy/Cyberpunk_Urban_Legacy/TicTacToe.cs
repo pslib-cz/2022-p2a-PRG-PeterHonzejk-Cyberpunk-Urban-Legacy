@@ -36,8 +36,7 @@ namespace Cyberpunk_Urban_Legacy
             Console.WriteLine(" {0} | {1} | {2} ", board[3], board[4], board[5]);
             Console.WriteLine("---+---+---");
             Console.WriteLine(" {0} | {1} | {2} ", board[6], board[7], board[8]);
-            Console.WriteLine("\nThe enigmatic figure unveils their true identity as Vex, a ruthless serial killer who delights in playing a deadly game of Tic-Tac-Toe. The stakes are high, as losing means facing a gruesome fate, being mercilessly slashed in half. However, a glimmer of hope remains, as victory holds the power to grant us a single, elusive wish.");
-            Console.WriteLine("\nYou have entered the realm of Vex's deadly game of Tic-Tac-Toe.");
+            Console.WriteLine("\nThe enigmatic figure unveils their true identity as Vex, a ruthless serial killer who delights in playing a deadly game of Cybergrid. The stakes are high, as losing means facing a gruesome fate, being mercilessly slashed in half. However, a glimmer of hope remains, as victory holds the power to grant us a single, elusive wish.");
             Console.WriteLine("\nYou will be playing as X. May fortune favor you in this treacherous battle.");
         }
 
