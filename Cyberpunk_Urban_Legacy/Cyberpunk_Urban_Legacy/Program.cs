@@ -215,3 +215,35 @@ namespace Cyberpunk_Urban_Legacy
     }
 }
 
+
+
+/*
+onsole.WriteLine("\nWill you bring anyone or go alone?");
+
+if (inventory.Contains("Cyberblaze") && inventory.Contains("AdminKey"))
+{
+    Console.WriteLine("Mia (mia)");
+    Console.WriteLine("Dex (dex)");
+    Console.WriteLine("Cipher (cipher)");
+    Console.WriteLine("Mia and Dex (miaanddex)");
+    Console.WriteLine("Mia and Cipher (miaandcipher)");
+    Console.WriteLine("Dex and Cipher (dexandcipher)");
+    Console.WriteLine("Everyone (everyone)");
+    Console.WriteLine("Go alone (alone)");
+}
+else if (inventory.Contains("Cyberblaze"))
+{
+    Console.WriteLine("Mia (mia)");
+    Console.WriteLine("Dex (dex)");
+    Console.WriteLine("Go alone (alone)");
+}
+else if (inventory.Contains("AdminKey"))
+{
+    Console.WriteLine("Cipher (cipher)");
+    Console.WriteLine("Go alone (alone)");
+}
+else
+{
+    Console.WriteLine("Go alone (alone)");
+}
+*/
