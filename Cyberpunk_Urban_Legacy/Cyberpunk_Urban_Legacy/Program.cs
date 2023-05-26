@@ -166,58 +166,51 @@ namespace Cyberpunk_Urban_Legacy
 
         static void PerformHeist()
         {
-            if (inventory.Count > 0)
+            Console.WriteLine("\nWill you bring anyone or go alone? (mia/dex/cipher/miaanddex/miaandcipher/dexandcipher/everyone/alone)");
+
+            string heistChoice = Console.ReadLine().ToLower();
+
+            while (heistChoice != "mia" && heistChoice != "cipher" && heistChoice != "dex" && heistChoice != "miaanddex" && heistChoice != "miaandcipher" && heistChoice != "dexandcipher" && heistChoice != "everyone" && heistChoice != "alone")
             {
-                Console.WriteLine("\nWill you bring anyone or go alone? (mia/dex/cipher/miaanddex/miaandcipher/dexandcipher/everyone/alone)");
-
-                string heistChoice = Console.ReadLine().ToLower();
-
-                while (heistChoice != "mia" && heistChoice != "cipher" && heistChoice != "dex" && heistChoice != "miaanddex" && heistChoice != "miaandcipher" && heistChoice != "dexandcipher" && heistChoice != "everyone" && heistChoice != "alone")
-                {
-                    Console.ForegroundColor = ConsoleColor.Cyan;
-                    Console.WriteLine("\nInvalid input. Please enter the name(s) of the character(s) you want to bring along.");
-                    Console.ResetColor();
-                    heistChoice = Console.ReadLine().ToLower();
-                }
-
-                if (heistChoice == "mia")
-                {
-
-                }
-                else if (heistChoice == "cipher")
-                {
-
-                }
-                else if (heistChoice == "dex")
-                {
-
-                }
-                else if (heistChoice == "miaanddex")
-                {
-
-                }
-                else if (heistChoice == "miaandcipher")
-                {
-
-                }
-                else if (heistChoice == "dexandcipher")
-                {
-
-                }
-                else if (heistChoice == "everyone")
-                {
-
-                }
-                else if (heistChoice == "alone")
-                {
-
-                }
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine("\nInvalid input. Please enter the name(s) of the character(s) you want to bring along.");
+                Console.ResetColor();
+                heistChoice = Console.ReadLine().ToLower();
             }
-            else
+
+            if (heistChoice == "mia")
             {
-                Console.WriteLine("\nYou decide to go alone.");
-                // Code for the heist scenario when going alone
+
             }
+            else if (heistChoice == "cipher")
+            {
+
+            }
+            else if (heistChoice == "dex")
+            {
+
+            }
+            else if (heistChoice == "miaanddex")
+            {
+
+            }
+            else if (heistChoice == "miaandcipher")
+            {
+
+            }
+            else if (heistChoice == "dexandcipher")
+            {
+
+            }
+            else if (heistChoice == "everyone")
+            {
+
+            }
+            else if (heistChoice == "alone")
+            {
+
+            }
+
         }
     }
 }
