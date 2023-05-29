@@ -28,124 +28,326 @@ namespace Cyberpunk_Urban_Legacy
             {
                 Console.WriteLine("\nYou courageously move forward with the plan, risking it all for a chance at greatness.");
 
-                if (inventory.Contains("Cyberblaze") && inventory.Contains("AdminKey") && inventory.Contains("Katana"))
+                while (true)
                 {
-                    Console.WriteLine("\nYou are well prepared and ready to proceed with the heist. Who will you bring along?");
-
-                    PerformHeist();
-                }
-                else
-                {
-                    Console.WriteLine("\nDo you want to proceed with the preparations or go to the heist? (prepare/heist)");
-                    string preparationChoice = Console.ReadLine();
-
-                    while (preparationChoice.ToLower() != "prepare" && preparationChoice.ToLower() != "heist")
+                    if (inventory.Contains("Cyberblaze") && inventory.Contains("AdminKey") && inventory.Contains("Katana"))
                     {
-                        Console.ForegroundColor = ConsoleColor.Cyan;
-                        Console.WriteLine("\nInvalid input. Please enter 'prepare' or 'heist'.");
-                        Console.ResetColor();
-                        preparationChoice = Console.ReadLine();
-                    }
+                        Console.WriteLine("\nYou are well prepared and ready to proceed with the heist. Will you bring anyone along? (mia/dex/ciper/miadex/miacipher/dexcipher/everyone/alone)");
 
-                    if (preparationChoice.ToLower() == "prepare")
-                    {
-                        if (inventory.Contains("Cyberblaze") && inventory.Contains("AdminKey"))
-                        {
-                            // Code for the Night Market scenario with Dex here
-                        }
-                        else if (inventory.Contains("Cyberblaze") && inventory.Contains("Katana"))
-                        {
-                            // Code for the Undercity scenario with Cipher here
-                        }
-                        else if (inventory.Contains("AdminKey") && inventory.Contains("Katana"))
-                        {
-                            // Code for the Arasaka Tower scenario with Mia here
-                        }
-                        else if (inventory.Contains("Cyberblaze"))
-                        {
-                            Console.WriteLine("\nWhere would you like to go next?");
-                            Console.WriteLine("Arasaka Tower (tower)");
-                            Console.WriteLine("Night Market (market)");
-                            string locationChoice = Console.ReadLine();
 
-                            if (locationChoice == "tower")
-                            {
-                                Console.WriteLine("\nYou decide to go to the Undercity to gather more information.");
-                                // Code for the Undercity scenario with Cipher here
-                            }
-                            else if (locationChoice == "market")
-                            {
-                                Console.WriteLine("\nYou decide to go to the Night Market to gather more information.");
-                                // Code for the Night Market scenario with Dex here
-                            }
-                            else
-                            {
-                                Console.ForegroundColor = ConsoleColor.Cyan;
-                                Console.WriteLine("\nInvalid input. Please enter a valid location.");
-                                Console.ResetColor();
-                            }
-                        }
-                        else if (inventory.Contains("AdminKey"))
-                        {
-                            Console.WriteLine("\nWhere would you like to go next?");
-                            Console.WriteLine("Arasaka Tower (tower)");
-                            Console.WriteLine("Night Market (market)");
-                            string locationChoice = Console.ReadLine();
+                        string heistChoice = Console.ReadLine();
 
-                            if (locationChoice == "tower")
-                            {
-                                Console.WriteLine("\nYou decide to go to Arasaka Tower to gather more information.");
-                                // Code for the Arasaka Tower scenario with Mia here
-                            }
-                            else if (locationChoice == "market")
-                            {
-                                Console.WriteLine("\nYou decide to go to the Night Market to gather more information.");
-                                // Code for the Night Market scenario with Dex here
-                            }
-                            else
-                            {
-                                Console.ForegroundColor = ConsoleColor.Cyan;
-                                Console.WriteLine("\nInvalid input. Please enter a valid location.");
-                                Console.ResetColor();
-                            }
-                        }
-                        else if (inventory.Contains("Katana"))
+                        if (heistChoice == "mia")
                         {
-                            Console.WriteLine("\nWhere would you like to go next?");
-                            Console.WriteLine("Arasaka Tower (tower)");
-                            Console.WriteLine("Undercity with (undercity)");
-                            string locationChoice = Console.ReadLine();
 
-                            if (locationChoice == "tower")
-                            {
-                                Console.WriteLine("\nYou decide to go to Arasaka Tower to gather more information.");
-                                // Code for the Arasaka Tower scenario with Mia here
-                            }
-                            else if (locationChoice == "undercity")
-                            {
-                                Console.WriteLine("\nYou decide to go to the Undercity to gather more information.");
-                                // Code for the Undercity scenario with Cipher here
-                            }
-                            else
-                            {
-                                Console.ForegroundColor = ConsoleColor.Cyan;
-                                Console.WriteLine("\nInvalid input. Please enter a valid location.");
-                                Console.ResetColor();
-                            }
+                        }
+                        else if (heistChoice == "cipher")
+                        {
+
+                        }
+                        else if (heistChoice == "dex")
+                        {
+
+                        }
+                        else if (heistChoice == "miadex")
+                        {
+
+                        }
+                        else if (heistChoice == "miacipher")
+                        {
+
+                        }
+                        else if (heistChoice == "dexcipher")
+                        {
+
+                        }
+                        else if (heistChoice == "everyone")
+                        {
+
+                        }
+                        else if (heistChoice == "alone")
+                        {
+
+                        }
+
+                        while (heistChoice.ToLower() != "mia" && heistChoice.ToLower() != "cipher" && heistChoice.ToLower() != "dex" && heistChoice.ToLower() != "miadex" && heistChoice.ToLower() != "miacipher" && heistChoice.ToLower() != "dexcipher" && heistChoice.ToLower() != "everyone" && heistChoice.ToLower() != "alone")
+                        {
+                            Console.ForegroundColor = ConsoleColor.Cyan;
+                            Console.WriteLine("\nInvalid input. Please enter a valid choice.");
+                            Console.ResetColor();
+                            heistChoice = Console.ReadLine();
                         }
                     }
-                    else if (preparationChoice.ToLower() == "heist")
+                    else
                     {
-                        Console.WriteLine("\nYou choose to proceed to the heist.");
+                        Console.WriteLine("\nDo you want to proceed with the preparations or go to the heist? (prepare/heist)");
+                        string preparationChoice = Console.ReadLine();
 
-                        if (inventory.Count == 0)
+                        while (preparationChoice.ToLower() != "prepare" && preparationChoice.ToLower() != "heist")
                         {
-                            Console.WriteLine("\nYou decide to go alone.");
-                            // Code for the heist scenario when going alone
+                            Console.ForegroundColor = ConsoleColor.Cyan;
+                            Console.WriteLine("\nInvalid input. Please enter 'prepare' or 'heist'.");
+                            Console.ResetColor();
+                            preparationChoice = Console.ReadLine();
                         }
-                        else
+
+                        if (preparationChoice.ToLower() == "prepare")
                         {
-                            PerformHeist();
+                            if (inventory.Contains("Cyberblaze") && inventory.Contains("AdminKey"))
+                            {
+                                // Code for the Night Market scenario with Dex here
+                            }
+                            else if (inventory.Contains("Cyberblaze") && inventory.Contains("Katana"))
+                            {
+                                // Code for the Undercity scenario with Cipher here
+                            }
+                            else if (inventory.Contains("AdminKey") && inventory.Contains("Katana"))
+                            {
+                                // Code for the Arasaka Tower scenario with Mia here
+                            }
+                            else if (inventory.Contains("Cyberblaze"))
+                            {
+                                Console.WriteLine("\nWhere would you like to go next? Undercity or the Night market? (tower/market)");
+                                string locationChoice = Console.ReadLine();
+
+                                if (locationChoice == "tower")
+                                {
+                                    Console.WriteLine("\nYou decide to go to the Undercity to gather more information.");
+                                    // Code for the Undercity scenario with Cipher here
+                                }
+                                else if (locationChoice == "market")
+                                {
+                                    Console.WriteLine("\nYou decide to go to the Night Market to gather more information.");
+                                    // Code for the Night Market scenario with Dex here
+                                }
+                                else
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Cyan;
+                                    Console.WriteLine("\nInvalid input. Please enter a valid location.");
+                                    Console.ResetColor();
+                                }
+                            }
+                            else if (inventory.Contains("AdminKey"))
+                            {
+                                Console.WriteLine("\nnWhere would you like to go next? Arasaka tower or the Night market? (tower/market)");
+                                string locationChoice = Console.ReadLine();
+
+                                if (locationChoice == "tower")
+                                {
+                                    Console.WriteLine("\nYou decide to go to Arasaka Tower to gather more information.");
+                                    // Code for the Arasaka Tower scenario with Mia here
+                                }
+                                else if (locationChoice == "market")
+                                {
+                                    Console.WriteLine("\nYou decide to go to the Night Market to gather more information.");
+                                    // Code for the Night Market scenario with Dex here
+                                }
+                                else
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Cyan;
+                                    Console.WriteLine("\nInvalid input. Please enter a valid location.");
+                                    Console.ResetColor();
+                                }
+                            }
+                            else if (inventory.Contains("Katana"))
+                            {
+                                Console.WriteLine("\nnWhere would you like to go next? Arasaka tower or the Undercity? (tower/undercity)");
+                                string locationChoice = Console.ReadLine();
+
+                                if (locationChoice == "tower")
+                                {
+                                    Console.WriteLine("\nYou decide to go to Arasaka Tower to gather more information.");
+                                    // Code for the Arasaka Tower scenario with Mia here
+                                }
+                                else if (locationChoice == "undercity")
+                                {
+                                    Console.WriteLine("\nYou decide to go to the Undercity to gather more information.");
+                                    // Code for the Undercity scenario with Cipher here
+                                }
+                                else
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Cyan;
+                                    Console.WriteLine("\nInvalid input. Please enter a valid location.");
+                                    Console.ResetColor();
+                                }
+                            }
+                        }
+                        else if (preparationChoice.ToLower() == "heist")
+                        {
+                            Console.WriteLine("\nYou choose to proceed to the heist."); 
+
+                            if (inventory.Count == 0)
+                            {
+                                // Code for the heist scenario when going alone
+                            }
+                            else
+                            {
+
+                                if (inventory.Contains("Cyberblaze") && inventory.Contains("AdminKey"))
+                                {
+                                    Console.WriteLine("\nWill you bring anyone or go alone? (mia/cipher/miacipher/alone");
+
+                                    string helpChoice = Console.ReadLine();
+                                    
+                                    while (helpChoice.ToLower() != "mia" && helpChoice.ToLower() != "cipher" && helpChoice.ToLower() != "miacipher" && helpChoice.ToLower() != "alone")
+                                    {
+                                        Console.ForegroundColor = ConsoleColor.Cyan;
+                                        Console.WriteLine("\nInvalid input. Please enter a valid choice.");
+                                        Console.ResetColor();
+                                        helpChoice = Console.ReadLine();
+                                    }
+                                }
+                                else if (inventory.Contains("Cyberblaze") && inventory.Contains("Katana"))
+                                {
+                                    Console.WriteLine("\nWill you bring anyone or go alone? (mia/dex/miadex/alone");
+
+                                    string helpChoice = Console.ReadLine();
+
+                                    while (helpChoice.ToLower() != "mia" && helpChoice.ToLower() != "dex" && helpChoice.ToLower() != "miadex" && helpChoice.ToLower() != "alone")
+                                    {
+                                        Console.ForegroundColor = ConsoleColor.Cyan;
+                                        Console.WriteLine("\nInvalid input. Please enter a valid choice.");
+                                        Console.ResetColor();
+                                        helpChoice = Console.ReadLine();
+                                    }
+
+                                    if (helpChoice.ToLower() == "mia")
+                                    {
+                                        Console.WriteLine("\nYou decide to bring Mia along with you.");
+                                        // Code for the heist scenario with Mia here
+                                    }
+                                    else if (helpChoice.ToLower() == "dex")
+                                    {
+                                        Console.WriteLine("\nYou decide to bring Dex along with you.");
+                                        // Code for the heist scenario with Dex here
+                                    }
+                                    else if (helpChoice.ToLower() == "miadex")
+                                    {
+                                        Console.WriteLine("\nYou decide to bring Mia and Dex along with you.");
+                                        // Code for the heist scenario with Mia and Dex here
+                                    }
+                                    else if (helpChoice.ToLower() == "alone")
+                                    {
+                                        Console.WriteLine("\nYou decide to go alone.");
+                                        // Code for the heist scenario when going alone
+                                    }
+                                }
+                                else if (inventory.Contains("AdminKey") && inventory.Contains("Katana"))
+                                {
+                                    Console.WriteLine("\nWill you bring anyone or go alone? (dex/cipher/dexcipher/alone");
+
+                                    string helpChoice = Console.ReadLine();
+
+                                    while (helpChoice.ToLower() != "cipher" && helpChoice.ToLower() != "dex" && helpChoice.ToLower() != "dexcipher" && helpChoice.ToLower() != "alone")
+                                    {
+                                        Console.ForegroundColor = ConsoleColor.Cyan;
+                                        Console.WriteLine("\nInvalid input. Please enter a valid choice.");
+                                        Console.ResetColor();
+                                        helpChoice = Console.ReadLine();
+                                    }
+
+                                    if (helpChoice.ToLower() == "cipher")
+                                    {
+                                        Console.WriteLine("\nYou decide to bring Cipher along with you.");
+                                        // Code for the heist scenario with Cipher here
+                                    }
+                                    else if (helpChoice.ToLower() == "dex")
+                                    {
+                                        Console.WriteLine("\nYou decide to bring Dex along with you.");
+                                        // Code for the heist scenario with Dex here
+                                    }
+                                    else if (helpChoice.ToLower() == "dexcipher")
+                                    {
+                                        Console.WriteLine("\nYou decide to bring Dex and Cipher along with you.");
+                                        // Code for the heist scenario with Dex and Cipher here
+                                    }
+                                    else if (helpChoice.ToLower() == "alone")
+                                    {
+                                        Console.WriteLine("\nYou decide to go alone.");
+                                        // Code for the heist scenario when going alone
+                                    }
+                                }
+                                else if (inventory.Contains("Cyberblaze"))
+                                {
+                                    Console.WriteLine("\nWill you bring along Mia or go alone? (mia/alone");
+
+                                    string helpChoice = Console.ReadLine();
+
+                                    while (helpChoice.ToLower() != "mia" && helpChoice.ToLower() != "alone")
+                                    {
+                                        Console.ForegroundColor = ConsoleColor.Cyan;
+                                        Console.WriteLine("\nInvalid input. Please enter a valid choice.");
+                                        Console.ResetColor();
+                                        helpChoice = Console.ReadLine();
+                                    }
+
+                                    if (helpChoice.ToLower() == "mia")
+                                    {
+                                        Console.WriteLine("\nYou decide to bring Mia along with you.");
+                                        // Code for the heist scenario with Mia here
+                                    }
+                                    else if (helpChoice.ToLower() == "alone")
+                                    {
+                                        Console.WriteLine("\nYou decide to go alone.");
+                                        // Code for the heist scenario when going alone
+                                    }
+                                }
+                                else if (inventory.Contains("AdminKey"))
+                                {
+                                    Console.WriteLine("\nWill you bring along Cipher or go alone? (cipher/alone");
+
+                                    string helpChoice = Console.ReadLine();
+
+                                    while (helpChoice.ToLower() != "cipher" && helpChoice.ToLower() != "alone")
+                                    {
+                                        Console.ForegroundColor = ConsoleColor.Cyan;
+                                        Console.WriteLine("\nInvalid input. Please enter a valid choice.");
+                                        Console.ResetColor();
+                                        helpChoice = Console.ReadLine();
+                                    }
+
+                                    if (helpChoice.ToLower() == "cipher")
+                                    {
+                                        Console.WriteLine("\nYou decide to bring Cipher along with you.");
+                                        // Code for the heist scenario with Cipher here
+                                    }
+                                    else if (helpChoice.ToLower() == "alone")
+                                    {
+                                        Console.WriteLine("\nYou decide to go alone.");
+                                        // Code for the heist scenario when going alone
+                                    }
+                                }
+                                else if (inventory.Contains("Katana"))
+                                {
+                                    Console.WriteLine("\nWill you bring along Dex or go alone? (dex/alone");
+
+                                    string helpChoice = Console.ReadLine();
+
+                                    while (helpChoice.ToLower() != "dex" && helpChoice.ToLower() != "alone")
+                                    {
+                                        Console.ForegroundColor = ConsoleColor.Cyan;
+                                        Console.WriteLine("\nInvalid input. Please enter a valid choice.");
+                                        Console.ResetColor();
+                                        helpChoice = Console.ReadLine();
+                                    }
+
+                                    if (helpChoice.ToLower() == "dex")
+                                    {
+                                        Console.WriteLine("\nYou decide to bring Dex along with you.");
+                                        // Code for the heist scenario with Dex here
+                                    }
+                                    else if (helpChoice.ToLower() == "alone")
+                                    {
+                                        Console.WriteLine("\nYou decide to go alone.");
+                                        // Code for the heist scenario when going alone
+                                    }
+                                }
+                                else
+                                {
+                                    // Code for the heist scenario when going alone
+                                }
+
+                            }
                         }
                     }
                 }
@@ -153,7 +355,7 @@ namespace Cyberpunk_Urban_Legacy
             else if (importantChoice.ToLower() == "no")
             {
                 Console.ForegroundColor = ConsoleColor.Magenta;
-                Console.WriteLine($"\n{playerName}, you decide it's too risky. You continue your life in the streets of Night City, always wondering what might have been.");
+                Console.WriteLine($"\nYou decide it's too risky. You continue your life in the streets of Night City, always wondering what might have been.");
                 Console.ResetColor();
             }
             else
@@ -163,87 +365,6 @@ namespace Cyberpunk_Urban_Legacy
                 Console.ResetColor();
             }
         }
-
-        static void PerformHeist()
-        {
-            Console.WriteLine("\nWill you bring anyone or go alone? (mia/dex/cipher/miaanddex/miaandcipher/dexandcipher/everyone/alone)");
-
-            string heistChoice = Console.ReadLine().ToLower();
-
-            while (heistChoice != "mia" && heistChoice != "cipher" && heistChoice != "dex" && heistChoice != "miaanddex" && heistChoice != "miaandcipher" && heistChoice != "dexandcipher" && heistChoice != "everyone" && heistChoice != "alone")
-            {
-                Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.WriteLine("\nInvalid input. Please enter the name(s) of the character(s) you want to bring along.");
-                Console.ResetColor();
-                heistChoice = Console.ReadLine().ToLower();
-            }
-
-            if (heistChoice == "mia")
-            {
-
-            }
-            else if (heistChoice == "cipher")
-            {
-
-            }
-            else if (heistChoice == "dex")
-            {
-
-            }
-            else if (heistChoice == "miaanddex")
-            {
-
-            }
-            else if (heistChoice == "miaandcipher")
-            {
-
-            }
-            else if (heistChoice == "dexandcipher")
-            {
-
-            }
-            else if (heistChoice == "everyone")
-            {
-
-            }
-            else if (heistChoice == "alone")
-            {
-
-            }
-
-        }
     }
 }
-
-
-
-/*
-onsole.WriteLine("\nWill you bring anyone or go alone?");
-
-if (inventory.Contains("Cyberblaze") && inventory.Contains("AdminKey"))
-{
-    Console.WriteLine("Mia (mia)");
-    Console.WriteLine("Dex (dex)");
-    Console.WriteLine("Cipher (cipher)");
-    Console.WriteLine("Mia and Dex (miaanddex)");
-    Console.WriteLine("Mia and Cipher (miaandcipher)");
-    Console.WriteLine("Dex and Cipher (dexandcipher)");
-    Console.WriteLine("Everyone (everyone)");
-    Console.WriteLine("Go alone (alone)");
-}
-else if (inventory.Contains("Cyberblaze"))
-{
-    Console.WriteLine("Mia (mia)");
-    Console.WriteLine("Dex (dex)");
-    Console.WriteLine("Go alone (alone)");
-}
-else if (inventory.Contains("AdminKey"))
-{
-    Console.WriteLine("Cipher (cipher)");
-    Console.WriteLine("Go alone (alone)");
-}
-else
-{
-    Console.WriteLine("Go alone (alone)");
-}
-*/
+            
