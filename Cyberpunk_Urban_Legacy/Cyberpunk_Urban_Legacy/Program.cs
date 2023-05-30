@@ -18,7 +18,7 @@ namespace Cyberpunk_Urban_Legacy
 
             // save game state with the unlocked endings and player's name !!!
             
-            // Game loop until all endings are unlocked
+            // Game loop until all endings are unlocked or player quits
             while (gameContinue == true)
             {
                 if (endings.Count == 17)
@@ -76,7 +76,7 @@ namespace Cyberpunk_Urban_Legacy
                                 if (heistChoice.ToLower() == "mia")
                                 {
                                     // Heart of Shadows ending
-                                    // Maa is a Techie and brings along the cybernetically enhanced horse, Cyberblaze that she helped you to steal from the Arasaka tower
+                                    // Mia is a Techie and brings along the cybernetically enhanced horse, Cyberblaze that she helped you to steal from the Arasaka tower
                                     // Mia sacrifices herself to save the player but the Digital Heart is destroyed
                                     endings.Add("Heart of Shadows");
                                     string continueChoice = Console.ReadLine();
