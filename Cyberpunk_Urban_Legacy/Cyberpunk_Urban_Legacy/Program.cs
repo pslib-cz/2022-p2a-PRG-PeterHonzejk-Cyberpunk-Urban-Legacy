@@ -7,197 +7,308 @@ namespace Cyberpunk_Urban_Legacy
     {
         static void Main(string[] args)
         {
-            List<string> inventory = new List<string>();
+
+
             List<string> endings = new List<string>();
+            bool gameContinue = true;
 
             // Prompt for player's name
             Console.WriteLine("\nWelcome to Night City. What's your name?");
             string playerName = Console.ReadLine();
 
-            //game loop (to achieve all the endings)
-
-            // Introduction and choice to proceed with the heist
-            Console.WriteLine($"\n{playerName}, you're a young streetkid aspiring to become a legend. You have a chance to plan the greatest heist Night City has ever witnessed: stealing the Digital Heart from Arasaka corporation. But it's dangerous. Do you wish to proceed? (yes/no)");
-
-            string importantChoice = Console.ReadLine();
-
-            while (importantChoice.ToLower() != "yes" && importantChoice.ToLower() != "no")
+            // save game state with the unlocked endings and player's name !!!
+            
+            // Game loop until all endings are unlocked
+            while (gameContinue == true)
             {
-                Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.WriteLine("\nInvalid input. Please enter 'yes' or 'no'.");
-                Console.ResetColor();
-                importantChoice = Console.ReadLine();
-            }
-
-            if (importantChoice.ToLower() == "yes")
-            {
-                // Player chooses to proceed with the heist
-                Console.WriteLine("\nYou courageously move forward with the plan, risking it all for a chance at greatness.");
-       
-                //Heist loop
-                while (true)
+                if (endings.Count == 17)
                 {
-                    if (inventory.Contains("Cyberblaze") && inventory.Contains("AdminKey") && inventory.Contains("Katana"))
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.WriteLine("\nYou have unlocked all endings.");
+                    Console.ResetColor();
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("\nCongratulations!");
+                    Console.ResetColor();
+                    gameContinue = false;
+                }
+                else
+                {
+                    if (endings.Count >= 1)
                     {
-                        // Player has all items and can proceed to the heist with the option to bring everyone along
-                        Console.WriteLine("\nYou are well prepared and ready to proceed with the heist. Will you bring anyone along? (mia/dex/ciper/miadex/miacipher/dexcipher/everyone/alone)");
-
-                        string heistChoice = Console.ReadLine();
-
-                        // Check the chosen heist option and play the corresponding scenario
-                        if (heistChoice.ToLower() == "mia")
+                        Console.WriteLine($"\nYou have unlocked {endings.Count} out of 17 possible endings.");
+                        Console.WriteLine("\nYou have unlocked the following ending/s so far:");
+                        foreach (var ending in endings)
                         {
-                            Heist miaHeist = new MiaHeist();
-                            miaHeist.Play();
-                            break;
-                        }
-                        else if (heistChoice.ToLower() == "cipher")
-                        {
-                            Heist cipherHeist = new CipherHeist();
-                            cipherHeist.Play();
-                            break;
-                        }
-                        else if (heistChoice.ToLower() == "dex")
-                        {
-                            Heist dexHeist = new DexHeist();
-                            dexHeist.Play();
-                            break;
-                        }
-                        else if (heistChoice.ToLower() == "miadex")
-                        {
-                            Heist miaDexHeist = new MiaDexHeist();
-                            miaDexHeist.Play();
-                            break;
-                        }
-                        else if (heistChoice.ToLower() == "miacipher")
-                        {
-                            Heist miaCipherHeist = new MiaCipherHeist();
-                            miaCipherHeist.Play();
-                            break;
-                        }
-                        else if (heistChoice.ToLower() == "dexcipher")
-                        {
-                            Heist dexCipherHeist = new DexCipherHeist();
-                            dexCipherHeist.Play();
-                            break;
-                        }
-                        else if (heistChoice.ToLower() == "everyone")
-                        {
-                            Heist everyoneHeist = new EveryoneHeist();
-                            everyoneHeist.Play();
-                            break;
-                        }
-                        else if (heistChoice.ToLower() == "alone")
-                        {
-                            Heist aloneHeist = new AloneHeist();
-                            aloneHeist.Play();
-                            break;
-                        }
-
-                        while (heistChoice.ToLower() != "mia" && heistChoice.ToLower() != "cipher" && heistChoice.ToLower() != "dex" && heistChoice.ToLower() != "miadex" && heistChoice.ToLower() != "miacipher" && heistChoice.ToLower() != "dexcipher" && heistChoice.ToLower() != "everyone" && heistChoice.ToLower() != "alone")
-                        {
-                            Console.ForegroundColor = ConsoleColor.Cyan;
-                            Console.WriteLine("\nInvalid input. Please enter a valid choice.");
-                            Console.ResetColor();
-                            heistChoice = Console.ReadLine();
+                            Console.WriteLine(ending);
                         }
                     }
-                    else
+
+                    // Introduction and choice to proceed with the heist
+                    Console.WriteLine($"\n{playerName}, you're a young streetkid aspiring to become a legend. You have a chance to plan the greatest heist Night City has ever witnessed: stealing the Digital Heart from Arasaka corporation. But it's dangerous. Do you wish to proceed? (yes/no)");
+
+                    bool preparationsContinue = true;
+                    List<string> inventory = new List<string>();
+                    string importantChoice = Console.ReadLine();
+
+                    while (importantChoice.ToLower() != "yes" && importantChoice.ToLower() != "no")
                     {
-                        // Player needs to choose between preparation and going directly to the heist
-                        Console.WriteLine("\nDo you want to proceed with the preparations or go to the heist? (prepare/heist)");
-                        string preparationChoice = Console.ReadLine();
+                        Console.ForegroundColor = ConsoleColor.Cyan;
+                        Console.WriteLine("\nInvalid input. Please enter 'yes' or 'no'.");
+                        Console.ResetColor();
+                        importantChoice = Console.ReadLine();
+                    }
 
-                        while (preparationChoice.ToLower() != "prepare" && preparationChoice.ToLower() != "heist")
+                    if (importantChoice.ToLower() == "yes")
+                    {
+                        // Player chooses to proceed with the heist
+                        Console.WriteLine("\nYou courageously move forward with the plan, risking it all for a chance at greatness.");
+
+                        while (preparationsContinue == true)
                         {
-                            Console.ForegroundColor = ConsoleColor.Cyan;
-                            Console.WriteLine("\nInvalid input. Please enter 'prepare' or 'heist'.");
-                            Console.ResetColor();
-                            preparationChoice = Console.ReadLine();
-                        }
+                            if (inventory.Contains("Cyberblaze") && inventory.Contains("AdminKey") && inventory.Contains("Katana"))
+                            {
+                                // Player has all items and can proceed to the heist
+                                Console.WriteLine("\nYou are well prepared and ready to proceed with the heist. Will you bring anyone along? (mia/dex/ciper/miadex/miacipher/dexcipher/everyone/alone)");
 
-                        if (preparationChoice.ToLower() == "prepare")
-                        {
-                            // Player chooses preparation, check the available options based on their inventory
-                            if (inventory.Contains("Cyberblaze") && inventory.Contains("AdminKey"))
-                            {
-                                Preparation arasakaTowerPreparation = new ArasakaTowerPreparation();
-                                arasakaTowerPreparation.Prepare();
-                            }
-                            else if (inventory.Contains("Cyberblaze") && inventory.Contains("Katana"))
-                            {
-                                Preparation undercityPreparation = new UndercityPreparation();
-                                undercityPreparation.Prepare();
-                            }
-                            else if (inventory.Contains("AdminKey") && inventory.Contains("Katana"))
-                            {
-                                Preparation nightMarketPreparation = new NightMarketPreparation();
-                                nightMarketPreparation.Prepare();
-                            }
-                            else if (inventory.Contains("Cyberblaze"))
-                            {
-                                Console.WriteLine("\nWhere would you like to go next? Undercity or the Night market? (undercity/market)");
-                                string locationChoice = Console.ReadLine();
+                                string heistChoice = Console.ReadLine();
 
-                                if (locationChoice == "undercity")
+                                // Check the chosen heist option and play the corresponding scenario
+                                if (heistChoice.ToLower() == "mia")
                                 {
-                                    Preparation undercityPreparation = new UndercityPreparation();
-                                    undercityPreparation.Prepare();
+                                    // Heart of Shadows ending
+                                    // Maa is a Techie and brings along the cybernetically enhanced horse, Cyberblaze that she helped you to steal from the Arasaka tower
+                                    // Mia sacrifices herself to save the player but the Digital Heart is destroyed
+                                    endings.Add("Heart of Shadows");
+                                    string continueChoice = Console.ReadLine();
+                                    while (continueChoice.ToLower() != "yes" && continueChoice.ToLower() != "no")
+                                    {
+                                        Console.ForegroundColor = ConsoleColor.Cyan;
+                                        Console.WriteLine("\nInvalid input. Please enter 'yes' or 'no'.");
+                                        Console.ResetColor();
+                                        continueChoice = Console.ReadLine();
+                                    }
+                                    if (continueChoice.ToLower() == "yes")
+                                    {
+                                        Console.WriteLine("\nYou continue playing.");
+                                        preparationsContinue = false;
+
+                                    }
+                                    else if (continueChoice.ToLower() == "no")
+                                    {
+                                        Console.WriteLine("\nYou quit the game.");
+                                        gameContinue = false;
+                                    }
                                 }
-                                else if (locationChoice == "market")
+                                else if (heistChoice.ToLower() == "cipher")
                                 {
-                                    Preparation nightMarketPreparation = new NightMarketPreparation();
-                                    nightMarketPreparation.Prepare();
+                                    // Code of Sacrifice ending
+                                    // Cipher is a Netrunner and brings along the Admin Key that he helped you obtain from the drone in Undercity
+                                    // Cipher sacrifices himself to save the playerbut the Digital Heart is destroyed
+                                    endings.Add("Code of Sacrifice");
+                                    Console.ForegroundColor = ConsoleColor.Magenta;
+                                    Console.WriteLine("\nYou have unlocked the Code of Sacrifice ending. Would you like to continue playing? (yes/no)");
+                                    Console.ResetColor();
+                                    string continueChoice = Console.ReadLine();
+                                    while (continueChoice.ToLower() != "yes" && continueChoice.ToLower() != "no")
+                                    {
+                                        Console.ForegroundColor = ConsoleColor.Cyan;
+                                        Console.WriteLine("\nInvalid input. Please enter 'yes' or 'no'.");
+                                        Console.ResetColor();
+                                        continueChoice = Console.ReadLine();
+                                    }
+                                    if (continueChoice.ToLower() == "yes")
+                                    {
+                                        Console.WriteLine("\nYou continue playing.");
+                                        preparationsContinue = false;
+
+                                    }
+                                    else if (continueChoice.ToLower() == "no")
+                                    {
+                                        Console.WriteLine("\nYou quit the game.");
+                                        gameContinue = false;
+                                    }
                                 }
-                                else
+                                else if (heistChoice.ToLower() == "dex")
+                                {
+                                    // Nomadic Heroism ending
+                                    // Dex is a Nomad and brings along the Katana that he helped you obtain from Vex in the Night Market
+                                    // Dex sacrifices himself to save the player but the Digital Heart is destroyed
+                                    endings.Add("Nomadic Heroism");
+                                    Console.ForegroundColor = ConsoleColor.Magenta;
+                                    Console.WriteLine("\nYou have unlocked the Nomadic Heroism ending. Would you like to continue playing? (yes/no)");
+                                    Console.ResetColor();
+                                    string continueChoice = Console.ReadLine();
+                                    while (continueChoice.ToLower() != "yes" && continueChoice.ToLower() != "no")
+                                    {
+                                        Console.ForegroundColor = ConsoleColor.Cyan;
+                                        Console.WriteLine("\nInvalid input. Please enter 'yes' or 'no'.");
+                                        Console.ResetColor();
+                                        continueChoice = Console.ReadLine();
+                                    }
+                                    if (continueChoice.ToLower() == "yes")
+                                    {
+                                        Console.WriteLine("\nYou continue playing.");
+                                        preparationsContinue = false;
+
+                                    }
+                                    else if (continueChoice.ToLower() == "no")
+                                    {
+                                        Console.WriteLine("\nYou quit the game.");
+                                        gameContinue = false;
+                                    }
+                                }
+                                else if (heistChoice.ToLower() == "miadex")
+                                {
+                                    // Joint Sacrifice ending
+                                    // Code for heist with Mia and Dex
+                                    // The player sacrifices himself to save Mia and Dex and they steal the Digital Heart
+                                    endings.Add("Joint Sacrifice");
+                                    Console.ForegroundColor = ConsoleColor.Magenta;
+                                    Console.WriteLine("\nYou have unlocked the Joint Sacrifice ending. Would you like to continue playing? (yes/no)");
+                                    Console.ResetColor();
+                                    string continueChoice = Console.ReadLine();
+                                    while (continueChoice.ToLower() != "yes" && continueChoice.ToLower() != "no")
+                                    {
+                                        Console.ForegroundColor = ConsoleColor.Cyan;
+                                        Console.WriteLine("\nInvalid input. Please enter 'yes' or 'no'.");
+                                        Console.ResetColor();
+                                        continueChoice = Console.ReadLine();
+                                    }
+                                    if (continueChoice.ToLower() == "yes")
+                                    {
+                                        Console.WriteLine("\nYou continue playing.");
+                                        preparationsContinue = false;
+
+                                    }
+                                    else if (continueChoice.ToLower() == "no")
+                                    {
+                                        Console.WriteLine("\nYou quit the game.");
+                                        gameContinue = false;
+                                    }
+                                }
+                                else if (heistChoice.ToLower() == "miacipher")
+                                {
+                                    // United Resolve ending
+                                    // Code for heist with Mia and Cipher
+                                    // The player sacrifices himself to save Mia and Cipher and they steal the Digital Heart
+                                    endings.Add("United Resolve");
+                                    Console.ForegroundColor = ConsoleColor.Magenta;
+                                    Console.WriteLine("\nYou have unlocked the United Resolve ending. Would you like to continue playing? (yes/no)");
+                                    Console.ResetColor();
+                                    string continueChoice = Console.ReadLine();
+                                    while (continueChoice.ToLower() != "yes" && continueChoice.ToLower() != "no")
+                                    {
+                                        Console.ForegroundColor = ConsoleColor.Cyan;
+                                        Console.WriteLine("\nInvalid input. Please enter 'yes' or 'no'.");
+                                        Console.ResetColor();
+                                        continueChoice = Console.ReadLine();
+                                    }
+                                    if (continueChoice.ToLower() == "yes")
+                                    {
+                                        Console.WriteLine("\nYou continue playing.");
+                                        preparationsContinue = false;
+
+                                    }
+                                    else if (continueChoice.ToLower() == "no")
+                                    {
+                                        Console.WriteLine("\nYou quit the game.");
+                                        gameContinue = false;
+                                    }
+                                }
+                                else if (heistChoice.ToLower() == "dexcipher")
+                                {
+                                    // Covert Alliance ending
+                                    // Code for heist with Dex and Cipher
+                                    // The player sacrifices himself to save Dex and Cipher and they steal the Digital Heart
+                                    endings.Add("Covert Alliance");
+                                    Console.ForegroundColor = ConsoleColor.Magenta;
+                                    Console.WriteLine("\nYou have unlocked the Covert Alliance ending. Would you like to continue playing? (yes/no)");
+                                    Console.ResetColor();
+                                    string continueChoice = Console.ReadLine();
+                                    while (continueChoice.ToLower() != "yes" && continueChoice.ToLower() != "no")
+                                    {
+                                        Console.ForegroundColor = ConsoleColor.Cyan;
+                                        Console.WriteLine("\nInvalid input. Please enter 'yes' or 'no'.");
+                                        Console.ResetColor();
+                                        continueChoice = Console.ReadLine();
+                                    }
+                                    if (continueChoice.ToLower() == "yes")
+                                    {
+                                        Console.WriteLine("\nYou continue playing.");
+                                        preparationsContinue = false;
+
+                                    }
+                                    else if (continueChoice.ToLower() == "no")
+                                    {
+                                        Console.WriteLine("\nYou quit the game.");
+                                        gameContinue = false;
+                                    }
+                                }
+                                else if (heistChoice.ToLower() == "everyone")
+                                {
+                                    // Unity of Shadows ending
+                                    // Code for heist with everyone
+                                    // Everyone survives and they steal the Digital Heart
+                                    endings.Add("Unity of Shadows");
+                                    Console.ForegroundColor = ConsoleColor.Magenta;
+                                    Console.WriteLine("\nYou have unlocked the Unity of Shadows ending. Would you like to continue playing? (yes/no)");
+                                    Console.ResetColor();
+                                    string continueChoice = Console.ReadLine();
+                                    while (continueChoice.ToLower() != "yes" && continueChoice.ToLower() != "no")
+                                    {
+                                        Console.ForegroundColor = ConsoleColor.Cyan;
+                                        Console.WriteLine("\nInvalid input. Please enter 'yes' or 'no'.");
+                                        Console.ResetColor();
+                                        continueChoice = Console.ReadLine();
+                                    }
+                                    if (continueChoice.ToLower() == "yes")
+                                    {
+                                        Console.WriteLine("\nYou continue playing.");
+                                        preparationsContinue = false;
+
+                                    }
+                                    else if (continueChoice.ToLower() == "no")
+                                    {
+                                        Console.WriteLine("\nYou quit the game.");
+                                        gameContinue = false;
+                                    }
+                                }
+                                else if (heistChoice.ToLower() == "alone")
+                                {
+                                    // Last Stand ending
+                                    // Code for heist alone
+                                    // The player dies and destroys the Digital Heart
+                                    endings.Add("Last Stand");
+                                    Console.ForegroundColor = ConsoleColor.Magenta;
+                                    Console.WriteLine("\nYou have unlocked the Last Stand ending. Would you like to continue playing? (yes/no)");
+                                    Console.ResetColor();
+                                    string continueChoice = Console.ReadLine();
+                                    while (continueChoice.ToLower() != "yes" && continueChoice.ToLower() != "no")
+                                    {
+                                        Console.ForegroundColor = ConsoleColor.Cyan;
+                                        Console.WriteLine("\nInvalid input. Please enter 'yes' or 'no'.");
+                                        Console.ResetColor();
+                                        continueChoice = Console.ReadLine();
+                                    }
+                                    if (continueChoice.ToLower() == "yes")
+                                    {
+                                        Console.WriteLine("\nYou continue playing.");
+                                        preparationsContinue = false;
+
+                                    }
+                                    else if (continueChoice.ToLower() == "no")
+                                    {
+                                        Console.WriteLine("\nYou quit the game.");
+                                        gameContinue = false;
+                                    }
+                                }
+
+                                while (heistChoice.ToLower() != "mia" && heistChoice.ToLower() != "cipher" && heistChoice.ToLower() != "dex" && heistChoice.ToLower() != "miadex" && heistChoice.ToLower() != "miacipher" && heistChoice.ToLower() != "dexcipher" && heistChoice.ToLower() != "everyone" && heistChoice.ToLower() != "alone")
                                 {
                                     Console.ForegroundColor = ConsoleColor.Cyan;
-                                    Console.WriteLine("\nInvalid input. Please enter a valid location.");
+                                    Console.WriteLine("\nInvalid input. Please enter a valid choice.");
                                     Console.ResetColor();
-                                }
-                            }
-                            else if (inventory.Contains("AdminKey"))
-                            {
-                                Console.WriteLine("\nWhere would you like to go next? Arasaka tower or the Night market? (tower/market)");
-                                string locationChoice = Console.ReadLine();
-
-                                if (locationChoice == "tower")
-                                {
-                                    Preparation arasakaTowerPreparation = new ArasakaTowerPreparation();
-                                    arasakaTowerPreparation.Prepare();
-                                }
-                                else if (locationChoice == "market")
-                                {
-                                    Preparation nightMarketPreparation = new NightMarketPreparation();
-                                    nightMarketPreparation.Prepare();
-                                }
-                                else
-                                {
-                                    Console.ForegroundColor = ConsoleColor.Cyan;
-                                    Console.WriteLine("\nInvalid input. Please enter a valid location.");
-                                    Console.ResetColor();
-                                }
-                            }
-                            else if (inventory.Contains("Katana"))
-                            {
-                                Console.WriteLine("\nWhere would you like to go next? Arasaka tower or the Undercity? (tower/undercity)");
-                                string locationChoice = Console.ReadLine();
-
-                                if (locationChoice == "tower")
-                                {
-                                    Preparation arasakaTowerPreparation = new ArasakaTowerPreparation();
-                                    arasakaTowerPreparation.Prepare();
-                                }
-                                else if (locationChoice == "undercity")
-                                {
-                                    Preparation undercityPreparation = new UndercityPreparation();
-                                    undercityPreparation.Prepare();
-                                }
-                                else
-                                {
-                                    Console.ForegroundColor = ConsoleColor.Cyan;
-                                    Console.WriteLine("\nInvalid input. Please enter a valid location.");
-                                    Console.ResetColor();
+                                    heistChoice = Console.ReadLine();
                                 }
                             }
                             else
@@ -207,18 +318,306 @@ namespace Cyberpunk_Urban_Legacy
 
                                 if (locationChoice == "tower")
                                 {
-                                    Preparation arasakaTowerPreparation = new ArasakaTowerPreparation();
-                                    arasakaTowerPreparation.Prepare();
+                                    Console.WriteLine("\nYou arrive at Arasaka Tower. The security is tight. You need to find a way to get in. Do you sneak in or force your way in? (sneak/force)");
+                                    string arasakaTowerChoice = Console.ReadLine();
+
+                                    while (arasakaTowerChoice.ToLower() != "sneak" && arasakaTowerChoice.ToLower() != "force")
+                                    {
+                                        Console.ForegroundColor = ConsoleColor.Cyan;
+                                        Console.WriteLine("\nInvalid input. Please enter 'sneak' or 'force'.");
+                                        Console.ResetColor();
+                                        arasakaTowerChoice = Console.ReadLine();
+                                    }
+
+                                    if (arasakaTowerChoice.ToLower() == "sneak")
+                                    {
+                                        Console.WriteLine("\nYou successfully sneak into the Arasaka tower and gather crucial information about the bank. Unfortunately, on your way out, you encounter one of Arasaka's best security measures: Nanoclaw, a cybernetically enhanced tiger. You notice something resembling a gamepad on the desk next to you. Will you try to reach for it or make a run for it? (reach/run)");
+                                        string nanoclawChoice = Console.ReadLine();
+
+                                        while (nanoclawChoice.ToLower() != "reach" && nanoclawChoice.ToLower() != "run")
+                                        {
+                                            Console.ForegroundColor = ConsoleColor.Cyan;
+                                            Console.WriteLine("\nInvalid input. Please enter 'reach' or 'run'.");
+                                            Console.ResetColor();
+                                            nanoclawChoice = Console.ReadLine();
+                                        }
+
+                                        if (nanoclawChoice.ToLower() == "reach")
+                                        {
+                                            // Pokemon battle scenario
+                                            bool continuePokemon = true;
+                                            var cyberblaze = new Pokemon("Cyberblaze", 180, 40, 40);
+                                            var nanoclaw = new Pokemon("Nanoclaw", 200, 50, 50);
+                                            string choice;
+
+                                            Console.WriteLine("\nAs you reach out, your hand successfully grasps the control panel, revealing its true nature as the interface for Cyberblaze, a magnificent cybernetically enhanced horse!");
+                                            Console.WriteLine("\nYou select Nanoclaw as the target and are presented with a selection of four moves: Volt Tackle, an electric-type attack move; Inferno Blast, a powerful fire-type attack move; Charge Up, a move that boosts your attack; and System Restore, a move that provides healing abilities.");
+
+                                            while (continuePokemon)
+                                            {
+                                                Console.WriteLine("\nChoose Cyberblaze's move: (1) Volt Tackle, (2) Inferno Blast [" + cyberblaze.InfernoBlastUses + "/5], (3) Charge Up, (4) System Restore");
+                                                choice = Console.ReadLine();
+
+                                                switch (choice)
+                                                {
+                                                    case "1":
+                                                        cyberblaze.VoltTackle(nanoclaw);
+                                                        break;
+                                                    case "2":
+                                                        cyberblaze.InfernoBlast(nanoclaw);
+                                                        break;
+                                                    case "3":
+                                                        cyberblaze.ChargeUp();
+                                                        break;
+                                                    case "4":
+                                                        cyberblaze.SystemRestore();
+                                                        break;
+                                                    default:
+                                                        Console.ForegroundColor = ConsoleColor.Red;
+                                                        Console.WriteLine("\nInvalid imput. Cyberblaze uses Volt Tackle by default.");
+                                                        Console.ResetColor();
+                                                        cyberblaze.VoltTackle(nanoclaw);
+                                                        break;
+                                                }
+
+                                                // Nanoclaw's moves and behavior
+                                                nanoclaw.MoveCounter++;
+                                                if (nanoclaw.MoveCounter % 10 == 0)
+                                                {
+                                                    nanoclaw.MegaBite(cyberblaze);
+                                                }
+                                                else if (nanoclaw.MoveCounter % 5 == 0 && nanoclaw.HP < nanoclaw.MaxHP)
+                                                {
+                                                    nanoclaw.CircuitReboot();
+                                                }
+                                                else if (nanoclaw.MoveCounter % 2 == 0)
+                                                {
+                                                    nanoclaw.CyberScratch(cyberblaze);
+                                                }
+                                                else
+                                                {
+                                                    nanoclaw.NanoBite(cyberblaze);
+                                                }
+
+                                                // Print Pokémon's HP
+                                                Console.WriteLine("Cyberblaze HP: " + cyberblaze.HP + "/" + cyberblaze.MaxHP);
+                                                Console.WriteLine("Nanoclaw HP: " + nanoclaw.HP + "/" + nanoclaw.MaxHP);
+
+                                                // Check if Cyberblaze is fainted
+                                                if (cyberblaze.CheckIfFainted())
+                                                {
+                                                    // Eternal Imprisonment ending
+                                                    Console.ForegroundColor = ConsoleColor.Red;
+                                                    Console.WriteLine("\nNanoclaw wins!");
+                                                    Console.WriteLine("\nThe Nanoclaw mercilessly obliterates Cyberblaze. You are captured by Arasaka's security forces and sentenced to life in prison. The chilling echoes of your demise resonate, forever etching a tale of loss and devastation.. Your name is forgotten, your legacy erased.");
+                                                    Console.ResetColor();
+                                                    continuePokemon = false;
+                                                    endings.Add("Eternal Imprisonment");
+                                                    Console.ForegroundColor = ConsoleColor.Magenta;
+                                                    Console.WriteLine("\nYou have unlocked the Eternal Imprisonment ending. Would you like to continue playing? (yes/no)");
+                                                    Console.ResetColor();
+                                                    string continueChoice = Console.ReadLine();
+                                                    while (continueChoice.ToLower() != "yes" && continueChoice.ToLower() != "no")
+                                                    {
+                                                        Console.ForegroundColor = ConsoleColor.Cyan;
+                                                        Console.WriteLine("\nInvalid input. Please enter 'yes' or 'no'.");
+                                                        Console.ResetColor();
+                                                        continueChoice = Console.ReadLine();
+                                                    }
+                                                    if (continueChoice.ToLower() == "yes")
+                                                    {
+                                                        Console.WriteLine("\nYou continue playing.");
+                                                        preparationsContinue = false;
+
+                                                    }
+                                                    else if (continueChoice.ToLower() == "no")
+                                                    {
+                                                        Console.WriteLine("\nYou quit the game.");
+                                                        gameContinue = false;
+                                                    }
+                                                }
+
+                                                // Check if Nanoclaw is fainted
+                                                if (nanoclaw.CheckIfFainted())
+                                                {
+                                                    Console.ForegroundColor = ConsoleColor.Yellow;
+                                                    Console.WriteLine("\nCyberblaze wins!");
+                                                    Console.ResetColor();
+                                                    continuePokemon = false;
+                                                    inventory.Add("Cyberblaze");
+                                                }
+                                            }
+                                        }
+                                        else if (nanoclawChoice.ToLower() == "run")
+                                        {
+                                            // Devoured Hope ending
+                                            Console.ForegroundColor = ConsoleColor.Red;
+                                            Console.WriteLine("\nYou run for your life, but Nanoclaw is too fast. You and Mia are torn to pieces.");
+                                            Console.ResetColor();
+                                            endings.Add("Devoured Hope");
+                                            Console.ForegroundColor = ConsoleColor.Magenta;
+                                            Console.WriteLine("\nYou have unlocked the Devoured Hope ending. Would you like to continue playing? (yes/no)");
+                                            Console.ResetColor();
+                                            string continueChoice = Console.ReadLine();
+                                            while (continueChoice.ToLower() != "yes" && continueChoice.ToLower() != "no")
+                                            {
+                                                Console.ForegroundColor = ConsoleColor.Cyan;
+                                                Console.WriteLine("\nInvalid input. Please enter 'yes' or 'no'.");
+                                                Console.ResetColor();
+                                                continueChoice = Console.ReadLine();
+                                            }
+                                            if (continueChoice.ToLower() == "yes")
+                                            {
+                                                Console.WriteLine("\nYou continue playing.");
+                                                preparationsContinue = false;
+
+                                            }
+                                            else if (continueChoice.ToLower() == "no")
+                                            {
+                                                Console.WriteLine("\nYou quit the game.");
+                                                gameContinue = false;
+                                            }
+                                        }
+                                    }
+                                    else if (arasakaTowerChoice.ToLower() == "force")
+                                    {
+                                        // Overpowered Resistance ending
+                                        Console.ForegroundColor = ConsoleColor.Red;
+                                        Console.WriteLine($"\nMia was unfortunately shot while trying to breach the highly advanced security systems of Arasaka. Despite your best efforts, both of you were overwhelmed by Arasaka's powerful mercenaries. Your sacrifice would be remembered as a courageous stand against impossible odds, inspiring others to fight against oppression.");
+                                        Console.ResetColor();
+                                        endings.Add("Overpowered Resistance");
+                                        Console.ForegroundColor = ConsoleColor.Magenta;
+                                        Console.WriteLine("\nYou have unlocked the Overpowered Resistance ending. Would you like to continue playing? (yes/no)");
+                                        Console.ResetColor();
+                                        string continueChoice = Console.ReadLine();
+                                        while (continueChoice.ToLower() != "yes" && continueChoice.ToLower() != "no")
+                                        {
+                                            Console.ForegroundColor = ConsoleColor.Cyan;
+                                            Console.WriteLine("\nInvalid input. Please enter 'yes' or 'no'.");
+                                            Console.ResetColor();
+                                            continueChoice = Console.ReadLine();
+                                        }
+                                        if (continueChoice.ToLower() == "yes")
+                                        {
+                                            Console.WriteLine("\nYou continue playing.");
+                                            preparationsContinue = false;
+
+                                        }
+                                        else if (continueChoice.ToLower() == "no")
+                                        {
+                                            Console.WriteLine("\nYou quit the game.");
+                                            gameContinue = false;
+                                        }
+                                    }
                                 }
                                 else if (locationChoice == "undercity")
                                 {
-                                    Preparation undercityPreparation = new UndercityPreparation();
-                                    undercityPreparation.Prepare();
+                                    Console.WriteLine("\nWhile navigating the treacherous Undercity, an Arasaka drone ambushes you. Will you shoot it down or employ your hacking skills to gain control? (shoot/hack)");
+                                    string droneChoice = Console.ReadLine();
+
+                                    while (droneChoice.ToLower() != "shoot" && droneChoice.ToLower() != "hack")
+                                    {
+                                        Console.ForegroundColor = ConsoleColor.Cyan;
+                                        Console.WriteLine("\nInvalid input. Please enter 'shoot' or 'hack'.");
+                                        Console.ResetColor();
+                                        droneChoice = Console.ReadLine();
+                                    }
+
+                                    if (droneChoice.ToLower() == "shoot")
+                                    {
+                                        // Devastating Swarm ending
+                                        Console.ForegroundColor = ConsoleColor.Red;
+                                        Console.WriteLine("\nYou shoot down the drone, but its distress signal brings a swarm of reinforcements. Overwhelmed, you and Dex tragically fall in the ensuing battle, leaving a legacy of unwavering determination against insurmountable odds.");
+                                        Console.ResetColor();
+                                        endings.Add("Devastating Swarm");
+                                        Console.ForegroundColor = ConsoleColor.Magenta;
+                                        Console.WriteLine("\nYou have unlocked the Devastating Swarm ending. Would you like to continue playing? (yes/no)");
+                                        Console.ResetColor();
+                                        string continueChoice = Console.ReadLine();
+                                        while (continueChoice.ToLower() != "yes" && continueChoice.ToLower() != "no")
+                                        {
+                                            Console.ForegroundColor = ConsoleColor.Cyan;
+                                            Console.WriteLine("\nInvalid input. Please enter 'yes' or 'no'.");
+                                            Console.ResetColor();
+                                            continueChoice = Console.ReadLine();
+                                        }
+                                        if (continueChoice.ToLower() == "yes")
+                                        {
+                                            Console.WriteLine("\nYou continue playing.");
+                                            preparationsContinue = false;
+
+                                        }
+                                        else if (continueChoice.ToLower() == "no")
+                                        {
+                                            Console.WriteLine("\nYou quit the game.");
+                                            gameContinue = false;
+                                        }
+                                    }
+                                    else if (droneChoice.ToLower() == "hack")
+                                    {
+                                        PlayHangman(inventory, endings, ref preparationsContinue, ref gameContinue);
+                                    }
+                                    else
+                                    {
+                                        Console.ForegroundColor = ConsoleColor.Cyan;
+                                        Console.WriteLine("\nInvalid input. Please enter 'shoot' or 'hack'.");
+                                        Console.ResetColor();
+                                    }
                                 }
                                 else if (locationChoice == "market")
                                 {
-                                    Preparation nightMarketPreparation = new NightMarketPreparation();
-                                    nightMarketPreparation.Prepare();
+                                    Console.WriteLine("\nAs you wander through the night market, you see two people. A figure in the shadow and a little girl. Who will you ask for information? (figure/girl)");
+                                    string nightApproach = Console.ReadLine();
+
+                                    while (nightApproach.ToLower() != "figure" && nightApproach.ToLower() != "girl")
+                                    {
+                                        Console.ForegroundColor = ConsoleColor.Cyan;
+                                        Console.WriteLine("\nInvalid input. Please enter 'figure' or 'girl'.");
+                                        Console.ResetColor();
+                                        nightApproach = Console.ReadLine();
+                                    }
+
+                                    if (nightApproach.ToLower() == "figure")
+                                    {
+                                        PlayTicTacToe(inventory, endings, ref preparationsContinue, ref gameContinue);
+                                    }
+                                    else if (nightApproach.ToLower() == "girl")
+                                    {
+                                        // Deceptive Innocence ending
+                                        Console.ForegroundColor = ConsoleColor.Red;
+                                        Console.WriteLine("\r\nYou approach the innocent-looking little girl, she suddenly reveals a wicked smile and swiftly jabbsyou with a seemingly harmless toy. The poison coursing through your veins, your vision blurred, and darkness enveloped him, your final choice haunting you for eternity.");
+                                        Console.ResetColor();
+                                       
+                                        endings.Add("Deceptive Innocence");
+                                        Console.ForegroundColor = ConsoleColor.Magenta;
+                                        Console.WriteLine("\nYou have unlocked the Deceptive Innocence ending. Would you like to continue playing? (yes/no)");
+                                        Console.ResetColor();
+                                        string continueChoice = Console.ReadLine();
+                                        while (continueChoice.ToLower() != "yes" && continueChoice.ToLower() != "no")
+                                        {
+                                            Console.ForegroundColor = ConsoleColor.Cyan;
+                                            Console.WriteLine("\nInvalid input. Please enter 'yes' or 'no'.");
+                                            Console.ResetColor();
+                                            continueChoice = Console.ReadLine();
+                                        }
+                                        if (continueChoice.ToLower() == "yes")
+                                        {
+                                            Console.WriteLine("\nYou continue playing.");
+                                            preparationsContinue = false;
+
+                                        }
+                                        else if (continueChoice.ToLower() == "no")
+                                        {
+                                            Console.WriteLine("\nYou quit the game.");
+                                            gameContinue = false;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        Console.ForegroundColor = ConsoleColor.Cyan;
+                                        Console.WriteLine("\nInvalid input. Please enter a valid answer.");
+                                        Console.ResetColor();
+                                    }
                                 }
                                 else
                                 {
@@ -228,472 +627,286 @@ namespace Cyberpunk_Urban_Legacy
                                 }
                             }
                         }
-                        else if (preparationChoice.ToLower() == "heist")
+                    }
+                    else if (importantChoice.ToLower() == "no")
+                    {
+                        // Dreams Unfulfilled ending
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.WriteLine($"\nYou decide it's too risky. You continue your life in the streets of Night City, always wondering what might have been.");
+                        Console.ResetColor();
+                        endings.Add("Dreams Unfulfilled");
+                        Console.ForegroundColor = ConsoleColor.Magenta;
+                        Console.WriteLine("\nYou have unlocked the Dreams Unfulfilled ending. Would you like to continue playing? (yes/no)");
+                        Console.ResetColor();
+                        string continueChoice = Console.ReadLine();
+                        while (continueChoice.ToLower() != "yes" && continueChoice.ToLower() != "no")
                         {
-                            // Player chooses to proceed directly to the heist
-                            Console.WriteLine("\nYou choose to proceed to the heist.");
-
-                            if (inventory.Count == 0)
-                            {
-                                // Player has no items and proceeds alone
-                                Heist aloneHeist = new AloneHeist();
-                                aloneHeist.Play();
-                                break;
-                            }
-                            else
-                            {
-                                if (inventory.Contains("Cyberblaze") && inventory.Contains("AdminKey"))
-                                {
-                                    Console.WriteLine("\nWill you bring anyone or go alone? (mia/cipher/mia¨cipher/alone)");
-
-                                    string helpChoice = Console.ReadLine();
-
-                                    while (helpChoice.ToLower() != "mia" && helpChoice.ToLower() != "cipher" && helpChoice.ToLower() != "miacipher" && helpChoice.ToLower() != "alone")
-                                    {
-                                        Console.ForegroundColor = ConsoleColor.Cyan;
-                                        Console.WriteLine("\nInvalid input. Please enter a valid choice.");
-                                        Console.ResetColor();
-                                        helpChoice = Console.ReadLine();
-                                    }
-
-                                    if (helpChoice.ToLower() == "mia")
-                                    {
-                                        Heist miaHeist = new MiaHeist();
-                                        miaHeist.Play();
-                                        break;
-                                    }
-                                    else if (helpChoice.ToLower() == "cipher")
-                                    {
-                                        Heist cipherHeist = new CipherHeist();
-                                        cipherHeist.Play();
-                                        break;
-                                    }
-                                    else if (helpChoice.ToLower() == "miacipher")
-                                    {
-                                        Heist miaCipherHeist = new MiaCipherHeist();
-                                        miaCipherHeist.Play();
-                                        break;
-                                    }
-                                    else if (helpChoice.ToLower() == "alone")
-                                    {
-                                        Heist aloneHeist = new AloneHeist();
-                                        aloneHeist.Play();
-                                        break;
-                                    }
-                                }
-                                else if (inventory.Contains("Cyberblaze") && inventory.Contains("Katana"))
-                                {
-                                    Console.WriteLine("\nWill you bring anyone or go alone? (mia/dex/miadex/alone)");
-
-                                    string helpChoice = Console.ReadLine();
-
-                                    while (helpChoice.ToLower() != "mia" && helpChoice.ToLower() != "dex" && helpChoice.ToLower() != "miadex" && helpChoice.ToLower() != "alone")
-                                    {
-                                        Console.ForegroundColor = ConsoleColor.Cyan;
-                                        Console.WriteLine("\nInvalid input. Please enter a valid choice.");
-                                        Console.ResetColor();
-                                        helpChoice = Console.ReadLine();
-                                    }
-
-                                    if (helpChoice.ToLower() == "mia")
-                                    {
-                                        Heist miaHeist = new MiaHeist();
-                                        miaHeist.Play();
-                                        break;
-                                    }
-                                    else if (helpChoice.ToLower() == "dex")
-                                    {
-                                        Heist dexHeist = new DexHeist();
-                                        dexHeist.Play();
-                                        break;
-                                    }
-                                    else if (helpChoice.ToLower() == "miadex")
-                                    {
-                                        Heist miaDexHeist = new MiaDexHeist();
-                                        miaDexHeist.Play();
-                                        break;
-                                    }
-                                    else if (helpChoice.ToLower() == "alone")
-                                    {
-                                        Heist aloneHeist = new AloneHeist();
-                                        aloneHeist.Play();
-                                        break;
-                                    }
-                                }
-                                else if (inventory.Contains("AdminKey") && inventory.Contains("Katana"))
-                                {
-                                    Console.WriteLine("\nWill you bring anyone or go alone? (dex/cipher/dexcipher/alone)");
-
-                                    string helpChoice = Console.ReadLine();
-
-                                    while (helpChoice.ToLower() != "cipher" && helpChoice.ToLower() != "dex" && helpChoice.ToLower() != "dexcipher" && helpChoice.ToLower() != "alone")
-                                    {
-                                        Console.ForegroundColor = ConsoleColor.Cyan;
-                                        Console.WriteLine("\nInvalid input. Please enter a valid choice.");
-                                        Console.ResetColor();
-                                        helpChoice = Console.ReadLine();
-                                    }
-
-                                    if (helpChoice.ToLower() == "cipher")
-                                    {
-                                        Heist cipherHeist = new CipherHeist();
-                                        cipherHeist.Play();
-                                        break;
-                                    }
-                                    else if (helpChoice.ToLower() == "dex")
-                                    {
-                                        Heist dexHeist = new DexHeist();
-                                        dexHeist.Play();
-                                        break;
-                                    }
-                                    else if (helpChoice.ToLower() == "dexcipher")
-                                    {
-                                        Heist dexCipherHeist = new DexCipherHeist();
-                                        dexCipherHeist.Play();
-                                        break;
-                                    }
-                                    else if (helpChoice.ToLower() == "alone")
-                                    {
-                                        Heist aloneHeist = new AloneHeist();
-                                        aloneHeist.Play();
-                                        break;
-                                    }
-                                }
-                                else if (inventory.Contains("AdminKey"))
-                                {
-                                    string helpChoice = Console.ReadLine();
-
-                                    while (helpChoice.ToLower() != "cipher" && helpChoice.ToLower() != "alone")
-                                    {
-                                        Console.ForegroundColor = ConsoleColor.Cyan;
-                                        Console.WriteLine("\nInvalid input. Please enter a valid choice.");
-                                        Console.ResetColor();
-                                        helpChoice = Console.ReadLine();
-                                    }
-
-                                    if (helpChoice.ToLower() == "cipher")
-                                    {
-                                        Heist cipherHeist = new CipherHeist();
-                                        cipherHeist.Play();
-                                        break;
-                                    }
-                                    else if (helpChoice.ToLower() == "alone")
-                                    {
-                                        Heist aloneHeist = new AloneHeist();
-                                        aloneHeist.Play();
-                                        break;
-                                    }
-                                }
-                                else if (inventory.Contains("Cyberblaze"))
-                                {
-                                    string helpChoice = Console.ReadLine();
-
-                                    while (helpChoice.ToLower() != "mia" && helpChoice.ToLower() != "alone")
-                                    {
-                                        Console.ForegroundColor = ConsoleColor.Cyan;
-                                        Console.WriteLine("\nInvalid input. Please enter a valid choice.");
-                                        Console.ResetColor();
-                                        helpChoice = Console.ReadLine();
-                                    }
-
-                                    if (helpChoice.ToLower() == "mia")
-                                    {
-                                        Heist miaHeist = new MiaHeist();
-                                        miaHeist.Play();
-                                        break;
-                                    }
-                                    else if (helpChoice.ToLower() == "alone")
-                                    {
-                                        Heist aloneHeist = new AloneHeist();
-                                        aloneHeist.Play();
-                                        break;
-                                    }
-                                }
-                                else if (inventory.Contains("Katana"))
-                                {
-                                    string helpChoice = Console.ReadLine();
-
-                                    while (helpChoice.ToLower() != "dex" && helpChoice.ToLower() != "alone")
-                                    {
-                                        Console.ForegroundColor = ConsoleColor.Cyan;
-                                        Console.WriteLine("\nInvalid input. Please enter a valid choice.");
-                                        Console.ResetColor();
-                                        helpChoice = Console.ReadLine();
-                                    }
-
-                                    if (helpChoice.ToLower() == "dex")
-                                    {
-                                        Heist dexHeist = new DexHeist();
-                                        dexHeist.Play();
-                                        break;
-                                    }
-                                    else if (helpChoice.ToLower() == "alone")
-                                    {
-                                        Heist aloneHeist = new AloneHeist();
-                                        aloneHeist.Play();
-                                        break;
-                                    }
-                                }
-                            }
+                            Console.ForegroundColor = ConsoleColor.Cyan;
+                            Console.WriteLine("\nInvalid input. Please enter 'yes' or 'no'.");
+                            Console.ResetColor();
+                            continueChoice = Console.ReadLine();
                         }
+                        if (continueChoice.ToLower() == "yes")
+                        {
+                            Console.WriteLine("\nYou continue playing.");
+                            preparationsContinue = false;
+
+                        }
+                        else if (continueChoice.ToLower() == "no")
+                        {
+                            Console.WriteLine("\nYou quit the game.");
+                            gameContinue = false;
+                        }
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Cyan;
+                        Console.WriteLine("\nInvalid input. Please enter 'yes' or 'no'.");
+                        Console.ResetColor();
                     }
                 }
             }
-            else if (importantChoice.ToLower() == "no")
+        }
+
+        static void PlayHangman(List<string> inventory, List<string> endings, ref bool preparationsContinue, ref bool gameContinue)
+        {
+            // Array of possible passwords for the game
+            string[] passwords = {
+                "NeonShadow",
+                "CodeCyber",
+                "SynthWave",
+                "ByteBlade",
+                "DigitalNexus",
+                "CyberPulse",
+                "QuantumByte",
+                "Cybernetica",
+                "TechBlitz",
+                "NanoCipher"
+            };
+
+            string password;
+            char[] maskedPassword;
+            int attempts;
+            List<char> guessedLetters;
+
+            Console.WriteLine("You have ten attempts to guess the password and breach the drone's system.\n");
+
+            Random random = new Random();
+            int index = random.Next(passwords.Length);
+            password = passwords[index];
+
+            maskedPassword = new char[password.Length];
+            for (int i = 0; i < password.Length; i++)
             {
-                // Dreams Unfulfilled ending
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine($"\nYou decide it's too risky. You continue your life in the streets of Night City, always wondering what might have been.");
-                Console.ResetColor();
-                // add Dreams Unfulfilled to endings list !!!
-            }
-            else
-            {
-                Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.WriteLine("\nInvalid input. Please enter 'yes' or 'no'.");
-                Console.ResetColor();
-            }
-        }
-    }
-
-    // Abstract base class for heist scenarios
-    abstract class Heist
-    {
-        // Abstract method for playing the heist
-        public abstract void Play();
-    }
-
-    // Heist scenario with Mia
-    class MiaHeist : Heist
-    {
-        public override void Play()
-        {
-            // Code for the heist with Mia !!!
-        }
-    }
-
-    // Heist scenario with Dex
-    class DexHeist : Heist
-    {
-        public override void Play()
-        {
-            // Code for the heist with Dex !!!
-        }
-    }
-
-    // Heist scenario with Cipher
-    class CipherHeist : Heist
-    {
-        public override void Play()
-        {
-            // Code for the heist with Cipher !!!
-        }
-    }
-
-    // Heist scenario with Mia and Dex
-    class MiaDexHeist : Heist
-    {
-        public override void Play()
-        {
-            // Code for the heist with Mia and Dex !!!
-        }
-    }
-
-    // Heist scenario with Mia and Cipher
-    class MiaCipherHeist : Heist
-    {
-        public override void Play()
-        {
-            // Code for the heist with Mia and Cipher !!!
-        }
-    }
-
-    // Heist scenario with Dex and Cipher
-    class DexCipherHeist : Heist
-    {
-        public override void Play()
-        {
-            // Code for the heist with Dex and Cipher !!!
-        }
-    }
-
-    // Heist scenario with everyone
-    class EveryoneHeist : Heist
-    {
-        public override void Play()
-        {
-            // Code for the heist with everyone !!!
-        }
-    }
-
-    // Heist scenario alone
-    class AloneHeist : Heist
-    {
-        public override void Play()
-        {
-            // Code for the heist alone !!!
-        }
-    }
-
-    // Abstract base class for preparation scenarios
-    abstract class Preparation
-    {
-        // Abstract method for preparation
-        public abstract void Prepare();
-    }
-
-    // Preparation scenario at Night Market with Dex
-    class NightMarketPreparation : Preparation
-    {
-        public override void Prepare()
-        {
-            // Code for the Night Market preparation with Dex !!!
-        }
-    }
-
-    // Preparation scenario in Undercity with Cipher
-    class UndercityPreparation : Preparation
-    {
-        public override void Prepare()
-        {
-            // Code for the Undercity preparation with Cipher !!!
-        }
-    }
-
-    // Preparation scenario at Arasaka Tower with Mia
-    class ArasakaTowerPreparation : Preparation
-    {
-        public override void Prepare()
-        {
-            bool continueBattle = true;
-
-            Console.WriteLine("\nYou arrive at Arasaka Tower. The security is tight. You need to find a way to get in. Do you sneak in or force your way in? (sneak/force)");
-            string arasakaTowerChoice = Console.ReadLine();
-
-            while (arasakaTowerChoice.ToLower() != "sneak" && arasakaTowerChoice.ToLower() != "force")
-            {
-                Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.WriteLine("\nInvalid input. Please enter 'sneak' or 'force'.");
-                Console.ResetColor();
-                arasakaTowerChoice = Console.ReadLine();
-            }
-
-            if (arasakaTowerChoice.ToLower() == "sneak")
-            {
-                Console.WriteLine("\nYou successfully sneak into the Arasaka tower and gather crucial information about the bank. Unfortunately, on your way out, you encounter one of Arasaka's best security measures: Nanoclaw, a cybernetically enhanced tiger. You notice something resembling a gamepad on the desk next to you. Will you try to reach for it or make a run for it? (reach/run)");
-                string nanoclawChoice = Console.ReadLine();
-
-                while (nanoclawChoice.ToLower() != "reach" && nanoclawChoice.ToLower() != "run")
+                // Initialize masked password with asterisks (*) except for spaces
+                if (password[i] != ' ')
                 {
-                    Console.ForegroundColor = ConsoleColor.Cyan;
-                    Console.WriteLine("\nInvalid input. Please enter 'reach' or 'run'.");
-                    Console.ResetColor();
-                    nanoclawChoice = Console.ReadLine();
+                    maskedPassword[i] = '*';
                 }
-
-                if (nanoclawChoice.ToLower() == "reach")
+                else
                 {
-                    // Pokemon battle scenario
-                    var cyberblaze = new Pokemon("Cyberblaze", 180, 40, 40);
-                    var nanoclaw = new Pokemon("Nanoclaw", 200, 50, 50);
-                    string choice;
+                    maskedPassword[i] = ' ';
+                }
+            }
 
-                    Console.WriteLine("\nAs you reach out, your hand successfully grasps the control panel, revealing its true nature as the interface for Cyberblaze, a magnificent cybernetically enhanced horse!");
-                    Console.WriteLine("\nYou select Nanoclaw as the target and are presented with a selection of four moves: Volt Tackle, an electric-type attack move; Inferno Blast, a powerful fire-type attack move; Charge Up, a move that boosts your attack; and System Restore, a move that provides healing abilities.");
+            attempts = 10;
+            guessedLetters = new List<char>();
 
-                    while (continueBattle)
+            while (true)
+            {
+                Console.WriteLine("Attempts Left: " + attempts);
+                Console.WriteLine("Password: " + new string(maskedPassword));
+                Console.Write("Guess a letter: ");
+                char guess = char.ToUpper(Console.ReadKey().KeyChar);
+                Console.WriteLine();
+
+                if (char.IsLetter(guess))
+                {
+                    if (guessedLetters.Contains(guess))
                     {
-                        Console.WriteLine("\nChoose Cyberblaze's move: (1) Volt Tackle, (2) Inferno Blast [" + cyberblaze.InfernoBlastUses + "/5], (3) Charge Up, (4) System Restore");
-                        choice = Console.ReadLine();
+                        Console.WriteLine("You already guessed that letter. Try again.");
+                    }
+                    else
+                    {
+                        guessedLetters.Add(guess);
 
-                        switch (choice)
+                        bool correctGuess = false;
+                        for (int i = 0; i < password.Length; i++)
                         {
-                            case "1":
-                                cyberblaze.VoltTackle(nanoclaw);
-                                break;
-                            case "2":
-                                cyberblaze.InfernoBlast(nanoclaw);
-                                break;
-                            case "3":
-                                cyberblaze.ChargeUp();
-                                break;
-                            case "4":
-                                cyberblaze.SystemRestore();
-                                break;
-                            default:
-                                Console.ForegroundColor = ConsoleColor.Red;
-                                Console.WriteLine("\nInvalid imput. Cyberblaze uses Volt Tackle by default.");
+                            if (char.ToUpper(password[i]) == guess)
+                            {
+                                maskedPassword[i] = password[i];
+                                correctGuess = true;
+                            }
+                        }
+
+                        if (correctGuess)
+                        {
+                            if (new string(maskedPassword) == password)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                Console.WriteLine("Successfully hacking into the drone grants you access to an admin key to Arasaka's network.");
                                 Console.ResetColor();
-                                cyberblaze.VoltTackle(nanoclaw);
+                                inventory.Add("AdminKey");
                                 break;
-                        }
-
-                        // Nanoclaw's moves and behavior
-                        nanoclaw.MoveCounter++;
-                        if (nanoclaw.MoveCounter % 10 == 0)
-                        {
-                            nanoclaw.MegaBite(cyberblaze);
-                        }
-                        else if (nanoclaw.MoveCounter % 5 == 0 && nanoclaw.HP < nanoclaw.MaxHP)
-                        {
-                            nanoclaw.CircuitReboot();
-                        }
-                        else if (nanoclaw.MoveCounter % 2 == 0)
-                        {
-                            nanoclaw.CyberScratch(cyberblaze);
+                            }
                         }
                         else
                         {
-                            nanoclaw.NanoBite(cyberblaze);
-                        }
+                            Console.WriteLine("Incorrect guess!");
+                            attempts--;
 
-                        // Check if Cyberblaze is fainted
-                        if (cyberblaze.CheckIfFainted())
-                        {
-                            // Eternal Imprisonment ending
-                            Console.ForegroundColor = ConsoleColor.Red;
-                            Console.WriteLine("\nNanoclaw wins!");
-                            Console.WriteLine("\nThe Nanoclaw mercilessly obliterates Cyberblaze. You are captured by Arasaka's security forces and sentenced to life in prison. The chilling echoes of your demise resonate, forever etching a tale of loss and devastation.. Your name is forgotten, your legacy erased.");
-                            Console.ResetColor();
-                            continueBattle = false;
-                            // break the heist loop !!!
-                            // Add Eternal Imprisonment to endings list !!!
-                        }
+                            if (attempts <= 0)
+                            {
+                                // Fatal Encryption ending
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.WriteLine("Regrettably, your unsuccessful attempt to hack the drone triggers a fatal response, resulting in a wipe of memory that ends your life.");
+                                Console.ResetColor();
+                                endings.Add("Fatal Encryption");
+                                Console.ForegroundColor = ConsoleColor.Magenta;
+                                Console.WriteLine("\nYou have unlocked the Fatal Encryption ending. Would you like to continue playing? (yes/no)");
+                                Console.ResetColor();
+                                string continueChoice = Console.ReadLine();
+                                while (continueChoice.ToLower() != "yes" && continueChoice.ToLower() != "no")
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Cyan;
+                                    Console.WriteLine("\nInvalid input. Please enter 'yes' or 'no'.");
+                                    Console.ResetColor();
+                                    continueChoice = Console.ReadLine();
+                                }
+                                if (continueChoice.ToLower() == "yes")
+                                {
+                                    Console.WriteLine("\nYou continue playing.");
+                                    preparationsContinue = false;
 
-                        // Print Pokémon's HP
-                        Console.WriteLine("Cyberblaze HP: " + cyberblaze.HP + "/" + cyberblaze.MaxHP);
-                        Console.WriteLine("Nanoclaw HP: " + nanoclaw.HP + "/" + nanoclaw.MaxHP);
-
-                        // Check if Nanoclaw is fainted
-                        if (nanoclaw.CheckIfFainted())
-                        {
-                            Console.ForegroundColor = ConsoleColor.Yellow;
-                            Console.WriteLine("\nCyberblaze wins!");
-                            Console.ResetColor();
-                            continueBattle = false;
-                            // Add Cyberblaze to inventory !!!
+                                }
+                                else if (continueChoice.ToLower() == "no")
+                                {
+                                    Console.WriteLine("\nYou quit the game.");
+                                    gameContinue = false;
+                                }
+                                break;
+                            }
                         }
                     }
                 }
-                else if (nanoclawChoice.ToLower() == "run")
+                else
                 {
-                    // Devoured Hope ending
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("\nYou run for your life, but Nanoclaw is too fast. You and Mia are torn to pieces.");
-                    Console.ResetColor();
-                    // break the heist loop !!!
-                    // Add Devoured Hope to endings list !!!
+                    Console.WriteLine("Invalid input! Please enter a valid letter.");
                 }
+
+                Console.WriteLine();
             }
-            else if (arasakaTowerChoice.ToLower() == "force")
+        }
+
+        static void PlayTicTacToe(List<string> inventory, List<string> endings, ref bool preparationsContinue, ref bool gameContinue)
+        {
+            TicTacToeGame game = new TicTacToeGame();
+
+            while (true)
             {
-                // Overpowered Resistance ending
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine($"\nMia was unfortunately shot while trying to breach the highly advanced security systems of Arasaka. Despite your best efforts, both of you were overwhelmed by Arasaka's powerful mercenaries. Your sacrifice would be remembered as a courageous stand against impossible odds, inspiring others to fight against oppression.");
-                Console.ResetColor();
-                // break the heist loop !!!
-                // Add Overpowered Resistance to endings list !!!
+                game.DrawBoard();
+
+                if (game.CheckWin('X'))
+                {
+                    Console.WriteLine("\nAs the final move falls into place, the silence hangs heavy in the air. The enigmatic figure, Vex, reveals a twisted smile. But wait! The impossible has happened. Victory is yours! A surge of relief washes over you as you escape the clutches of Vex's deadly game.");
+                    inventory.Add("Katana");
+                    break;
+                }
+                else if (game.CheckWin('O'))
+                {
+                    // Echoing Laughter ending
+                    Console.WriteLine("\nDefeat engulfs you as the realization sinks in. Vex's twisted amusement grows, relishing in your demise. The slashes come swiftly, leaving no chance for redemption. Darkness takes hold, sealing your fate. Vex's laughter echoes through the Undercity, a chilling reminder of the price paid for failure.");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("\nDex selflessly intervenes, taking the fatal blow meant for you. His sacrifice fuels your determination to continue the fight against the corporations, carrying the weight of his memory.");
+                    Console.ResetColor();
+                    endings.Add("Echoing Laughter");
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    Console.WriteLine("\nYou have unlocked the Echoing Laughter ending. Would you like to continue playing? (yes/no)");
+                    Console.ResetColor();
+                    string continueChoice = Console.ReadLine();
+                    while (continueChoice.ToLower() != "yes" && continueChoice.ToLower() != "no")
+                    {
+                        Console.ForegroundColor = ConsoleColor.Cyan;
+                        Console.WriteLine("\nInvalid input. Please enter 'yes' or 'no'.");
+                        Console.ResetColor();
+                        continueChoice = Console.ReadLine();
+                    }
+                    if (continueChoice.ToLower() == "yes")
+                    {
+                        Console.WriteLine("\nYou continue playing.");
+                        preparationsContinue = false;
+
+                    }
+                    else if (continueChoice.ToLower() == "no")
+                    {
+                        Console.WriteLine("\nYou quit the game.");
+                        gameContinue = false;
+                    }
+                }
+                else if (game.IsBoardFull())
+                {
+                    // Twisted Stalemate ending
+                    Console.WriteLine("\nThe game reaches a stalemate, a draw that should bring relief. However, Vex's sadistic nature knows no bounds. Ignoring the rules, Vex strikes with ruthless fury, mercilessly slaying you. The silence is shattered by their chilling laughter, as the enigmatic figure revels in the twisted delight of an unfinished game. The chance for a wish slips away, forever lost in the realm of shattered hopes and cruel fate.");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("\nDex selflessly intervenes, taking the fatal blow meant for you. His sacrifice fuels your determination to continue the fight against the corporations, carrying the weight of his memory.");
+                    Console.ResetColor();
+                    endings.Add("Twisted Stalemate");
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    Console.WriteLine("\nYou have unlocked the Twisted Stalemate ending. Would you like to continue playing? (yes/no)");
+                    Console.ResetColor();
+                    string continueChoice = Console.ReadLine();
+                    while (continueChoice.ToLower() != "yes" && continueChoice.ToLower() != "no")
+                    {
+                        Console.ForegroundColor = ConsoleColor.Cyan;
+                        Console.WriteLine("\nInvalid input. Please enter 'yes' or 'no'.");
+                        Console.ResetColor();
+                        continueChoice = Console.ReadLine();
+                    }
+                    if (continueChoice.ToLower() == "yes")
+                    {
+                        Console.WriteLine("\nYou continue playing.");
+                        preparationsContinue = false;
+
+
+                    }
+                    else if (continueChoice.ToLower() == "no")
+                    {
+                        Console.WriteLine("\nYou quit the game.");
+                        gameContinue = false;
+                    }
+                }
+
+                if (game.GetCurrentPlayer() == 'X')
+                    PlayerMove(game);
+                else
+                    ComputerMove(game);
             }
+        }
+
+        static void PlayerMove(TicTacToeGame game)
+        {
+            Console.WriteLine("\nEnter a number (1-9) to make your move: ");
+            int position;
+            bool isValidInput = int.TryParse(Console.ReadLine(), out position);
+            position--;
+
+            if (isValidInput && game.MakeMove(position))
+            {
+                game.DrawBoard();
+            }
+            else
+            {
+                Console.WriteLine("\nInvalid move! Try again.");
+                PlayerMove(game);
+            }
+        }
+
+        static void ComputerMove(TicTacToeGame game)
+        {
+            int position = game.GetRandomMove();
+            game.MakeMove(position);
+            game.DrawBoard();
         }
     }
 }
