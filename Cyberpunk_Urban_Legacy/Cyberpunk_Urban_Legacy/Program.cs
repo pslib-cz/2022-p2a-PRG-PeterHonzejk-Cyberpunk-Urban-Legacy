@@ -40,23 +40,31 @@ namespace Cyberpunk_Urban_Legacy
             if (File.Exists(savePath))
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("\nThere is a save game present. Do you want to load it? (yes/no)");
+                Console.WriteLine("\nThere is a save game present. Do you want to load it or overwrite it? (load/overwrite)");
                 Console.ResetColor();
                 string answer = Console.ReadLine();
 
-                if (answer.ToLower() == "yes")
+                if (answer.ToLower() == "load")
                 {
                     var gameData = LoadGame();
                     endings = (List<string>)gameData["endings"];
                     playerName = (string)gameData["playerName"];
                 }
-                else
+                else if (answer.ToLower() == "overwrite")
                 {
                     // Prompt for player's name
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.WriteLine("\nWelcome to Night City. What's your name?");
                     Console.ResetColor();
                     playerName = Console.ReadLine();
+                }
+
+                while (answer.ToLower() != "load" && answer.ToLower() != "overwrite")
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("\nInvalid input. Please type 'load' or 'overwrite'.");
+                    Console.ResetColor();
+                    answer = Console.ReadLine();
                 }
             }
 
@@ -73,6 +81,7 @@ namespace Cyberpunk_Urban_Legacy
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.WriteLine("\nCongratulations!");
                     Console.ResetColor();
+                    // i gotta add something here
                     gameContinue = false;
                 }
                 else
