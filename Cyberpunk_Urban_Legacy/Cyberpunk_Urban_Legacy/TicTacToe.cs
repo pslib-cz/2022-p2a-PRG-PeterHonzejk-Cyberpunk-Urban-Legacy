@@ -116,6 +116,5 @@ namespace Cyberpunk_Urban_Legacy
 
             return position;
         }
-
     }
 }
