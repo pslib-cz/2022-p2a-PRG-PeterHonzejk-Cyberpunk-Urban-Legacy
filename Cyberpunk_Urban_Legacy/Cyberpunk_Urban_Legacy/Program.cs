@@ -81,8 +81,7 @@ namespace Cyberpunk_Urban_Legacy
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.WriteLine("\nCongratulations!");
                     Console.ResetColor();
-                    // i gotta add something here
-                    gameContinue = false;
+                    Environment.Exit(0);
                 }
                 else
                 {
@@ -95,14 +94,14 @@ namespace Cyberpunk_Urban_Legacy
                         Console.WriteLine("You have reached the following ending/s so far:");
                         Console.ResetColor();
 
-                        if (endings.Contains("Twisted Stalemate"))
-                        {
-                            Console.ForegroundColor = ConsoleColor.Red;
-                            Console.WriteLine("Twisted Stalemate");
-                            Console.ResetColor();
-                        }
+                    if (endings.Contains("Twisted Stalemate"))
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Twisted Stalemate");
+                        Console.ResetColor();
                     }
-                    if (endings.Contains("Eternal Imprisonmente"))
+                    }
+                    if (endings.Contains("Eternal Imprisonment"))
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("Eternal Imprisonment");
@@ -126,12 +125,6 @@ namespace Cyberpunk_Urban_Legacy
                         Console.WriteLine("Fatal Encryption");
                         Console.ResetColor();
                     }
-                    if (endings.Contains("Dreams Unfulfilled"))
-                    {
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("Dreams Unfulfilled");
-                        Console.ResetColor();
-                    }
                     if (endings.Contains("Deceptive Innocence"))
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
@@ -148,6 +141,18 @@ namespace Cyberpunk_Urban_Legacy
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("Overpowered Resistance");
+                        Console.ResetColor();
+                    }
+                    if (endings.Contains("Echoing Laughter"))
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Echoing Laughter");
+                        Console.ResetColor();
+                    }
+                    if (endings.Contains("Dreams Unfulfilled"))
+                    {
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.WriteLine("Dreams Unfulfilled");
                         Console.ResetColor();
                     }
                     if (endings.Contains("United Resolve"))
@@ -179,13 +184,7 @@ namespace Cyberpunk_Urban_Legacy
                         Console.ForegroundColor = ConsoleColor.Yellow;
                         Console.WriteLine("Joint Sacrifice");
                         Console.ResetColor();
-                    }
-                    if (endings.Contains("Echoing Laughter"))
-                    {
-                        Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.WriteLine("Echoing Laughter");
-                        Console.ResetColor();
-                    }
+                    } 
                     if (endings.Contains("Covert Alliance"))
                     {
                         Console.ForegroundColor = ConsoleColor.Yellow;
@@ -240,9 +239,21 @@ namespace Cyberpunk_Urban_Legacy
                                 Console.ForegroundColor = ConsoleColor.Yellow;
                                 Console.WriteLine("\nAs the neon-lit streets of Night City cast an eerie glow, you and Mia embark on your audacious heist to infiltrate the heavily fortified Arasaka Bank. With the cybernetically enhanced horse, Cyberblaze, by your side, Mia's expertise as a Techie shines as you navigate the complex security systems. In a critical moment, Mia sacrifices herself to save you, diverting the attention of Arasaka's forces. In the chaos that ensues, the Digital Heart is destroyed. Heartbroken but determined, you vow to honour Mia's memory by becoming the legend that Night City needs, fighting to bring down the oppressive corporations and restore freedom to the city.");
                                 Console.ResetColor();
-                                endings.Add("Heart of Shadows");
-                                Console.ForegroundColor = ConsoleColor.Magenta;
-                                Console.WriteLine("\nYou have reached the Heart of Shadows ending. Would you like to continue playing? (yes/no)");
+                                if (endings.Contains("Heart of Shadows"))
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Magenta;
+                                    Console.WriteLine("\nYou have already reached the Heart of Shadows ending.");
+                                    Console.ResetColor();
+                                }
+                                else
+                                {
+                                    endings.Add("Heart of Shadows");
+                                    Console.ForegroundColor = ConsoleColor.Magenta;
+                                    Console.WriteLine("\nYou have reached the Heart of Shadows ending.");
+                                    Console.ResetColor();
+                                }
+                                Console.ForegroundColor = ConsoleColor.Cyan;
+                                Console.WriteLine("Would you like to continue playing ? (yes/no)");
                                 Console.ResetColor();
                                 string continueChoice = Console.ReadLine();
                                 while (continueChoice.ToLower() != "yes" && continueChoice.ToLower() != "no")
@@ -270,9 +281,21 @@ namespace Cyberpunk_Urban_Legacy
                                 Console.ForegroundColor = ConsoleColor.Yellow;
                                 Console.WriteLine("\nUnder the cover of darkness, you and Cipher set your sights on the Arasaka Bank, armed with the Admin Key and your hacking prowess. Your seamless teamwork allows you to bypass the most advanced security measures. As you approach the vault, you face relentless opposition from Arasaka's private security forces. In a critical moment, Cipher selflessly sacrifices themselves to ensure your escape, buying precious time for you to seize the Digital Heart. Despite the artefact’s destruction, you are determined to carry on Cipher's legacy, exposing the corruption of the corporations and becoming a symbol of resistance in Night City.");
                                 Console.ResetColor();
-                                endings.Add("Code of Sacrifice");
-                                Console.ForegroundColor = ConsoleColor.Magenta;
-                                Console.WriteLine("\nYou have reached the Code of Sacrifice ending. Would you like to continue playing? (yes/no)");
+                                if (endings.Contains("Code of Sacrifice"))
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Magenta;
+                                    Console.WriteLine("\nYou have already reached the Code of Sacrifice ending.");
+                                    Console.ResetColor();
+                                }
+                                else
+                                {
+                                    endings.Add("Code of Sacrifice");
+                                    Console.ForegroundColor = ConsoleColor.Magenta;
+                                    Console.WriteLine("\nYou have reached the Code of Sacrifice ending.");
+                                    Console.ResetColor();
+                                }
+                                Console.ForegroundColor = ConsoleColor.Cyan;
+                                Console.WriteLine("Would you like to continue playing ? (yes/no)");
                                 Console.ResetColor();
                                 string continueChoice = Console.ReadLine();
                                 while (continueChoice.ToLower() != "yes" && continueChoice.ToLower() != "no")
@@ -300,9 +323,21 @@ namespace Cyberpunk_Urban_Legacy
                                 Console.ForegroundColor = ConsoleColor.Yellow;
                                 Console.WriteLine("\nWith the open road in your sights, you and Dex embark on your daring heist, with Dex offering their prized Katana as a symbol of trust and camaraderie. Dex's nomadic instincts and combat skills prove invaluable as you navigate the bank's intricate security systems. However, as you reach the final stage of the heist, you find yourself cornered by Arasaka's elite forces. In a moment of self-sacrifice, Dex makes a valiant stand, holding back your attackers and giving you an opportunity to seize the Digital Heart. With tears in your eyes, you escape the bank, clutching the artefact tightly and carrying the weight of Dex's sacrifice. Fuelled by grief and determination, you commit to fulfilling your fallen comrade's dream of a free Night City, wielding Dex's Katana as a symbol of your shared purpose and resilience against the oppressive corporations.   ");
                                 Console.ResetColor();
-                                endings.Add("Nomadic Heroism");
-                                Console.ForegroundColor = ConsoleColor.Magenta;
-                                Console.WriteLine("\nYou have reached the Nomadic Heroism ending. Would you like to continue playing? (yes/no)");
+                                if (endings.Contains("Nomadic Heroism"))
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Magenta;
+                                    Console.WriteLine("\nYou have already reached the Nomadic Heroism ending.");
+                                    Console.ResetColor();
+                                }
+                                else
+                                {
+                                    endings.Add("Nomadic Heroism");
+                                    Console.ForegroundColor = ConsoleColor.Magenta;
+                                    Console.WriteLine("\nYou have reached the Nomadic Heroism ending.");
+                                    Console.ResetColor();
+                                }
+                                Console.ForegroundColor = ConsoleColor.Cyan;
+                                Console.WriteLine("Would you like to continue playing ? (yes/no)");
                                 Console.ResetColor();
                                 string continueChoice = Console.ReadLine();
                                 while (continueChoice.ToLower() != "yes" && continueChoice.ToLower() != "no")
@@ -330,9 +365,21 @@ namespace Cyberpunk_Urban_Legacy
                                 Console.ForegroundColor = ConsoleColor.Yellow;
                                 Console.WriteLine("\nUnited by your shared goal, you, Mia, and Dex plan your heist, with Mia bringing Cyberblaze and Dex wielding the powerful Katana. In a display of remarkable teamwork, the trio navigates the formidable security systems of the Arasaka Bank. However, your path is fraught with danger, and you find yourselves facing insurmountable odds. Recognizing the dire situation, you make the ultimate sacrifice, diverting the attention of Arasaka's forces, allowing Mia and Dex to escape with the stolen Digital Heart. As your vision fades, you know your sacrifice was not in vain, for Mia and Dex carry on the fight, inspired by your selflessness.");
                                 Console.ResetColor();
-                                endings.Add("Joint Sacrifice");
-                                Console.ForegroundColor = ConsoleColor.Magenta;
-                                Console.WriteLine("\nYou have reached the Joint Sacrifice ending. Would you like to continue playing? (yes/no)");
+                                if (endings.Contains("Joint Sacrifice"))
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Magenta;
+                                    Console.WriteLine("\nYou have already reached the Joint Sacrifice ending.");
+                                    Console.ResetColor();
+                                }
+                                else
+                                {
+                                    endings.Add("Joint Sacrifice");
+                                    Console.ForegroundColor = ConsoleColor.Magenta;
+                                    Console.WriteLine("\nYou have reached the Joint Sacrifice ending.");
+                                    Console.ResetColor();
+                                }
+                                Console.ForegroundColor = ConsoleColor.Cyan;
+                                Console.WriteLine("Would you like to continue playing ? (yes/no)");
                                 Console.ResetColor();
                                 string continueChoice = Console.ReadLine();
                                 while (continueChoice.ToLower() != "yes" && continueChoice.ToLower() != "no")
@@ -360,9 +407,21 @@ namespace Cyberpunk_Urban_Legacy
                                 Console.ForegroundColor = ConsoleColor.Yellow;
                                 Console.WriteLine("\nIn the heist involving you, Mia, and Cipher, Mia brings along Cyberblaze, and Cipher brings along the Admin Key. You sacrifice yourself to save Mia and Cipher, and they successfully steal the Digital Heart. United in their resolve, Mia and Cipher forge a powerful alliance, vowing to use the stolen artefact to expose corporate corruption and ignite a revolution in Night City. They carry your memory in their hearts as they become a force to be reckoned with, a united front against the oppressive corporations.");
                                 Console.ResetColor();
-                                endings.Add("United Resolve");
-                                Console.ForegroundColor = ConsoleColor.Magenta;
-                                Console.WriteLine("\nYou have reached the United Resolve ending. Would you like to continue playing? (yes/no)");
+                                if(endings.Contains("United Resolve"))
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Magenta;
+                                    Console.WriteLine("\nYou have already reached the United Resolve ending.");
+                                    Console.ResetColor();
+                                }
+                                else
+                                {
+                                    endings.Add("United Resolve");
+                                    Console.ForegroundColor = ConsoleColor.Magenta;
+                                    Console.WriteLine("\nYou have reached the United Resolve ending.");
+                                    Console.ResetColor();
+                                }
+                                Console.ForegroundColor = ConsoleColor.Cyan;
+                                Console.WriteLine("Would you like to continue playing ? (yes/no)");
                                 Console.ResetColor();
                                 string continueChoice = Console.ReadLine();
                                 while (continueChoice.ToLower() != "yes" && continueChoice.ToLower() != "no")
@@ -390,9 +449,21 @@ namespace Cyberpunk_Urban_Legacy
                                 Console.ForegroundColor = ConsoleColor.Yellow;
                                 Console.WriteLine("\nGuided by Dex's nomadic skills and Cipher's hacking abilities, you manoeuvre through the shadows of the Arasaka Bank. Dex's Katana cuts through your enemies with lethal precision, while Cipher's expertise subverts security systems. In a critical moment, you make the ultimate sacrifice, ensuring Dex and Cipher's escape with the stolen Digital Heart. With the artefact in their possession, Dex and Cipher form a covert alliance, committed to dismantling the corporations and creating a better future for Night City. As they move forward, they carry your memory, their fallen comrade forever a symbol of bravery and sacrifice.");
                                 Console.ResetColor();
-                                endings.Add("Covert Alliance");
-                                Console.ForegroundColor = ConsoleColor.Magenta;
-                                Console.WriteLine("\nYou have reached the Covert Alliance ending. Would you like to continue playing? (yes/no)");
+                                if (endings.Contains("Covert Alliance"))
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Magenta;
+                                    Console.WriteLine("\nYou have already reached the Covert Alliance ending.");
+                                    Console.ResetColor();
+                                }
+                                else
+                                {
+                                    endings.Add("Covert Alliance");
+                                    Console.ForegroundColor = ConsoleColor.Magenta;
+                                    Console.WriteLine("\nYou have reached the Covert Alliance ending.");
+                                    Console.ResetColor();
+                                }
+                                Console.ForegroundColor = ConsoleColor.Cyan;
+                                Console.WriteLine("Would you like to continue playing ? (yes/no)");
                                 Console.ResetColor();
                                 string continueChoice = Console.ReadLine();
                                 while (continueChoice.ToLower() != "yes" && continueChoice.ToLower() != "no")
@@ -420,9 +491,21 @@ namespace Cyberpunk_Urban_Legacy
                                 Console.ForegroundColor = ConsoleColor.Green;
                                 Console.WriteLine("\nAs the heist begins, you, Mia, Dex, and Cipher move in perfect harmony, utilizing Cyberblaze, the Katana, and the Admin Key to overcome every obstacle. With unwavering determination, you infiltrate the Arasaka Bank and successfully steal the Digital Heart. United as one, you become the embodiment of hope, inspiring a rebellion against the oppressive corporations. With the Digital Heart as your weapon and your friendship as your strength, you lead Night City towards a future of freedom and justice, your legend forever intertwined.");
                                 Console.ResetColor();
-                                endings.Add("Unity of Shadows");
-                                Console.ForegroundColor = ConsoleColor.Magenta;
-                                Console.WriteLine("\nYou have reached the Unity of Shadows ending. Would you like to continue playing? (yes/no)");
+                                if (endings.Contains("Unity of Shadows"))
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Magenta;
+                                    Console.WriteLine("\nYou have already reached the Unity of Shadows ending.");
+                                    Console.ResetColor();
+                                }
+                                else
+                                {
+                                    endings.Add("Unity of Shadows");
+                                    Console.ForegroundColor = ConsoleColor.Magenta;
+                                    Console.WriteLine("\nYou have reached the Unity of Shadows ending.");
+                                    Console.ResetColor();
+                                }
+                                Console.ForegroundColor = ConsoleColor.Cyan;
+                                Console.WriteLine("Would you like to continue playing ? (yes/no)");
                                 Console.ResetColor();
                                 string continueChoice = Console.ReadLine();
                                 while (continueChoice.ToLower() != "yes" && continueChoice.ToLower() != "no")
@@ -450,9 +533,21 @@ namespace Cyberpunk_Urban_Legacy
                                 Console.ForegroundColor = ConsoleColor.Red;
                                 Console.WriteLine("\nAlone and facing insurmountable odds, you charge into the heart of the Arasaka Bank. In a final act of defiance, you sacrifice yourself to destroy the Digital Heart, ensuring that the artefact never falls into the hands of the corporations. Your last stand becomes a rallying cry for the resistance, inspiring others to join the fight against the oppressive regime. Though you are gone, your sacrifice ignites a spark of hope, a beacon that will guide Night City towards a brighter future.");
                                 Console.ResetColor();
-                                endings.Add("Last Stand");
-                                Console.ForegroundColor = ConsoleColor.Magenta;
-                                Console.WriteLine("\nYou have reached the Last Stand ending. Would you like to continue playing? (yes/no)");
+                                if (endings.Contains("Last Stand"))
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Magenta;
+                                    Console.WriteLine("\nYou have already reached the Last Stand ending.");
+                                    Console.ResetColor();
+                                }
+                                else
+                                {
+                                    endings.Add("Last Stand");
+                                    Console.ForegroundColor = ConsoleColor.Magenta;
+                                    Console.WriteLine("\nYou have reached the Last Stand ending.");
+                                    Console.ResetColor();
+                                }
+                                Console.ForegroundColor = ConsoleColor.Cyan;
+                                Console.WriteLine("Would you like to continue playing ? (yes/no)");
                                 Console.ResetColor();
                                 string continueChoice = Console.ReadLine();
                                 while (continueChoice.ToLower() != "yes" && continueChoice.ToLower() != "no")
@@ -678,9 +773,21 @@ namespace Cyberpunk_Urban_Legacy
                                                 Console.WriteLine("\nThe Nanoclaw mercilessly obliterates Cyberblaze. You are captured by Arasaka's security forces and sentenced to life in prison. The chilling echoes of your demise resonate, forever etching a tale of loss and devastation.. Your name is forgotten, your legacy erased.");
                                                 Console.ResetColor();
                                                 continuePokemon = false;
-                                                endings.Add("Eternal Imprisonment");
-                                                Console.ForegroundColor = ConsoleColor.Magenta;
-                                                Console.WriteLine("\nYou have reached the Eternal Imprisonment ending. Would you like to continue playing? (yes/no)");
+                                                if (endings.Contains("Eternal Imprisonment"))
+                                                {
+                                                    Console.ForegroundColor = ConsoleColor.Magenta;
+                                                    Console.WriteLine("\nYou have already reached the Eternal Imprisonment ending.");
+                                                    Console.ResetColor();
+                                                }
+                                                else
+                                                {
+                                                    endings.Add("Eternal Imprisonment");
+                                                    Console.ForegroundColor = ConsoleColor.Magenta;
+                                                    Console.WriteLine("\nYou have reached the Eternal Imprisonment ending.");
+                                                    Console.ResetColor();
+                                                }
+                                                Console.ForegroundColor = ConsoleColor.Cyan;
+                                                Console.WriteLine("Would you like to continue playing ? (yes/no)");
                                                 Console.ResetColor();
                                                 string continueChoice = Console.ReadLine();
                                                 while (continueChoice.ToLower() != "yes" && continueChoice.ToLower() != "no")
@@ -723,9 +830,21 @@ namespace Cyberpunk_Urban_Legacy
                                         Console.ForegroundColor = ConsoleColor.Red;
                                         Console.WriteLine("\nYou run for your life, but Nanoclaw is too fast. You and Mia are torn to pieces.");
                                         Console.ResetColor();
-                                        endings.Add("Devoured Hope");
-                                        Console.ForegroundColor = ConsoleColor.Magenta;
-                                        Console.WriteLine("\nYou have reached the Devoured Hope ending. Would you like to continue playing? (yes/no)");
+                                        if (endings.Contains("Devoured Hope"))
+                                        {
+                                            Console.ForegroundColor = ConsoleColor.Magenta;
+                                            Console.WriteLine("\nYou have already reached the Devoured Hope ending.");
+                                            Console.ResetColor();
+                                        }
+                                        else
+                                        {
+                                            endings.Add("Devoured Hope");
+                                            Console.ForegroundColor = ConsoleColor.Magenta;
+                                            Console.WriteLine("\nYou have reached the Devoured Hope ending.");
+                                            Console.ResetColor();
+                                        }
+                                        Console.ForegroundColor = ConsoleColor.Cyan;
+                                        Console.WriteLine("Would you like to continue playing ? (yes/no)");
                                         Console.ResetColor();
                                         string continueChoice = Console.ReadLine();
                                         while (continueChoice.ToLower() != "yes" && continueChoice.ToLower() != "no")
@@ -754,9 +873,21 @@ namespace Cyberpunk_Urban_Legacy
                                     Console.ForegroundColor = ConsoleColor.Red;
                                     Console.WriteLine($"\nMia was unfortunately shot while trying to breach the highly advanced security systems of Arasaka. Despite your best efforts, both of you were overwhelmed by Arasaka's powerful mercenaries. Your sacrifice would be remembered as a courageous stand against impossible odds, inspiring others to fight against oppression.");
                                     Console.ResetColor();
-                                    endings.Add("Overpowered Resistance");
-                                    Console.ForegroundColor = ConsoleColor.Magenta;
-                                    Console.WriteLine("\nYou have reached the Overpowered Resistance ending. Would you like to continue playing? (yes/no)");
+                                    if (endings.Contains("Overpowered Resistance"))
+                                    {
+                                        Console.ForegroundColor = ConsoleColor.Magenta;
+                                        Console.WriteLine("\nYou have already reached the Overpowered Resistance ending.");
+                                        Console.ResetColor();
+                                    }
+                                    else
+                                    {
+                                        endings.Add("Overpowered Resistance");
+                                        Console.ForegroundColor = ConsoleColor.Magenta;
+                                        Console.WriteLine("\nYou have reached the Overpowered Resistance ending.");
+                                        Console.ResetColor();
+                                    }
+                                    Console.ForegroundColor = ConsoleColor.Cyan;
+                                    Console.WriteLine("Would you like to continue playing ? (yes/no)");
                                     Console.ResetColor();
                                     string continueChoice = Console.ReadLine();
                                     while (continueChoice.ToLower() != "yes" && continueChoice.ToLower() != "no")
@@ -801,9 +932,21 @@ namespace Cyberpunk_Urban_Legacy
                                     Console.ForegroundColor = ConsoleColor.Red;
                                     Console.WriteLine("\nYou shoot down the drone, but its distress signal brings a swarm of reinforcements. Overwhelmed, you and Dex tragically fall in the ensuing battle, leaving a legacy of unwavering determination against insurmountable odds.");
                                     Console.ResetColor();
-                                    endings.Add("Devastating Swarm");
-                                    Console.ForegroundColor = ConsoleColor.Magenta;
-                                    Console.WriteLine("\nYou have reached the Devastating Swarm ending. Would you like to continue playing? (yes/no)");
+                                    if (endings.Contains("Devastating Swarm"))
+                                    {
+                                        Console.ForegroundColor = ConsoleColor.Magenta;
+                                        Console.WriteLine("\nYou have already reached the Devastating Swarm ending.");
+                                        Console.ResetColor();
+                                    }
+                                    else
+                                    {
+                                        endings.Add("Devastating Swarm");
+                                        Console.ForegroundColor = ConsoleColor.Magenta;
+                                        Console.WriteLine("\nYou have reached the Devastating Swarm ending.");
+                                        Console.ResetColor();
+                                    }
+                                    Console.ForegroundColor = ConsoleColor.Cyan;
+                                    Console.WriteLine("Would you like to continue playing ? (yes/no)");
                                     Console.ResetColor();
                                     string continueChoice = Console.ReadLine();
                                     while (continueChoice.ToLower() != "yes" && continueChoice.ToLower() != "no")
@@ -861,10 +1004,21 @@ namespace Cyberpunk_Urban_Legacy
                                     Console.ForegroundColor = ConsoleColor.Red;
                                     Console.WriteLine("\r\nYou approach the innocent-looking little girl, she suddenly reveals a wicked smile and swiftly jabbsyou with a seemingly harmless toy. The poison coursing through your veins, your vision blurred, and darkness enveloped him, your final choice haunting you for eternity.");
                                     Console.ResetColor();
-
-                                    endings.Add("Deceptive Innocence");
-                                    Console.ForegroundColor = ConsoleColor.Magenta;
-                                    Console.WriteLine("\nYou have reached the Deceptive Innocence ending. Would you like to continue playing? (yes/no)");
+                                    if (endings.Contains("Deceptive Innocence"))
+                                    {
+                                        Console.ForegroundColor = ConsoleColor.Magenta;
+                                        Console.WriteLine("\nYou have already reached the Deceptive Innocence ending.");
+                                        Console.ResetColor();
+                                    }
+                                    else
+                                    {
+                                        endings.Add("Deceptive Innocence");
+                                        Console.ForegroundColor = ConsoleColor.Magenta;
+                                        Console.WriteLine("\nYou have reached the Deceptive Innocence ending.");
+                                        Console.ResetColor();
+                                    }
+                                    Console.ForegroundColor = ConsoleColor.Cyan;
+                                    Console.WriteLine("Would you like to continue playing ? (yes/no)");
                                     Console.ResetColor();
                                     string continueChoice = Console.ReadLine();
                                     while (continueChoice.ToLower() != "yes" && continueChoice.ToLower() != "no")
@@ -908,9 +1062,21 @@ namespace Cyberpunk_Urban_Legacy
                     Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.WriteLine($"\nYou decide it's too risky. You continue your life in the streets of Night City, always wondering what might have been.");
                     Console.ResetColor();
-                    endings.Add("Dreams Unfulfilled");
-                    Console.ForegroundColor = ConsoleColor.Magenta;
-                    Console.WriteLine("\nYou have reached the Dreams Unfulfilled ending. Would you like to continue playing? (yes/no)");
+                    if (endings.Contains("Dreams Unfulfilled"))
+                    {
+                        Console.ForegroundColor = ConsoleColor.Magenta;
+                        Console.WriteLine("\nYou have already reached the Dreams Unfulfilled ending.");
+                        Console.ResetColor();
+                    }
+                    else
+                    {
+                        endings.Add("Dreams Unfulfilled");
+                        Console.ForegroundColor = ConsoleColor.Magenta;
+                        Console.WriteLine("\nYou have reached the Dreams Unfulfilled ending.");
+                        Console.ResetColor();
+                    }
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.WriteLine("Would you like to continue playing ? (yes/no)");
                     Console.ResetColor();
                     string continueChoice = Console.ReadLine();
                     while (continueChoice.ToLower() != "yes" && continueChoice.ToLower() != "no")
@@ -1038,9 +1204,21 @@ namespace Cyberpunk_Urban_Legacy
                                 Console.ForegroundColor = ConsoleColor.Red;
                                 Console.WriteLine("Regrettably, your unsuccessful attempt to hack the drone triggers a fatal response, resulting in a wipe of memory that ends your life.");
                                 Console.ResetColor();
-                                endings.Add("Fatal Encryption");
-                                Console.ForegroundColor = ConsoleColor.Magenta;
-                                Console.WriteLine("\nYou have reached the Fatal Encryption ending. Would you like to continue playing? (yes/no)");
+                                if (endings.Contains("Fatal Encryption"))
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Magenta;
+                                    Console.WriteLine("\nYou have already reached the Fatal Encryption ending.");
+                                    Console.ResetColor();
+                                }
+                                else
+                                {
+                                    endings.Add("Fatal Encryption");
+                                    Console.ForegroundColor = ConsoleColor.Magenta;
+                                    Console.WriteLine("\nYou have reached the Fatal Encryption ending.");
+                                    Console.ResetColor();
+                                }
+                                Console.ForegroundColor = ConsoleColor.Cyan;
+                                Console.WriteLine("Would you like to continue playing ? (yes/no)");
                                 Console.ResetColor();
                                 string continueChoice = Console.ReadLine();
                                 while (continueChoice.ToLower() != "yes" && continueChoice.ToLower() != "no")
@@ -1101,9 +1279,21 @@ namespace Cyberpunk_Urban_Legacy
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("\nDex selflessly intervenes, taking the fatal blow meant for you. His sacrifice fuels your determination to continue the fight against the corporations, carrying the weight of his memory.");
                     Console.ResetColor();
-                    endings.Add("Echoing Laughter");
-                    Console.ForegroundColor = ConsoleColor.Magenta;
-                    Console.WriteLine("\nYou have reached the Echoing Laughter ending. Would you like to continue playing? (yes/no)");
+                    if (endings.Contains("Echoing Laughter"))
+                    {
+                        Console.ForegroundColor = ConsoleColor.Magenta;
+                        Console.WriteLine("\nYou have already reached the Echoing Laughter ending.");
+                        Console.ResetColor();
+                    }
+                    else
+                    {
+                        endings.Add("Echoing Laughter");
+                        Console.ForegroundColor = ConsoleColor.Magenta;
+                        Console.WriteLine("\nYou have reached the Echoing Laughter ending.");
+                        Console.ResetColor();
+                    }
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.WriteLine("Would you like to continue playing ? (yes/no)");
                     Console.ResetColor();
                     string continueChoice = Console.ReadLine();
                     while (continueChoice.ToLower() != "yes" && continueChoice.ToLower() != "no")
@@ -1124,6 +1314,7 @@ namespace Cyberpunk_Urban_Legacy
                         Console.WriteLine("\nYou quit the game.");
                         gameContinue = false;
                     }
+                    break;
                 }
                 else if (game.IsBoardFull())
                 {
@@ -1132,9 +1323,21 @@ namespace Cyberpunk_Urban_Legacy
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("\nDex selflessly intervenes, taking the fatal blow meant for you. His sacrifice fuels your determination to continue the fight against the corporations, carrying the weight of his memory.");
                     Console.ResetColor();
-                    endings.Add("Twisted Stalemate");
-                    Console.ForegroundColor = ConsoleColor.Magenta;
-                    Console.WriteLine("\nYou have reached the Twisted Stalemate ending. Would you like to continue playing? (yes/no)");
+                    if (endings.Contains("Twisted Stalemate"))
+                    {
+                        Console.ForegroundColor = ConsoleColor.Magenta;
+                        Console.WriteLine("\nYou have already reached the Twisted Stalemate ending.");
+                        Console.ResetColor();
+                    }
+                    else
+                    {
+                        endings.Add("Twisted Stalemate");
+                        Console.ForegroundColor = ConsoleColor.Magenta;
+                        Console.WriteLine("\nYou have reached the Twisted Stalemate ending.");
+                        Console.ResetColor();
+                    }
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.WriteLine("Would you like to continue playing ? (yes/no)");
                     Console.ResetColor();
                     string continueChoice = Console.ReadLine();
                     while (continueChoice.ToLower() != "yes" && continueChoice.ToLower() != "no")
@@ -1154,18 +1357,23 @@ namespace Cyberpunk_Urban_Legacy
                     else if (continueChoice.ToLower() == "no")
                     {
                         Console.WriteLine("\nYou quit the game.");
-                    gameContinue = false;
+                        gameContinue = false;
+                    }
+                    break;
+                }
+                
+                if (game.GetCurrentPlayer() == 'X')
+                {
+                    PlayerMove(game);
+                }
+                else
+                {
+                    ComputerMove(game);
                 }
             }
-
-            if (game.GetCurrentPlayer() == 'X')
-                PlayerMove(game);
-            else
-                ComputerMove(game);
         }
-    }
 
-    static void PlayerMove(TicTacToeGame game)
+        static void PlayerMove(TicTacToeGame game)
         {
             Console.WriteLine("\nEnter a number (1-9) to make your move: ");
             int position;
