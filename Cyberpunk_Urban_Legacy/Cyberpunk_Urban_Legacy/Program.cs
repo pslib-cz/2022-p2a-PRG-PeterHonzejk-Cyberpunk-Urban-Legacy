@@ -9,19 +9,22 @@ namespace Cyberpunk_Urban_Legacy
     {
         static void Main(string[] args)
         {
+            
             Console.ForegroundColor = ConsoleColor.Magenta;
-            string asciiArt = @"
-   _____      _                                 _      _    _      _                   _                                 
-  / ____|    | |                               | |    | |  | |    | |                 | |                                
- | |    _   _| |__   ___ _ __ _ __  _   _ _ __ | | __ | |  | |_ __| |__   __ _ _ __   | |     ___  __ _  __ _  ___ _   _ 
- | |   | | | | '_ \ / _ \ '__| '_ \| | | | '_ \| |/ / | |  | | '__| '_ \ / _` | '_ \  | |    / _ \/ _` |/ _` |/ __| | | |
- | |___| |_| | |_) |  __/ |  | |_) | |_| | | | |   <  | |__| | |  | |_) | (_| | | | | | |___|  __/ (_| | (_| | (__| |_| |
-  \_____\__, |_.__/ \___|_|  | .__/ \__,_|_| |_|_|\_\  \____/|_|  |_.__/ \__,_|_| |_| |______\___|\__, |\__,_|\___|\__, |
-         __/ |               | |                                                                   __/ |            __/ |
-        |___/                |_|                                                                  |___/            |___/ ";
-            Console.WriteLine(asciiArt);
+            string introAscii = @"
+   _____                                  _      _    _      _                   _                                 
+  / ____|                                | |    | |  | |    | |                 | |                                
+ | |    _   _  ___ _ __ _ __  _   _ _ __ | | __ | |  | |_ __| |__   __ _ _ __   | |     ___  __ _  __ _  ___ _   _ 
+ | |   | | | |/ _ \ '__| '_ \| | | | '_ \| |/ / | |  | | '__| '_ \ / _` | '_ \  | |    / _ \/ _` |/ _` |/ __| | | |
+ | |___| |_| |  __/ |  | |_) | |_| | | | |   <  | |__| | |  | |_) | (_| | | | | | |___|  __/ (_| | (_| | (__| |_| |
+  \_____\__, |\___|_|  | .__/ \__,_|_| |_|_|\_\  \____/|_|  |_.__/ \__,_|_| |_| |______\___|\__, |\__,_|\___|\__, |
+         __/ |         | |                                                                   __/ |            __/ |
+        |___/          |_|                                                                  |___/            |___/ ";
+            Console.WriteLine(introAscii);
             Console.ResetColor();
 
+            Console.WriteLine("");
+            
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("\nPlease press F11 to enter Fullscreen.");
             Console.ResetColor();
@@ -54,7 +57,7 @@ namespace Cyberpunk_Urban_Legacy
                 {
                     // Prompt for player's name
                     Console.ForegroundColor = ConsoleColor.Cyan;
-                    Console.WriteLine("\nWelcome to Night City. What's your name?");
+                    Console.WriteLine("\nWhat's your name?");
                     Console.ResetColor();
                     playerName = Console.ReadLine();
                 }
@@ -78,9 +81,25 @@ namespace Cyberpunk_Urban_Legacy
                     Console.ForegroundColor = ConsoleColor.Magenta;
                     Console.WriteLine("\nYou have unlocked all endings.");
                     Console.ResetColor();
-                    Console.ForegroundColor = ConsoleColor.Cyan;
-                    Console.WriteLine("\nCongratulations!");
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    string endAscii = @"
+   _____                            _         _       _   _                 _ 
+  / ____|                          | |       | |     | | (_)               | |
+ | |     ___  _ __   __ _ _ __ __ _| |_ _   _| | __ _| |_ _  ___  _ __  ___| |
+ | |    / _ \| '_ \ / _` | '__/ _` | __| | | | |/ _` | __| |/ _ \| '_ \/ __| |
+ | |___| (_) | | | | (_| | | | (_| | |_| |_| | | (_| | |_| | (_) | | | \__ \_|
+  \_____\___/|_| |_|\__, |_|  \__,_|\__|\__,_|_|\__,_|\__|_|\___/|_| |_|___(_)
+                     __/ |                                                    
+                    |___/                                                     ";
+                    Console.WriteLine(endAscii);
                     Console.ResetColor();
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.ResetColor();
+
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.WriteLine($"\nCongratulations, {playerName}! By conquering all 17 endings in Cyberpunk: Urban Legacy, you have become Legend, a symbol of resistance and hope, shattering the chains of corporate control in Night City. Your legacy is etched into the city's foundation, inspiring others to challenge the status quo. As you step out of this cybernetic sprawl, remember that your choices will shape the world around you. Your name will be whispered in awe and reverence, and your spirit will continue to ignite the flames of rebellion wherever you go. Thank you for playing and may your legend never fade.");
+                    Console.ResetColor();
+
                     Environment.Exit(0);
                 }
                 else
@@ -199,21 +218,38 @@ namespace Cyberpunk_Urban_Legacy
                     }
                 }
 
-                // Introduction and choice to proceed with the heist
-                Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.WriteLine($"\n{playerName}, you're a young streetkid aspiring to become a legend. You have a chance to plan the greatest heist Night City has ever witnessed: stealing the Digital Heart from Arasaka corporation. But it's dangerous. Do you wish to proceed? (yes/no)");
-                Console.ResetColor();
-
+                if (endings.Count == 0)
+                {
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    Console.WriteLine($"\nWelcome to Night City {playerName}, the sprawling metropolis of the future. In \"Cyberpunk: Urban Legacy,\" you are a streetkid born and raised in the gritty streets of this technologically advanced city. Here, corporations hold immense power, and your mission is to become a legendary figure who can break their control and restore freedom to the people. Prepare yourself for heart-pounding action, thrilling adventures, and a relentless challenge as you navigate the treacherous underworld and leave a lasting legacy. Get ready to shape the destiny of Night City in \"Cyberpunk: Urban Legacy.\"");
+                    Console.ResetColor();
+                }
+                
                 bool preparationsContinue = true;
                 List<string> inventory = new List<string>();
-                string importantChoice = Console.ReadLine();
 
-                while (importantChoice.ToLower() != "yes" && importantChoice.ToLower() != "no")
+                string importantChoice;
+
+                if (endings.Contains("Dreams Unfulfilled"))
                 {
+                    importantChoice = "yes";
+                }
+                else
+                {
+                    // Introduction and choice to proceed with the heist
                     Console.ForegroundColor = ConsoleColor.Cyan;
-                    Console.WriteLine("\nInvalid input. Please enter 'yes' or 'no'.");
+                    Console.WriteLine("\nYou're a young streetkid aspiring to become a legend. You have a chance to plan the greatest heist Night City has ever witnessed: stealing the Digital Heart from Arasaka corporation. But it's dangerous. Do you wish to proceed? (yes/no)");
                     Console.ResetColor();
+
                     importantChoice = Console.ReadLine();
+
+                    while (importantChoice.ToLower() != "yes" && importantChoice.ToLower() != "no")
+                    {
+                        Console.ForegroundColor = ConsoleColor.Cyan;
+                        Console.WriteLine("\nInvalid input. Please enter 'yes' or 'no'.");
+                        Console.ResetColor();
+                        importantChoice = Console.ReadLine();
+                    }
                 }
 
                 if (importantChoice.ToLower() == "yes")
@@ -253,7 +289,7 @@ namespace Cyberpunk_Urban_Legacy
                                     Console.ResetColor();
                                 }
                                 Console.ForegroundColor = ConsoleColor.Cyan;
-                                Console.WriteLine("Would you like to continue playing ? (yes/no)");
+                                Console.WriteLine("Would you like to play again? (yes/no)");
                                 Console.ResetColor();
                                 string continueChoice = Console.ReadLine();
                                 while (continueChoice.ToLower() != "yes" && continueChoice.ToLower() != "no")
@@ -272,7 +308,7 @@ namespace Cyberpunk_Urban_Legacy
                                 else if (continueChoice.ToLower() == "no")
                                 {
                                     Console.WriteLine("\nYou quit the game.");
-                                    gameContinue = false;
+                                    Environment.Exit(0);
                                 }
                             }
                             else if (heistChoice.ToLower() == "cipher")
@@ -295,7 +331,7 @@ namespace Cyberpunk_Urban_Legacy
                                     Console.ResetColor();
                                 }
                                 Console.ForegroundColor = ConsoleColor.Cyan;
-                                Console.WriteLine("Would you like to continue playing ? (yes/no)");
+                                Console.WriteLine("Would you like to play again? (yes/no)");
                                 Console.ResetColor();
                                 string continueChoice = Console.ReadLine();
                                 while (continueChoice.ToLower() != "yes" && continueChoice.ToLower() != "no")
@@ -314,7 +350,7 @@ namespace Cyberpunk_Urban_Legacy
                                 else if (continueChoice.ToLower() == "no")
                                 {
                                     Console.WriteLine("\nYou quit the game.");
-                                    gameContinue = false;
+                                    Environment.Exit(0);
                                 }
                             }
                             else if (heistChoice.ToLower() == "dex")
@@ -337,7 +373,7 @@ namespace Cyberpunk_Urban_Legacy
                                     Console.ResetColor();
                                 }
                                 Console.ForegroundColor = ConsoleColor.Cyan;
-                                Console.WriteLine("Would you like to continue playing ? (yes/no)");
+                                Console.WriteLine("Would you like to play again? (yes/no)");
                                 Console.ResetColor();
                                 string continueChoice = Console.ReadLine();
                                 while (continueChoice.ToLower() != "yes" && continueChoice.ToLower() != "no")
@@ -356,7 +392,7 @@ namespace Cyberpunk_Urban_Legacy
                                 else if (continueChoice.ToLower() == "no")
                                 {
                                     Console.WriteLine("\nYou quit the game.");
-                                    gameContinue = false;
+                                    Environment.Exit(0);
                                 }
                             }
                             else if (heistChoice.ToLower() == "miadex")
@@ -379,7 +415,7 @@ namespace Cyberpunk_Urban_Legacy
                                     Console.ResetColor();
                                 }
                                 Console.ForegroundColor = ConsoleColor.Cyan;
-                                Console.WriteLine("Would you like to continue playing ? (yes/no)");
+                                Console.WriteLine("Would you like to play again? (yes/no)");
                                 Console.ResetColor();
                                 string continueChoice = Console.ReadLine();
                                 while (continueChoice.ToLower() != "yes" && continueChoice.ToLower() != "no")
@@ -398,7 +434,7 @@ namespace Cyberpunk_Urban_Legacy
                                 else if (continueChoice.ToLower() == "no")
                                 {
                                     Console.WriteLine("\nYou quit the game.");
-                                    gameContinue = false;
+                                    Environment.Exit(0);
                                 }
                             }
                             else if (heistChoice.ToLower() == "miacipher")
@@ -421,7 +457,7 @@ namespace Cyberpunk_Urban_Legacy
                                     Console.ResetColor();
                                 }
                                 Console.ForegroundColor = ConsoleColor.Cyan;
-                                Console.WriteLine("Would you like to continue playing ? (yes/no)");
+                                Console.WriteLine("Would you like to play again? (yes/no)");
                                 Console.ResetColor();
                                 string continueChoice = Console.ReadLine();
                                 while (continueChoice.ToLower() != "yes" && continueChoice.ToLower() != "no")
@@ -440,7 +476,7 @@ namespace Cyberpunk_Urban_Legacy
                                 else if (continueChoice.ToLower() == "no")
                                 {
                                     Console.WriteLine("\nYou quit the game.");
-                                    gameContinue = false;
+                                    Environment.Exit(0);
                                 }
                             }
                             else if (heistChoice.ToLower() == "dexcipher")
@@ -463,7 +499,7 @@ namespace Cyberpunk_Urban_Legacy
                                     Console.ResetColor();
                                 }
                                 Console.ForegroundColor = ConsoleColor.Cyan;
-                                Console.WriteLine("Would you like to continue playing ? (yes/no)");
+                                Console.WriteLine("Would you like to play again? (yes/no)");
                                 Console.ResetColor();
                                 string continueChoice = Console.ReadLine();
                                 while (continueChoice.ToLower() != "yes" && continueChoice.ToLower() != "no")
@@ -482,7 +518,7 @@ namespace Cyberpunk_Urban_Legacy
                                 else if (continueChoice.ToLower() == "no")
                                 {
                                     Console.WriteLine("\nYou quit the game.");
-                                    gameContinue = false;
+                                    Environment.Exit(0);
                                 }
                             }
                             else if (heistChoice.ToLower() == "everyone")
@@ -505,7 +541,7 @@ namespace Cyberpunk_Urban_Legacy
                                     Console.ResetColor();
                                 }
                                 Console.ForegroundColor = ConsoleColor.Cyan;
-                                Console.WriteLine("Would you like to continue playing ? (yes/no)");
+                                Console.WriteLine("Would you like to play again? (yes/no)");
                                 Console.ResetColor();
                                 string continueChoice = Console.ReadLine();
                                 while (continueChoice.ToLower() != "yes" && continueChoice.ToLower() != "no")
@@ -524,7 +560,7 @@ namespace Cyberpunk_Urban_Legacy
                                 else if (continueChoice.ToLower() == "no")
                                 {
                                     Console.WriteLine("\nYou quit the game.");
-                                    gameContinue = false;
+                                    Environment.Exit(0);
                                 }
                             }
                             else if (heistChoice.ToLower() == "alone")
@@ -547,7 +583,7 @@ namespace Cyberpunk_Urban_Legacy
                                     Console.ResetColor();
                                 }
                                 Console.ForegroundColor = ConsoleColor.Cyan;
-                                Console.WriteLine("Would you like to continue playing ? (yes/no)");
+                                Console.WriteLine("Would you like to play again? (yes/no)");
                                 Console.ResetColor();
                                 string continueChoice = Console.ReadLine();
                                 while (continueChoice.ToLower() != "yes" && continueChoice.ToLower() != "no")
@@ -566,7 +602,7 @@ namespace Cyberpunk_Urban_Legacy
                                 else if (continueChoice.ToLower() == "no")
                                 {
                                     Console.WriteLine("\nYou quit the game.");
-                                    gameContinue = false;
+                                    Environment.Exit(0);
                                 }
                             }
                             else
@@ -787,7 +823,7 @@ namespace Cyberpunk_Urban_Legacy
                                                     Console.ResetColor();
                                                 }
                                                 Console.ForegroundColor = ConsoleColor.Cyan;
-                                                Console.WriteLine("Would you like to continue playing ? (yes/no)");
+                                                Console.WriteLine("Would you like to play again? (yes/no)");
                                                 Console.ResetColor();
                                                 string continueChoice = Console.ReadLine();
                                                 while (continueChoice.ToLower() != "yes" && continueChoice.ToLower() != "no")
@@ -806,7 +842,7 @@ namespace Cyberpunk_Urban_Legacy
                                                 else if (continueChoice.ToLower() == "no")
                                                 {
                                                     Console.WriteLine("\nYou quit the game.");
-                                                    gameContinue = false;
+                                                    Environment.Exit(0);
                                                 }
                                             }
 
@@ -844,7 +880,7 @@ namespace Cyberpunk_Urban_Legacy
                                             Console.ResetColor();
                                         }
                                         Console.ForegroundColor = ConsoleColor.Cyan;
-                                        Console.WriteLine("Would you like to continue playing ? (yes/no)");
+                                        Console.WriteLine("Would you like to play again? (yes/no)");
                                         Console.ResetColor();
                                         string continueChoice = Console.ReadLine();
                                         while (continueChoice.ToLower() != "yes" && continueChoice.ToLower() != "no")
@@ -863,7 +899,7 @@ namespace Cyberpunk_Urban_Legacy
                                         else if (continueChoice.ToLower() == "no")
                                         {
                                             Console.WriteLine("\nYou quit the game.");
-                                            gameContinue = false;
+                                            Environment.Exit(0);
                                         }
                                     }
                                 }
@@ -887,7 +923,7 @@ namespace Cyberpunk_Urban_Legacy
                                         Console.ResetColor();
                                     }
                                     Console.ForegroundColor = ConsoleColor.Cyan;
-                                    Console.WriteLine("Would you like to continue playing ? (yes/no)");
+                                    Console.WriteLine("Would you like to play again? (yes/no)");
                                     Console.ResetColor();
                                     string continueChoice = Console.ReadLine();
                                     while (continueChoice.ToLower() != "yes" && continueChoice.ToLower() != "no")
@@ -906,7 +942,7 @@ namespace Cyberpunk_Urban_Legacy
                                     else if (continueChoice.ToLower() == "no")
                                     {
                                         Console.WriteLine("\nYou quit the game.");
-                                        gameContinue = false;
+                                        Environment.Exit(0);
                                     }
                                 }
                             }
@@ -946,7 +982,7 @@ namespace Cyberpunk_Urban_Legacy
                                         Console.ResetColor();
                                     }
                                     Console.ForegroundColor = ConsoleColor.Cyan;
-                                    Console.WriteLine("Would you like to continue playing ? (yes/no)");
+                                    Console.WriteLine("Would you like to play again? (yes/no)");
                                     Console.ResetColor();
                                     string continueChoice = Console.ReadLine();
                                     while (continueChoice.ToLower() != "yes" && continueChoice.ToLower() != "no")
@@ -965,7 +1001,7 @@ namespace Cyberpunk_Urban_Legacy
                                     else if (continueChoice.ToLower() == "no")
                                     {
                                         Console.WriteLine("\nYou quit the game.");
-                                        gameContinue = false;
+                                        Environment.Exit(0);
                                     }
                                 }
                                 else if (droneChoice.ToLower() == "hack")
@@ -1018,7 +1054,7 @@ namespace Cyberpunk_Urban_Legacy
                                         Console.ResetColor();
                                     }
                                     Console.ForegroundColor = ConsoleColor.Cyan;
-                                    Console.WriteLine("Would you like to continue playing ? (yes/no)");
+                                    Console.WriteLine("Would you like to play again? (yes/no)");
                                     Console.ResetColor();
                                     string continueChoice = Console.ReadLine();
                                     while (continueChoice.ToLower() != "yes" && continueChoice.ToLower() != "no")
@@ -1037,7 +1073,7 @@ namespace Cyberpunk_Urban_Legacy
                                     else if (continueChoice.ToLower() == "no")
                                     {
                                         Console.WriteLine("\nYou quit the game.");
-                                        gameContinue = false;
+                                        Environment.Exit(0);
                                     }
                                 }
                                 else
@@ -1076,7 +1112,7 @@ namespace Cyberpunk_Urban_Legacy
                         Console.ResetColor();
                     }
                     Console.ForegroundColor = ConsoleColor.Cyan;
-                    Console.WriteLine("Would you like to continue playing ? (yes/no)");
+                    Console.WriteLine("Would you like to play again? (yes/no)");
                     Console.ResetColor();
                     string continueChoice = Console.ReadLine();
                     while (continueChoice.ToLower() != "yes" && continueChoice.ToLower() != "no")
@@ -1095,7 +1131,7 @@ namespace Cyberpunk_Urban_Legacy
                     else if (continueChoice.ToLower() == "no")
                     {
                         Console.WriteLine("\nYou quit the game.");
-                        gameContinue = false;
+                        Environment.Exit(0);
                     }
                 }
                 else
@@ -1218,7 +1254,7 @@ namespace Cyberpunk_Urban_Legacy
                                     Console.ResetColor();
                                 }
                                 Console.ForegroundColor = ConsoleColor.Cyan;
-                                Console.WriteLine("Would you like to continue playing ? (yes/no)");
+                                Console.WriteLine("Would you like to play again? (yes/no)");
                                 Console.ResetColor();
                                 string continueChoice = Console.ReadLine();
                                 while (continueChoice.ToLower() != "yes" && continueChoice.ToLower() != "no")
@@ -1237,7 +1273,7 @@ namespace Cyberpunk_Urban_Legacy
                                 else if (continueChoice.ToLower() == "no")
                                 {
                                     Console.WriteLine("\nYou quit the game.");
-                                    gameContinue = false;
+                                    Environment.Exit(0);
                                 }
                                 break;
                             }
@@ -1293,7 +1329,7 @@ namespace Cyberpunk_Urban_Legacy
                         Console.ResetColor();
                     }
                     Console.ForegroundColor = ConsoleColor.Cyan;
-                    Console.WriteLine("Would you like to continue playing ? (yes/no)");
+                    Console.WriteLine("Would you like to play again? (yes/no)");
                     Console.ResetColor();
                     string continueChoice = Console.ReadLine();
                     while (continueChoice.ToLower() != "yes" && continueChoice.ToLower() != "no")
@@ -1312,7 +1348,7 @@ namespace Cyberpunk_Urban_Legacy
                     else if (continueChoice.ToLower() == "no")
                     {
                         Console.WriteLine("\nYou quit the game.");
-                        gameContinue = false;
+                        Environment.Exit(0);
                     }
                     break;
                 }
@@ -1337,7 +1373,7 @@ namespace Cyberpunk_Urban_Legacy
                         Console.ResetColor();
                     }
                     Console.ForegroundColor = ConsoleColor.Cyan;
-                    Console.WriteLine("Would you like to continue playing ? (yes/no)");
+                    Console.WriteLine("Would you like to play again? (yes/no)");
                     Console.ResetColor();
                     string continueChoice = Console.ReadLine();
                     while (continueChoice.ToLower() != "yes" && continueChoice.ToLower() != "no")
@@ -1357,7 +1393,7 @@ namespace Cyberpunk_Urban_Legacy
                     else if (continueChoice.ToLower() == "no")
                     {
                         Console.WriteLine("\nYou quit the game.");
-                        gameContinue = false;
+                        Environment.Exit(0);
                     }
                     break;
                 }
